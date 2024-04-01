@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7B2B970EA700AC2471 /* Constants.swift */; };
+		FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7D2B97104200AC2471 /* TokenManager.swift */; };
+		FF723A852B97221900AC2471 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FF723A842B97221900AC2471 /* Alamofire */; };
+		FF723A872B97280300AC2471 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A862B97280300AC2471 /* API.swift */; };
+		FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A892B97296E00AC2471 /* AuthAPI.swift */; };
+		FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A8B2B972DB500AC2471 /* NetworkManager.swift */; };
 		FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */; };
 		FFFA3C102B94B34A009429C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0F2B94B34A009429C1 /* ContentView.swift */; };
 		FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C112B94B34C009429C1 /* Assets.xcassets */; };
@@ -14,7 +20,6 @@
 		FFFA3C1F2B94B34C009429C1 /* FrozenFantasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */; };
 		FFFA3C292B94B34C009429C1 /* FrozenFantasyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */; };
 		FFFA3C2B2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */; };
-		FFFA3C392B94B472009429C1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = FFFA3C382B94B472009429C1 /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF723A7B2B970EA700AC2471 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF723A7D2B97104200AC2471 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		FF723A862B97280300AC2471 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FF723A892B97296E00AC2471 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		FF723A8B2B972DB500AC2471 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FF723A8D2B973C0500AC2471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrozenFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyApp.swift; sourceTree = "<group>"; };
 		FFFA3C0F2B94B34A009429C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFFA3C392B94B472009429C1 /* Moya in Frameworks */,
+				FF723A852B97221900AC2471 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +84,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF723A782B970D1F00AC2471 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FF723A862B97280300AC2471 /* API.swift */,
+				FF723A892B97296E00AC2471 /* AuthAPI.swift */,
+				FF723A7D2B97104200AC2471 /* TokenManager.swift */,
+				FF723A8B2B972DB500AC2471 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		FFFA3C012B94B34A009429C1 = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +118,13 @@
 		FFFA3C0C2B94B34A009429C1 /* FrozenFantasy */ = {
 			isa = PBXGroup;
 			children = (
+				FF723A8D2B973C0500AC2471 /* Info.plist */,
+				FF723A782B970D1F00AC2471 /* Networking */,
 				FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */,
 				FFFA3C0F2B94B34A009429C1 /* ContentView.swift */,
 				FFFA3C112B94B34C009429C1 /* Assets.xcassets */,
 				FFFA3C132B94B34C009429C1 /* Preview Content */,
+				FF723A7B2B970EA700AC2471 /* Constants.swift */,
 			);
 			path = FrozenFantasy;
 			sourceTree = "<group>";
@@ -146,7 +171,7 @@
 			);
 			name = FrozenFantasy;
 			packageProductDependencies = (
-				FFFA3C382B94B472009429C1 /* Moya */,
+				FF723A842B97221900AC2471 /* Alamofire */,
 			);
 			productName = FrozenFantasy;
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
@@ -221,7 +246,7 @@
 			);
 			mainGroup = FFFA3C012B94B34A009429C1;
 			packageReferences = (
-				FFFA3C372B94B472009429C1 /* XCRemoteSwiftPackageReference "Moya" */,
+				FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = FFFA3C0B2B94B34A009429C1 /* Products */;
 			projectDirPath = "";
@@ -266,7 +291,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFFA3C102B94B34A009429C1 /* ContentView.swift in Sources */,
+				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
+				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
+				FF723A872B97280300AC2471 /* API.swift in Sources */,
+				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
+				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +463,7 @@
 				DEVELOPMENT_TEAM = 757KZK47PP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FrozenFantasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,6 +498,7 @@
 				DEVELOPMENT_TEAM = 757KZK47PP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FrozenFantasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -626,21 +658,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FFFA3C372B94B472009429C1 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.3;
+				minimumVersion = 5.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FFFA3C382B94B472009429C1 /* Moya */ = {
+		FF723A842B97221900AC2471 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FFFA3C372B94B472009429C1 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
+			package = FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
