@@ -21,6 +21,11 @@
 		FFFA3C1F2B94B34C009429C1 /* FrozenFantasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */; };
 		FFFA3C292B94B34C009429C1 /* FrozenFantasyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */; };
 		FFFA3C2B2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */; };
+		FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */; };
+		FFFCB9FE2BC67C8E00B5D151 /* Exo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */; };
+		FFFCB9FF2BC67C8E00B5D151 /* Exo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */; };
+		FFFCBA002BC67C8E00B5D151 /* Exo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */; };
+		FFFCBA012BC67C8E00B5D151 /* Exo2-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,11 @@
 		FFFA3C242B94B34C009429C1 /* FrozenFantasyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrozenFantasyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyUITests.swift; sourceTree = "<group>"; };
 		FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Medium.ttf"; sourceTree = "<group>"; };
+		FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.ttf"; sourceTree = "<group>"; };
+		FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.ttf"; sourceTree = "<group>"; };
+		FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +138,7 @@
 		FFFA3C0C2B94B34A009429C1 /* FrozenFantasy */ = {
 			isa = PBXGroup;
 			children = (
+				FFFCB9F42BC678EA00B5D151 /* Fonts */,
 				FFFA3C112B94B34C009429C1 /* Assets.xcassets */,
 				FF723A8D2B973C0500AC2471 /* Info.plist */,
 				FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */,
@@ -135,6 +146,7 @@
 				FF723A7B2B970EA700AC2471 /* Constants.swift */,
 				FF723A782B970D1F00AC2471 /* Networking */,
 				FF8F83072BBC407D00441C88 /* Components */,
+				FFFCB9F72BC67B8A00B5D151 /* Extensions */,
 				FFFA3C132B94B34C009429C1 /* Preview Content */,
 			);
 			path = FrozenFantasy;
@@ -163,6 +175,25 @@
 				FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */,
 			);
 			path = FrozenFantasyUITests;
+			sourceTree = "<group>";
+		};
+		FFFCB9F42BC678EA00B5D151 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */,
+				FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */,
+				FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */,
+				FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FFFCB9F72BC67B8A00B5D151 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +308,10 @@
 			files = (
 				FFFA3C152B94B34C009429C1 /* Preview Assets.xcassets in Resources */,
 				FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */,
+				FFFCB9FE2BC67C8E00B5D151 /* Exo2-Regular.ttf in Resources */,
+				FFFCB9FF2BC67C8E00B5D151 /* Exo2-Medium.ttf in Resources */,
+				FFFCBA002BC67C8E00B5D151 /* Exo2-Bold.ttf in Resources */,
+				FFFCBA012BC67C8E00B5D151 /* Exo2-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +342,7 @@
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
 				FF723A872B97280300AC2471 /* API.swift in Sources */,
+				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
 				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
 			);

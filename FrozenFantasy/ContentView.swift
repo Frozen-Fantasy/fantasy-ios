@@ -18,6 +18,7 @@ struct ContentView: View {
             TextField("email", text: $email)
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
+                .font(.customBody)
 
 
             Button("Send code") {
@@ -36,12 +37,15 @@ struct ContentView: View {
 
             TextField("code", text: $code)
                 .keyboardType(.asciiCapableNumberPad)
+                .font(.customBody)
 
             TextField("nickname", text: $username)
                 .keyboardType(.asciiCapable)
                 .textInputAutocapitalization(.never)
+                .font(.customBody)
 
             SecureField("password", text: $password)
+                .font(.customBody)
 
             Button("Sign up") {
                 Task {

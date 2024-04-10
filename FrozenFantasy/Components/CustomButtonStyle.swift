@@ -46,7 +46,7 @@ struct CustomButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16))
+            .font(.customButton)
             .foregroundStyle(labelColor)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
