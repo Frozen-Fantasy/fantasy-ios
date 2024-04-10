@@ -27,6 +27,7 @@
 		FFFCBA002BC67C8E00B5D151 /* Exo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */; };
 		FFFCBA012BC67C8E00B5D151 /* Exo2-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */; };
 		FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */; };
+		FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.ttf"; sourceTree = "<group>"; };
 		FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.ttf"; sourceTree = "<group>"; };
 		FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */,
+				FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFFA3C102B94B34A009429C1 /* ContentView.swift in Sources */,
+				FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */,
 				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,

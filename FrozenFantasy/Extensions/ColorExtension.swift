@@ -36,21 +36,31 @@ public extension Color {
     static let customRed = Color(hex: 0xEC4034)
 }
 
+extension ShapeStyle where Self == Color {
+    static var customBlack: Self { .customBlack }
+    static var customGray: Self { .customGray }
+
+    static var customBlue: Self { .customBlue }
+    static var customOrange: Self { .customOrange }
+    static var customGreen: Self { .customGreen }
+    static var customRed: Self { .customRed }
+}
+
 #Preview {
     VStack {
         Text("Text")
-            .foregroundStyle(Color.customBlack)
+            .foregroundStyle(.customBlack)
         Text("Caption")
-            .foregroundStyle(Color.customGray)
-        
+            .foregroundStyle(.customGray)
+
         Text("Blue")
-            .foregroundStyle(Color.customBlue)
+            .foregroundStyle(.customBlue)
         Text("Orange")
-            .foregroundStyle(Color.customOrange)
+            .foregroundStyle(.customOrange)
         Text("Green")
-            .foregroundStyle(Color.customGreen)
+            .foregroundStyle(.customGreen)
         Text("Red")
-            .foregroundStyle(Color.customRed)
+            .foregroundStyle(.customRed)
     }
     .font(.largeTitle)
 }

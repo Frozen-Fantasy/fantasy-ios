@@ -15,11 +15,9 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            TextField("email", text: $email)
+            CustomTextField(text: $email, placeholder: "Email")
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
-                .font(.customBody)
-
 
             Button("Send code") {
                 Task {
@@ -35,17 +33,14 @@ struct ContentView: View {
             }
             .buttonStyle(.customBordered)
 
-            TextField("code", text: $code)
+            CustomTextField(text: $code, placeholder: "Code")
                 .keyboardType(.asciiCapableNumberPad)
-                .font(.customBody)
 
-            TextField("nickname", text: $username)
+            CustomTextField(text: $username, placeholder: "Username", tip: "Only letters and numbers")
                 .keyboardType(.asciiCapable)
                 .textInputAutocapitalization(.never)
-                .font(.customBody)
 
-            SecureField("password", text: $password)
-                .font(.customBody)
+            CustomTextField(text: $password, placeholder: "Password", isSecure: true)
 
             Button("Sign up") {
                 Task {
