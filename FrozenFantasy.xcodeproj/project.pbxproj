@@ -26,6 +26,7 @@
 		FFFCB9FF2BC67C8E00B5D151 /* Exo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */; };
 		FFFCBA002BC67C8E00B5D151 /* Exo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */; };
 		FFFCBA012BC67C8E00B5D151 /* Exo2-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */; };
+		FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.ttf"; sourceTree = "<group>"; };
 		FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.ttf"; sourceTree = "<group>"; };
 		FFFCB9FD2BC67C8A00B5D151 /* Exo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.ttf"; sourceTree = "<group>"; };
+		FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */,
+				FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
 				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
+				FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

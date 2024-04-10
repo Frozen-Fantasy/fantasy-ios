@@ -20,7 +20,7 @@ struct CustomButtonStyle: ButtonStyle {
     private var labelColor: Color {
         switch variant {
         case .text, .bordered:
-            isEnabled ? .accent : .gray
+            isEnabled ? .accent : .customGray
         case .filled:
             .white
         }
@@ -29,7 +29,7 @@ struct CustomButtonStyle: ButtonStyle {
     private var borderColor: Color {
         switch variant {
         case .filled, .bordered:
-            isEnabled ? .accent : .gray
+            isEnabled ? .accent : .customGray
         case .text:
             .white
         }
@@ -38,7 +38,7 @@ struct CustomButtonStyle: ButtonStyle {
     private var fillColor: Color {
         switch variant {
         case .filled:
-            isEnabled ? .accent : .gray
+            isEnabled ? .accent : .customGray
         case .bordered, .text:
             .white
         }
