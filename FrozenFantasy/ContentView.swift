@@ -32,6 +32,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .buttonStyle(.customBordered)
 
             TextField("code", text: $code)
                 .keyboardType(.asciiCapableNumberPad)
@@ -59,7 +60,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.custom)
         }
         .padding()
     }
