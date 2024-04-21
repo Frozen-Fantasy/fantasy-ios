@@ -24,19 +24,23 @@ struct CustomTextField: View {
         self.tip = tip
         self.isSecure = isSecure
     }
+    
+    private var isLabelShifted: Bool {
+        !text.isEmpty || isFocused
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(" ")
-                .font(.custom("Exo2-Regular", fixedSize: 14))
+                .font(.customBody2)
                 .opacity(0)
 
             ZStack(alignment: .leading) {
                 Text(placeholder)
-                    .font(isFocused ? .custom("Exo2-Regular", fixedSize: 14) : .customBody)
+                    .font(isLabelShifted ? .customBody2 : .customBody1)
                     .foregroundStyle(isFocused ? .customBlue : .customBlack)
-                    .offset(y: isFocused ? -20 : 0)
-                Group {
+                    .offset(y: isLabelShifted ? -20 : 0)
+                ZStack {
                     if isSecure {
                         SecureField("", text: $text)
                     } else {
@@ -44,7 +48,7 @@ struct CustomTextField: View {
                     }
                 }
                 .focused($isFocused)
-                .font(.customBody)
+                .font(.customBody1)
                 .foregroundStyle(isEnabled ? .customBlack : .customGray)
             }
             Rectangle()
