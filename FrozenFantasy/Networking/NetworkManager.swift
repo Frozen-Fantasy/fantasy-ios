@@ -32,7 +32,7 @@ extension DataRequest {
             
             switch code {
             case 400:
-                throw APIError.badRequst
+                throw APIError.badRequest
             case 401:
                 throw APIError.unauthorized
             case 500:
