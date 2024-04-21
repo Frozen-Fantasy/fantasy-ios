@@ -24,13 +24,11 @@ struct LoginView: View {
                     .font(.customTitle1)
             }
 
-            VStack(spacing: 0) {
-                CustomTextField("Почта", text: $viewModel.email)
-                    .keyboardType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-
-                CustomTextField("Пароль", text: $viewModel.password, isSecure: true)
+            VStack(spacing: 4) {
+                CustomTextField(.email, text: $viewModel.email, placeholder: "Почта", required: true)
+                    .bindValidation(to: $viewModel.isEmailValid)
+                CustomTextField(.password, text: $viewModel.password, placeholder: "Пароль", required: true)
+                    .bindValidation(to: $viewModel.isPasswordValid)
             }
 
             VStack(spacing: 8) {
@@ -46,6 +44,7 @@ struct LoginView: View {
                     }
                 }
                 .buttonStyle(.custom)
+                .disabled(!viewModel.isValid)
             }
 
             Spacer()
@@ -67,6 +66,7 @@ struct LoginView: View {
         }
         .padding()
         .animation(.default, value: viewModel.errorMessage)
+        .animation(.default, value: viewModel.isValid)
         .alert("Что-то пошло не так...", isPresented: $viewModel.presentingAlert) {} message: {
             Text(viewModel.alertMessage)
         }
