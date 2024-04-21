@@ -20,7 +20,7 @@ extension EnvironmentValues {
 }
 
 extension View {
-    func bindValidation(to isValid: Binding<Bool>? = nil) -> some View {
+    func bindValidation(to isValid: Binding<Bool>) -> some View {
         self
             .environment(\.validationBinding, isValid)
     }
