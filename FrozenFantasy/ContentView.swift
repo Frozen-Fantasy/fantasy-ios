@@ -14,8 +14,8 @@ struct ContentView: View {
     @State var password: String = ""
 
     var body: some View {
-        VStack(spacing: 16) {
-            CustomTextField(text: $email, placeholder: "Email")
+        VStack(spacing: 12) {
+            CustomTextField("Email", text: $email)
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
 
@@ -33,14 +33,14 @@ struct ContentView: View {
             }
             .buttonStyle(.customBordered)
 
-            CustomTextField(text: $code, placeholder: "Code")
+            CustomTextField("Code", text: $code)
                 .keyboardType(.asciiCapableNumberPad)
 
-            CustomTextField(text: $username, placeholder: "Username", tip: "Only letters and numbers")
+            CustomTextField("Username", text: $username, tip: "Only letters and numbers")
                 .keyboardType(.asciiCapable)
                 .textInputAutocapitalization(.never)
 
-            CustomTextField(text: $password, placeholder: "Password", isSecure: true)
+            CustomTextField("Password", text: $password, isSecure: true)
 
             Button("Sign up") {
                 Task {

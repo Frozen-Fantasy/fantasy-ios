@@ -10,21 +10,32 @@ import SwiftUI
 
 struct CustomTextField: View {
     @Binding var text: String
-    var placeholder: String = ""
-    var tip: String = ""
+    var placeholder: String
+    var tip: String
 
-    var isSecure: Bool = false
+    var isSecure: Bool
 
     @FocusState var isFocused: Bool
     @Environment(\.isEnabled) var isEnabled
 
+    init(_ placeholder: String = "", text: Binding<String>, tip: String = "", isSecure: Bool = false) {
+        self.placeholder = placeholder
+        self._text = text
+        self.tip = tip
+        self.isSecure = isSecure
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
+            Text(" ")
+                .font(.custom("Exo2-Regular", fixedSize: 14))
+                .opacity(0)
+
             ZStack(alignment: .leading) {
                 Text(placeholder)
-                    .font(.customBodyMedium)
+                    .font(isFocused ? .custom("Exo2-Regular", fixedSize: 14) : .customBody)
                     .foregroundStyle(isFocused ? .customBlue : .customBlack)
-                    .offset(y: text.isEmpty ? 0 : -21)
+                    .offset(y: isFocused ? -20 : 0)
                 Group {
                     if isSecure {
                         SecureField("", text: $text)
@@ -50,11 +61,13 @@ struct CustomTextField: View {
 }
 
 struct CustomTextFieldPreviewContainer: View {
-    @State var email: String = ""
+    @State var username: String = ""
 
     var body: some View {
-        CustomTextField(text: $email, placeholder: "Username", tip: "Only letters and numbers")
-            .padding()
+        VStack {
+            CustomTextField("Username", text: $username, tip: "Only letters and numbers")
+                .padding()
+        }
     }
 }
 
