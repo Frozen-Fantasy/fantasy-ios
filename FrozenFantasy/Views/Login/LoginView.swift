@@ -24,13 +24,9 @@ struct LoginView: View {
                     .font(.customTitle1)
             }
 
-            VStack(spacing: 0) {
-                CustomTextField("Почта", text: $viewModel.email)
-                    .keyboardType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-
-                CustomTextField("Пароль", text: $viewModel.password, isSecure: true)
+            VStack(spacing: 4) {
+                CustomTextField(.email, text: $viewModel.email, placeholder: "Почта", required: true)
+                CustomTextField(.password, text: $viewModel.password, placeholder: "Пароль", required: true)
             }
 
             VStack(spacing: 8) {

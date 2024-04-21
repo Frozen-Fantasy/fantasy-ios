@@ -10,6 +10,9 @@
 		FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB7F2BD52F7A00CC0836 /* LoginView.swift */; };
 		FF4DAB832BD53FE000CC0836 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB822BD53FE000CC0836 /* LoginViewModel.swift */; };
 		FF4DAB862BD54C2D00CC0836 /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB852BD54C2D00CC0836 /* AuthModels.swift */; };
+		FF4DAB8B2BD56A8600CC0836 /* CustomTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB8A2BD56A8600CC0836 /* CustomTextFieldType.swift */; };
+		FF4DAB8E2BD58FC100CC0836 /* ValidationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB8D2BD58FC100CC0836 /* ValidationModifier.swift */; };
+		FF4DAB932BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB922BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift */; };
 		FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7B2B970EA700AC2471 /* Constants.swift */; };
 		FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7D2B97104200AC2471 /* TokenManager.swift */; };
 		FF723A852B97221900AC2471 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FF723A842B97221900AC2471 /* Alamofire */; };
@@ -53,6 +56,9 @@
 		FF4DAB7F2BD52F7A00CC0836 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF4DAB822BD53FE000CC0836 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FF4DAB852BD54C2D00CC0836 /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
+		FF4DAB8A2BD56A8600CC0836 /* CustomTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldType.swift; sourceTree = "<group>"; };
+		FF4DAB8D2BD58FC100CC0836 /* ValidationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModifier.swift; sourceTree = "<group>"; };
+		FF4DAB922BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldValidationManager.swift; sourceTree = "<group>"; };
 		FF723A7B2B970EA700AC2471 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF723A7D2B97104200AC2471 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		FF723A862B97280300AC2471 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -139,6 +145,32 @@
 			path = AuthAPI;
 			sourceTree = "<group>";
 		};
+		FF4DAB872BD568AF00CC0836 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FF4DAB8C2BD58F4900CC0836 /* Validation */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FF4DAB8C2BD58F4900CC0836 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				FF4DAB8D2BD58FC100CC0836 /* ValidationModifier.swift */,
+				FF4DAB922BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		FF4DAB8F2BD595A000CC0836 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				FF4DAB8A2BD56A8600CC0836 /* CustomTextFieldType.swift */,
+				FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
 		FF723A782B970D1F00AC2471 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */,
-				FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */,
+				FF4DAB8F2BD595A000CC0836 /* CustomTextField */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -183,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4DAB7E2BD52F2800CC0836 /* Resources */,
+				FF4DAB872BD568AF00CC0836 /* Managers */,
 				FFFCB9F72BC67B8A00B5D151 /* Extensions */,
 				FF723A782B970D1F00AC2471 /* Networking */,
 				FF8F83072BBC407D00441C88 /* Components */,
@@ -391,7 +424,10 @@
 				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
 				FF4DAB862BD54C2D00CC0836 /* AuthModels.swift in Sources */,
+				FF4DAB932BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift in Sources */,
 				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
+				FF4DAB8E2BD58FC100CC0836 /* ValidationModifier.swift in Sources */,
+				FF4DAB8B2BD56A8600CC0836 /* CustomTextFieldType.swift in Sources */,
 				FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
