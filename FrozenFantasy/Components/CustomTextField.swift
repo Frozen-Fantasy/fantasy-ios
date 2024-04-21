@@ -51,7 +51,7 @@ struct CustomTextField: View {
                 .frame(height: 1)
                 .foregroundStyle(isFocused ? .customBlue : .customBlack)
             Text(tip)
-                .font(.customCaption)
+                .font(.customCaption2)
                 .foregroundStyle(.customGray)
                 .opacity(isFocused ? 1 : 0)
         }

@@ -20,7 +20,7 @@ protocol API {
 }
 
 enum APIError: Error {
-    case badRequst
+    case badRequest
     case unauthorized
     case serverDown
     case failedWithStatusCode(code: Int)

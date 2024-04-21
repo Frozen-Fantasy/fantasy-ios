@@ -18,7 +18,9 @@ extension Font {
     static let customBodyMedium: Font = .custom("Exo2-Bold", fixedSize: 16)
 
     static let customButton: Font = .custom("Exo2-Medium", fixedSize: 16)
-    static let customCaption: Font = .custom("Exo2-SemiBold", fixedSize: 12)
+    
+    static let customCaption1: Font = .custom("Exo2-SemiBold", fixedSize: 14)
+    static let customCaption2: Font = .custom("Exo2-SemiBold", fixedSize: 12)
 }
 
 #Preview {

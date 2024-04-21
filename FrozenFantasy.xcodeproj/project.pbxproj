@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB7F2BD52F7A00CC0836 /* LoginView.swift */; };
+		FF4DAB832BD53FE000CC0836 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB822BD53FE000CC0836 /* LoginViewModel.swift */; };
+		FF4DAB862BD54C2D00CC0836 /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB852BD54C2D00CC0836 /* AuthModels.swift */; };
 		FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7B2B970EA700AC2471 /* Constants.swift */; };
 		FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7D2B97104200AC2471 /* TokenManager.swift */; };
 		FF723A852B97221900AC2471 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FF723A842B97221900AC2471 /* Alamofire */; };
@@ -15,7 +18,6 @@
 		FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A8B2B972DB500AC2471 /* NetworkManager.swift */; };
 		FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */; };
 		FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */; };
-		FFFA3C102B94B34A009429C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0F2B94B34A009429C1 /* ContentView.swift */; };
 		FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C112B94B34C009429C1 /* Assets.xcassets */; };
 		FFFA3C152B94B34C009429C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */; };
 		FFFA3C1F2B94B34C009429C1 /* FrozenFantasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */; };
@@ -48,16 +50,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF4DAB7F2BD52F7A00CC0836 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FF4DAB822BD53FE000CC0836 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FF4DAB852BD54C2D00CC0836 /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
 		FF723A7B2B970EA700AC2471 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF723A7D2B97104200AC2471 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		FF723A862B97280300AC2471 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FF723A892B97296E00AC2471 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		FF723A8B2B972DB500AC2471 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		FF723A8D2B973C0500AC2471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FF723A8D2B973C0500AC2471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrozenFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyApp.swift; sourceTree = "<group>"; };
-		FFFA3C0F2B94B34A009429C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFFA3C112B94B34C009429C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFFA3C1A2B94B34C009429C1 /* FrozenFantasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrozenFantasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,13 +104,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF4DAB7D2BD52F1200CC0836 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF4DAB812BD53FD000CC0836 /* Login */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF4DAB7E2BD52F2800CC0836 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCB9F42BC678EA00B5D151 /* Fonts */,
+				FFFA3C112B94B34C009429C1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FF4DAB812BD53FD000CC0836 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF4DAB7F2BD52F7A00CC0836 /* LoginView.swift */,
+				FF4DAB822BD53FE000CC0836 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FF4DAB842BD54C0F00CC0836 /* AuthAPI */ = {
+			isa = PBXGroup;
+			children = (
+				FF723A892B97296E00AC2471 /* AuthAPI.swift */,
+				FF4DAB852BD54C2D00CC0836 /* AuthModels.swift */,
+			);
+			path = AuthAPI;
+			sourceTree = "<group>";
+		};
 		FF723A782B970D1F00AC2471 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				FF723A862B97280300AC2471 /* API.swift */,
-				FF723A892B97296E00AC2471 /* AuthAPI.swift */,
-				FF723A7D2B97104200AC2471 /* TokenManager.swift */,
 				FF723A8B2B972DB500AC2471 /* NetworkManager.swift */,
+				FF723A7D2B97104200AC2471 /* TokenManager.swift */,
+				FF723A862B97280300AC2471 /* API.swift */,
+				FF4DAB842BD54C0F00CC0836 /* AuthAPI */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -143,15 +182,14 @@
 		FFFA3C0C2B94B34A009429C1 /* FrozenFantasy */ = {
 			isa = PBXGroup;
 			children = (
-				FFFCB9F42BC678EA00B5D151 /* Fonts */,
-				FFFA3C112B94B34C009429C1 /* Assets.xcassets */,
-				FF723A8D2B973C0500AC2471 /* Info.plist */,
-				FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */,
-				FFFA3C0F2B94B34A009429C1 /* ContentView.swift */,
-				FF723A7B2B970EA700AC2471 /* Constants.swift */,
+				FF4DAB7E2BD52F2800CC0836 /* Resources */,
+				FFFCB9F72BC67B8A00B5D151 /* Extensions */,
 				FF723A782B970D1F00AC2471 /* Networking */,
 				FF8F83072BBC407D00441C88 /* Components */,
-				FFFCB9F72BC67B8A00B5D151 /* Extensions */,
+				FF4DAB7D2BD52F1200CC0836 /* Views */,
+				FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */,
+				FF723A7B2B970EA700AC2471 /* Constants.swift */,
+				FF723A8D2B973C0500AC2471 /* Info.plist */,
 				FFFA3C132B94B34C009429C1 /* Preview Content */,
 			);
 			path = FrozenFantasy;
@@ -342,15 +380,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFFA3C102B94B34A009429C1 /* ContentView.swift in Sources */,
 				FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */,
 				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
+				FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */,
 				FF723A872B97280300AC2471 /* API.swift in Sources */,
+				FF4DAB832BD53FE000CC0836 /* LoginViewModel.swift in Sources */,
 				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
+				FF4DAB862BD54C2D00CC0836 /* AuthModels.swift in Sources */,
 				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
 				FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */,
 			);
