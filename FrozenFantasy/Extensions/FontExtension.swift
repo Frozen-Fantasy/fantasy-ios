@@ -14,8 +14,10 @@ extension Font {
     static let customTitle3: Font = .custom("Exo2-Bold", fixedSize: 20)
     static let customTitle4: Font = .custom("Exo2-Bold", fixedSize: 18)
 
-    static let customBody: Font = .custom("Exo2-Regular", fixedSize: 16)
-    static let customBodyMedium: Font = .custom("Exo2-Bold", fixedSize: 16)
+    static let customBody1: Font = .custom("Exo2-Regular", fixedSize: 16)
+    static let customBodyMedium1: Font = .custom("Exo2-Bold", fixedSize: 16)
+    
+    static let customBody2: Font = .custom("Exo2-Regular", fixedSize: 14)
 
     static let customButton: Font = .custom("Exo2-Medium", fixedSize: 16)
     
@@ -25,5 +27,5 @@ extension Font {
 
 #Preview {
     Text("Hello There!")
-        .font(.customBody)
+        .font(.customBody1)
 }

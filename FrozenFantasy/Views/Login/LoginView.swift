@@ -35,7 +35,7 @@ struct LoginView: View {
 
             VStack(spacing: 8) {
                 Text(viewModel.errorMessage)
-                    .font(.customBody)
+                    .font(.customBody1)
                     .foregroundStyle(.customRed)
 
                 Button("Войти") {
