@@ -139,7 +139,7 @@ private struct CustomTextFieldPreviewContainer: View {
 
     var body: some View {
         HStack {
-            CustomTextField(.email, text: $username, placeholder: "Почта", required: false)
+            CustomTextField(.email(), text: $username, placeholder: "Почта", required: false)
                 .bindValidation(to: $usernameIsValid)
             Text(usernameIsValid ? "✅" : "❌")
         }

@@ -20,6 +20,9 @@
 		FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A892B97296E00AC2471 /* AuthAPI.swift */; };
 		FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A8B2B972DB500AC2471 /* NetworkManager.swift */; };
 		FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */; };
+		FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE851582BD5CCF700378C93 /* RegistrationView.swift */; };
+		FFE8515B2BD5CD5400378C93 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8515A2BD5CD5400378C93 /* RegistrationViewModel.swift */; };
+		FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8515D2BD5CE2600378C93 /* UserAPI.swift */; };
 		FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */; };
 		FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C112B94B34C009429C1 /* Assets.xcassets */; };
 		FFFA3C152B94B34C009429C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */; };
@@ -66,6 +69,9 @@
 		FF723A8B2B972DB500AC2471 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FF723A8D2B973C0500AC2471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		FFE851582BD5CCF700378C93 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		FFE8515A2BD5CD5400378C93 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		FFE8515D2BD5CE2600378C93 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrozenFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyApp.swift; sourceTree = "<group>"; };
 		FFFA3C112B94B34C009429C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 		FF4DAB7D2BD52F1200CC0836 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFE851572BD5CCE600378C93 /* Registration */,
 				FF4DAB812BD53FD000CC0836 /* Login */,
 			);
 			path = Views;
@@ -178,6 +185,7 @@
 				FF723A7D2B97104200AC2471 /* TokenManager.swift */,
 				FF723A862B97280300AC2471 /* API.swift */,
 				FF4DAB842BD54C0F00CC0836 /* AuthAPI */,
+				FFE8515C2BD5CE1100378C93 /* UserAPI */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -189,6 +197,23 @@
 				FF4DAB8F2BD595A000CC0836 /* CustomTextField */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FFE851572BD5CCE600378C93 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FFE851582BD5CCF700378C93 /* RegistrationView.swift */,
+				FFE8515A2BD5CD5400378C93 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		FFE8515C2BD5CE1100378C93 /* UserAPI */ = {
+			isa = PBXGroup;
+			children = (
+				FFE8515D2BD5CE2600378C93 /* UserAPI.swift */,
+			);
+			path = UserAPI;
 			sourceTree = "<group>";
 		};
 		FFFA3C012B94B34A009429C1 = {
@@ -416,8 +441,11 @@
 				FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */,
 				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */,
+				FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
+				FFE8515B2BD5CD5400378C93 /* RegistrationViewModel.swift in Sources */,
+				FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */,
 				FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */,
 				FF723A872B97280300AC2471 /* API.swift in Sources */,
 				FF4DAB832BD53FE000CC0836 /* LoginViewModel.swift in Sources */,

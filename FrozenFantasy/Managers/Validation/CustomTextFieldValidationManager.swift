@@ -29,10 +29,12 @@ final class CustomTextFieldValidationManager {
         switch type {
             case .firstName, .lastName:
                 isValidName(_:)
-            case .email:
-                isValidEmail(_:)
-            case .password, .newPassword:
-                isValidPassword(_:)
+            case let .email(isNew):
+                { self.isValidEmail($0, isNew: isNew) }
+            case let .username(isNew):
+                { self.isValidUsername($0, isNew: isNew) }
+            case let .password(isNew):
+                { self.isValidPassword($0, isNew: isNew) }
             case .confirmPassword:
                 isValidConfirmPassword(_:)
             case .verificationCode:
@@ -57,26 +59,31 @@ final class CustomTextFieldValidationManager {
     }
 
     private func isValidName(_ input: String) -> String? {
-        let pattern = #"[a-zA-Zа-яА-Я \-'‘’]*"#
+        let pattern = #"[a-zA-Zа-яА-Я \-'‘’]+"#
         return checkRegex(pattern, for: input) ? nil : "Неподдерживаемый символ"
     }
 
-    private func isValidEmail(_ input: String) -> String? {
+    private func isValidEmail(_ input: String, isNew: Bool) -> String? {
         let pattern = #"[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}"#
-        return checkRegex(pattern, for: input) || input.isEmpty ? nil : "Некорректный формат"
+        guard checkRegex(pattern, for: input) || input.isEmpty
+        else { return "Некорректный формат" }
+
+        // TODO: Check for uniqueness
+        return nil
     }
 
-    private func isValidVerificationCode(_ input: String) -> String? {
-        if let error = isValidInteger(input) {
-            return error
-        }
+    private func isValidUsername(_ input: String, isNew: Bool) -> String? {
+        let pattern = #"[a-zA-Z0-9\-_]+"#
+        guard checkRegex(pattern, for: input) || input.isEmpty
+        else { return "Некорректный формат" }
 
-        return input.count == 6 ? nil : "Некорректный формат"
+        // TODO: Check for uniqueness
+        return nil
     }
 
-    private func isValidPassword(_ input: String) -> String? {
-        let characterPattern = #"[a-zA-Z0-9`'‘’".,:;!?@#$%^&*()\[\]\{\}<>\-+=_\\\/]*"#
-        guard !checkRegex(characterPattern, for: input)
+    private func isValidPassword(_ input: String, isNew: Bool) -> String? {
+        let characterPattern = #"[a-zA-Z0-9`'‘’".,:;!?@#$%^&*()\[\]\{\}<>\-+=_\\\/]+"#
+        guard checkRegex(characterPattern, for: input)
         else { return "Неподдерживаемый символ" }
 
         guard input.count >= 8
@@ -94,11 +101,21 @@ final class CustomTextFieldValidationManager {
         guard checkRegex(specialCharacterPattern, for: input)
         else { return "Как минимум 1 специальный символ" }
 
-        newPassword = input
+        if isNew {
+            newPassword = input
+        }
         return nil
     }
 
     private func isValidConfirmPassword(_ input: String) -> String? {
         return input == newPassword ? nil : "Пароли не совпадают"
+    }
+
+    private func isValidVerificationCode(_ input: String) -> String? {
+        if let error = isValidInteger(input) {
+            return error
+        }
+
+        return input.count == 6 ? nil : "Некорректный формат"
     }
 }

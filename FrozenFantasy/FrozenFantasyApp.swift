@@ -32,7 +32,7 @@ struct FrozenFantasyApp: App {
                 case .login:
                     LoginView()
                 case .registration:
-                    Text("Registration View Placeholder")
+                    RegistrationView()
                 case .main:
                     Text("Main View Placeholder")
                 }
