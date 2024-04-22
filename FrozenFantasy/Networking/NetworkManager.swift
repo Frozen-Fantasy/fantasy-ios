@@ -40,7 +40,8 @@ extension DataRequest {
             default:
                 throw APIError.failedWithStatusCode(code: code)
             }
-        } catch (AFError.responseSerializationFailed(_)) {
+        } catch (AFError.responseSerializationFailed(let reason)) {
+            debugPrint(reason)
             fatalError("Unable to decode response into type '\(type)'")
         } catch {
             print(error)
