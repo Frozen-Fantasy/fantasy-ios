@@ -11,9 +11,9 @@ extension CustomTextField {
     enum ContentType {
         case firstName,
              lastName,
-             email,
-             password,
-             newPassword,
+             email(isNew: Bool = false),
+             username(isNew: Bool = false),
+             password(isNew: Bool = false),
              confirmPassword,
              verificationCode,
              someText,
@@ -26,7 +26,7 @@ extension CustomTextField {
                 .namePhonePad
             case .email:
                 .emailAddress
-            case .password, .newPassword, .confirmPassword:
+            case .username, .password, .confirmPassword:
                 .asciiCapable
             case .verificationCode:
                 .numberPad
@@ -47,9 +47,9 @@ extension CustomTextField {
                 .familyName
             case .email:
                 .emailAddress
-            case .password:
+            case .password(isNew: false):
                 .password
-            case .newPassword, .confirmPassword:
+            case .password(isNew: true), .confirmPassword:
                 .newPassword
             case .verificationCode:
                 .oneTimeCode
@@ -60,7 +60,7 @@ extension CustomTextField {
         
         var autocapitalization: TextInputAutocapitalization {
             switch self {
-            case .email, .password, .newPassword, .confirmPassword:
+            case .email, .username, .password, .confirmPassword:
                 .never
             case .someText:
                 .sentences
@@ -71,7 +71,7 @@ extension CustomTextField {
         
         var shouldBeSecure: Bool {
             switch self {
-            case .password, .newPassword, .confirmPassword:
+            case .password, .confirmPassword:
                 true
             default:
                 false
@@ -80,7 +80,7 @@ extension CustomTextField {
         
         var disableAutocorrection: Bool {
             switch self {
-            case .email, .password, .newPassword, .confirmPassword:
+            case .email, .username, .password, .confirmPassword:
                 true
             default:
                 false
