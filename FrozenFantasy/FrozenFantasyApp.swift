@@ -11,10 +11,19 @@ import SwiftUI
     enum Screen {
         case login, registration, main
     }
+    
+    enum Tab {
+        case tournaments,
+             teams,
+             rating,
+             collection,
+             profile
+    }
 
     @Published private(set) var currentScreen: Screen = .login
+    @Published var currentTab: Tab = .tournaments
 
-    func setScreenTo(_ screen: Screen) {
+    func setScreen(to screen: Screen) {
         withAnimation {
             currentScreen = screen
         }
@@ -34,7 +43,7 @@ struct FrozenFantasyApp: App {
                 case .registration:
                     RegistrationView()
                 case .main:
-                    Text("Main View Placeholder")
+                    RootTabBarView()
                 }
             }
             .transition(.slide)

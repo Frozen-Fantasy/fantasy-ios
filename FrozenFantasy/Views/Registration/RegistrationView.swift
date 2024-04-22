@@ -65,7 +65,7 @@ struct RegistrationView: View {
                 Button("Создать аккаунт") {
                     Task { @MainActor in
                         if await viewModel.register() {
-                            appState.setScreenTo(.main)
+                            appState.setScreen(to: .main)
                         }
                     }
                 }
@@ -81,7 +81,7 @@ struct RegistrationView: View {
                     .foregroundColor(.customGray)
 
                 Button {
-                    appState.setScreenTo(.login)
+                    appState.setScreen(to: .login)
                 } label: {
                     Text("Войти")
                         .underline()
