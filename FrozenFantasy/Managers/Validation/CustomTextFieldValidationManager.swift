@@ -31,8 +31,8 @@ final class CustomTextFieldValidationManager {
                 isValidName(_:)
             case let .email(isNew):
                 { self.isValidEmail($0, isNew: isNew) }
-            case let .username(isNew):
-                { self.isValidUsername($0, isNew: isNew) }
+            case let .nickname(isNew):
+                { self.isValidNickname($0, isNew: isNew) }
             case let .password(isNew):
                 { self.isValidPassword($0, isNew: isNew) }
             case .confirmPassword:
@@ -72,7 +72,7 @@ final class CustomTextFieldValidationManager {
         return nil
     }
 
-    private func isValidUsername(_ input: String, isNew: Bool) -> String? {
+    private func isValidNickname(_ input: String, isNew: Bool) -> String? {
         let pattern = #"[a-zA-Z0-9\-_]+"#
         guard checkRegex(pattern, for: input) || input.isEmpty
         else { return "Некорректный формат" }

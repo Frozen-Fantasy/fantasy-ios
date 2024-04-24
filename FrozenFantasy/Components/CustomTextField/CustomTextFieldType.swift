@@ -12,7 +12,7 @@ extension CustomTextField {
         case firstName,
              lastName,
              email(isNew: Bool = false),
-             username(isNew: Bool = false),
+             nickname(isNew: Bool = false),
              password(isNew: Bool = false),
              confirmPassword,
              verificationCode,
@@ -26,13 +26,11 @@ extension CustomTextField {
                 .namePhonePad
             case .email:
                 .emailAddress
-            case .username, .password, .confirmPassword:
+            case .nickname, .password, .confirmPassword:
                 .asciiCapable
-            case .verificationCode:
-                .numberPad
             case .someText:
                 .default
-            case .someInteger:
+            case .verificationCode, .someInteger:
                 .numberPad
             case .someDecimal:
                 .numbersAndPunctuation
@@ -60,7 +58,7 @@ extension CustomTextField {
         
         var autocapitalization: TextInputAutocapitalization {
             switch self {
-            case .email, .username, .password, .confirmPassword:
+            case .email, .nickname, .password, .confirmPassword:
                 .never
             case .someText:
                 .sentences
@@ -80,7 +78,7 @@ extension CustomTextField {
         
         var disableAutocorrection: Bool {
             switch self {
-            case .email, .username, .password, .confirmPassword:
+            case .email, .nickname, .password, .confirmPassword:
                 true
             default:
                 false

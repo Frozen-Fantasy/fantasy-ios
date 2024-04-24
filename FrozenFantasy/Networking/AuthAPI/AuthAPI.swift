@@ -13,7 +13,7 @@ enum AuthAPI: API {
     case logout
     case refreshTokens
     case signIn(email: String, password: String)
-    case signUp(code: Int, email: String, username: String, password: String)
+    case signUp(code: Int, email: String, nickname: String, password: String)
     
     var baseURL: String {
         Constants.API.baseURL + "/auth"
@@ -45,10 +45,10 @@ enum AuthAPI: API {
              "password": password]
         case let .sendEmail(email):
             ["email": email]
-        case let .signUp(code, email, username, password):
+        case let .signUp(code, email, nickname, password):
             ["code": code,
              "email": email,
-             "nickname": username,
+             "nickname": nickname,
              "password": password]
         default:
             nil

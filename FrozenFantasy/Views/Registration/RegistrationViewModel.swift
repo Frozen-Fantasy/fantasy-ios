@@ -11,16 +11,16 @@ import Foundation
     @Published var email: String = ""
     @Published var code: String = ""
 
-    @Published var username: String = ""
+    @Published var nickname: String = ""
     @Published var password: String = ""
 
     @Published var isEmailValid: Bool = false
     @Published var isCodeValid: Bool = false
-    @Published var isUsernameValid: Bool = false
+    @Published var isNicknameValid: Bool = false
     @Published var isPasswordValid: Bool = false
 
     var isValid: Bool {
-        isEmailValid && isCodeValid && isUsernameValid && isPasswordValid
+        isEmailValid && isCodeValid && isNicknameValid && isPasswordValid
     }
 
     @Published var errorMessage: String = ""
@@ -45,7 +45,7 @@ import Foundation
                 endpoint: AuthAPI.signUp(
                     code: Int(code)!,
                     email: email,
-                    username: username,
+                    nickname: nickname,
                     password: password
                 )
             ).data()

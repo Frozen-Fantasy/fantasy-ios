@@ -51,8 +51,8 @@ struct RegistrationView: View {
             }
 
             VStack(spacing: 4) {
-                CustomTextField(.username(isNew: true), text: $viewModel.username, placeholder: "Имя пользователя", required: true)
-                    .bindValidation(to: $viewModel.isUsernameValid)
+                CustomTextField(.nickname(isNew: true), text: $viewModel.nickname, placeholder: "Имя пользователя",tip: "Только латинские символы, цифры, тире и нижнее подчеркивание" ,required: true)
+                    .bindValidation(to: $viewModel.isNicknameValid)
                 CustomTextField(.password(isNew: true), text: $viewModel.password, placeholder: "Пароль", required: true)
                     .bindValidation(to: $viewModel.isPasswordValid)
             }
