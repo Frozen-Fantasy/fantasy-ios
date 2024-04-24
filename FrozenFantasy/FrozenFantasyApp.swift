@@ -20,7 +20,7 @@ import SwiftUI
              profile
     }
 
-    @Published private(set) var currentScreen: Screen = .login
+    @Published private(set) var currentScreen: Screen = .main
     @Published var currentTab: Tab = .tournaments
 
     func setScreen(to screen: Screen) {
