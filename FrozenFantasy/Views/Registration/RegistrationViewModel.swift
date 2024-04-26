@@ -50,15 +50,17 @@ import Foundation
                 )
             ).data()
 
-            let _ = try await NetworkManager.shared.request(
+            let tokenPair = try await NetworkManager.shared.request(
                 endpoint: AuthAPI.signIn(
                     email: email,
                     password: password
                 )
             ).data(as: TokenPair.self)
-
+            TokenManager.shared.save(tokenPair)
+            
             return true
         } catch APIError.badRequest {
+            errorMessage = "Неверный код верификации"
             return false
         } catch {
             alertMessage = error.localizedDescription

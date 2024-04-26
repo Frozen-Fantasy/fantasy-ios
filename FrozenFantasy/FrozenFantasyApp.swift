@@ -22,6 +22,10 @@ import SwiftUI
 
     @Published private(set) var currentScreen: Screen = .main
     @Published var currentTab: Tab = .tournaments
+    
+    init() {
+        currentScreen = TokenManager.shared.isTokenValid() ? .main : .login
+    }
 
     func setScreen(to screen: Screen) {
         withAnimation {

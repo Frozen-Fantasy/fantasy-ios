@@ -26,8 +26,8 @@ extension DataRequest {
         do {
             return try await self.serializingDecodable(type).value
         } catch let AFError.responseValidationFailed(reason: .unacceptableStatusCode(code)) {
-            responseDecodable(of: [String: String].self) { response in
-                debugPrint(response)
+            if let data {
+                debugPrint(try! JSONDecoder().decode([String: String].self, from: data))
             }
             
             switch code {
@@ -44,8 +44,7 @@ extension DataRequest {
             debugPrint(reason)
             fatalError("Unable to decode response into type '\(type)'")
         } catch {
-            print(error)
-            fatalError()
+            fatalError(error.asAFError?.localizedDescription ?? "Unexpected error")
         }
     }
 }
