@@ -1,0 +1,24 @@
+{
+  "originHash" : "ca435b1eebb89927fd01715220a0df37314001775e64d728060511aeac57cadd",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
+        "version" : "5.9.1"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift",
+      "state" : {
+        "revision" : "75677d8be3c50898c8ffd0d107f88aa2740301fc",
+        "version" : "22.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

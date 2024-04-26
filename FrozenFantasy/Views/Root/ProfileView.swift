@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text("Profile View Placeholder")
-            .font(.customTitle1)
+        VStack {
+            Text("Profile View Placeholder")
+                .font(.customTitle1)
+            
+            Button("Выйти из аккаунта") {
+                Task {
+                    let _ = try await NetworkManager.shared.request(
+                        endpoint: AuthAPI.logout(
+                            refreshToken: TokenManager.shared.tokenPair.refreshToken
+                        )
+                    ).data()
+                    TokenManager.shared.deleteTokens()
+                }
+            }
+            .buttonStyle(.custom)
+        }
     }
 }
 

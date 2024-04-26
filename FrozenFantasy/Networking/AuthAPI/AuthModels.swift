@@ -11,7 +11,7 @@ struct TokenPair: Codable {
     var accessToken: String = ""
     var refreshToken: String = ""
     
-    var expiresIn: Int
+    var expiresIn: Int = 0
     var expirationDate: Date {
         get {
             .now.advanced(by: TimeInterval(expiresIn))
