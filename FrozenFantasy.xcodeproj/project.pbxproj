@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF2CDE4F2BD8FA3800D3DDCC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF2CDE4E2BD8FA3800D3DDCC /* KeychainSwift */; };
 		FF377B612BD5E60B00697FE1 /* RootTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B602BD5E60B00697FE1 /* RootTabBarView.swift */; };
 		FF377B632BD5E65600697FE1 /* TournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B622BD5E65600697FE1 /* TournamentsView.swift */; };
 		FF377B652BD5E94B00697FE1 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B642BD5E94B00697FE1 /* TeamsView.swift */; };
@@ -27,11 +26,12 @@
 		FF4DAB932BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DAB922BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift */; };
 		FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7B2B970EA700AC2471 /* Constants.swift */; };
 		FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A7D2B97104200AC2471 /* TokenManager.swift */; };
-		FF723A852B97221900AC2471 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FF723A842B97221900AC2471 /* Alamofire */; };
 		FF723A872B97280300AC2471 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A862B97280300AC2471 /* API.swift */; };
 		FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A892B97296E00AC2471 /* AuthAPI.swift */; };
 		FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A8B2B972DB500AC2471 /* NetworkManager.swift */; };
 		FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */; };
+		FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FFE63A752BDC3A78005D8D50 /* Alamofire */; };
+		FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFE63A782BDC3A84005D8D50 /* KeychainSwift */; };
 		FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE851582BD5CCF700378C93 /* RegistrationView.swift */; };
 		FFE8515B2BD5CD5400378C93 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8515A2BD5CD5400378C93 /* RegistrationViewModel.swift */; };
 		FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8515D2BD5CE2600378C93 /* UserAPI.swift */; };
@@ -118,8 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF2CDE4F2BD8FA3800D3DDCC /* KeychainSwift in Frameworks */,
-				FF723A852B97221900AC2471 /* Alamofire in Frameworks */,
+				FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */,
+				FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +148,7 @@
 				FF377B642BD5E94B00697FE1 /* TeamsView.swift */,
 				FF377B662BD5E96100697FE1 /* RatingsView.swift */,
 				FF377B682BD5E97A00697FE1 /* CollectionView.swift */,
-				FF377B6A2BD5E98400697FE1 /* ProfileView.swift */,
+				FFE63A7A2BDC3AEE005D8D50 /* Profile */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -256,6 +256,14 @@
 				FF4DAB8F2BD595A000CC0836 /* CustomTextField */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FFE63A7A2BDC3AEE005D8D50 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FF377B6A2BD5E98400697FE1 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		FFE851572BD5CCE600378C93 /* Registration */ = {
@@ -374,8 +382,8 @@
 			);
 			name = FrozenFantasy;
 			packageProductDependencies = (
-				FF723A842B97221900AC2471 /* Alamofire */,
-				FF2CDE4E2BD8FA3800D3DDCC /* KeychainSwift */,
+				FFE63A752BDC3A78005D8D50 /* Alamofire */,
+				FFE63A782BDC3A84005D8D50 /* KeychainSwift */,
 			);
 			productName = FrozenFantasy;
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
@@ -450,8 +458,8 @@
 			);
 			mainGroup = FFFA3C012B94B34A009429C1;
 			packageReferences = (
-				FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				FF2CDE4D2BD8FA3800D3DDCC /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FFE63A772BDC3A84005D8D50 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = FFFA3C0B2B94B34A009429C1 /* Products */;
 			projectDirPath = "";
@@ -890,34 +898,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FF2CDE4D2BD8FA3800D3DDCC /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 22.0.0;
-			};
-		};
-		FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
+				minimumVersion = 5.9.1;
+			};
+		};
+		FFE63A772BDC3A84005D8D50 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FF2CDE4E2BD8FA3800D3DDCC /* KeychainSwift */ = {
+		FFE63A752BDC3A78005D8D50 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FF2CDE4D2BD8FA3800D3DDCC /* XCRemoteSwiftPackageReference "keychain-swift" */;
-			productName = KeychainSwift;
-		};
-		FF723A842B97221900AC2471 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FF723A832B97221900AC2471 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		FFE63A782BDC3A84005D8D50 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE63A772BDC3A84005D8D50 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

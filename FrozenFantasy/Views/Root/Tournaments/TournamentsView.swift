@@ -11,8 +11,7 @@ struct TournamentsView: View {
     @StateObject private var viewModel = TournamentsViewModel()
 
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Exo2-Bold", size: 32)!]
-        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "Exo2-SemiBold", size: 20)!]
+        
     }
 
     var body: some View {
