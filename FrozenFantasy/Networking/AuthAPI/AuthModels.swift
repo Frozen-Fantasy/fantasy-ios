@@ -10,7 +10,7 @@ import Foundation
 struct TokenPair: Codable {
     var accessToken: String = ""
     var refreshToken: String = ""
-    
+
     var expiresIn: Int = 0
     var expirationDate: Date {
         get {

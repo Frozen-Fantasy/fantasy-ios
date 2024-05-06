@@ -71,14 +71,14 @@ extension ButtonStyle where Self == CustomButtonStyle {
     VStack {
         ForEach(CustomButtonStyle.Variant.allCases, id: \.self) { variant in
             Spacer()
-            
+
             Button {
                 print("\(variant) pressed")
             } label: {
                 Label("Press me!", systemImage: "star")
             }
             .buttonStyle(CustomButtonStyle(variant: variant))
-            
+
             Button {
                 print("\(variant) pressed")
             } label: {
@@ -86,7 +86,7 @@ extension ButtonStyle where Self == CustomButtonStyle {
             }
             .buttonStyle(CustomButtonStyle(variant: variant))
             .disabled(true)
-            
+
             Spacer()
         }
     }

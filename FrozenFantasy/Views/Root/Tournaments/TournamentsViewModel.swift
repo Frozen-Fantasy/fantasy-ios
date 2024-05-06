@@ -17,7 +17,7 @@ import Foundation
         do {
             tournaments = try await NetworkManager.shared.request(
                 endpoint: TournamentsAPI.getTournaments(
-                    league: .Both)
+                    league: .both)
             ).data(as: [Tournament].self)
         } catch {
             alertMessage = error.localizedDescription

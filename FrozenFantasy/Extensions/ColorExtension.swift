@@ -32,10 +32,10 @@ public extension Color {
 
     static let customBlue = Color(hex: 0x186FB6)
     static let customOrange = Color(hex: 0xFD6735)
-    
+
     static let customGreen = Color(hex: 0x84BF56)
     static let customRed = Color(hex: 0xEC4034)
-    
+
     static let customYellow = Color(hex: 0xFDB935)
 }
 
@@ -45,10 +45,10 @@ extension ShapeStyle where Self == Color {
 
     static var customBlue: Self { .customBlue }
     static var customOrange: Self { .customOrange }
-    
+
     static var customGreen: Self { .customGreen }
     static var customRed: Self { .customRed }
-    
+
     static var customYellow: Self { .customYellow }
 }
 
@@ -63,12 +63,12 @@ extension ShapeStyle where Self == Color {
             .foregroundStyle(.customBlue)
         Text("Orange")
             .foregroundStyle(.customOrange)
-        
+
         Text("Green")
             .foregroundStyle(.customGreen)
         Text("Red")
             .foregroundStyle(.customRed)
-        
+
         Text("Yellow")
             .foregroundStyle(.customYellow)
     }

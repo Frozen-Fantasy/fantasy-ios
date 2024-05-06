@@ -30,7 +30,7 @@ import Foundation
 
     func sendCode() async {
         do {
-            let _ = try await NetworkManager.shared.request(
+            _ = try await NetworkManager.shared.request(
                 endpoint: AuthAPI.sendEmail(email: email)
             ).data()
         } catch {
@@ -41,7 +41,7 @@ import Foundation
 
     func register() async -> Bool {
         do {
-            let _ = try await NetworkManager.shared.request(
+            _ = try await NetworkManager.shared.request(
                 endpoint: AuthAPI.signUp(
                     code: Int(code)!,
                     email: email,
@@ -57,7 +57,7 @@ import Foundation
                 )
             ).data(as: TokenPair.self)
             TokenManager.shared.save(tokenPair)
-            
+
             return true
         } catch APIError.badRequest {
             errorMessage = "Неверный код верификации"

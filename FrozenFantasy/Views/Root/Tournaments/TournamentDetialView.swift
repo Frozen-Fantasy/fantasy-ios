@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TournamentDetialView: View {
     init(_ tournament: Tournament) {
-        
+
     }
-    
+
     var body: some View {
         Text("Tournament Detail Placeholder")
             .font(.customTitle1)

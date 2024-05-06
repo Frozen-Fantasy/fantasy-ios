@@ -12,11 +12,11 @@ enum UserAPI: API {
     case exists(email: String?, username: String?)
     case info
     case transactions
-    
+
     var baseURL: String {
         Constants.API.baseURL + "/user"
     }
-    
+
     var path: String {
         switch self {
         case .exists:
@@ -27,25 +27,23 @@ enum UserAPI: API {
             "/transactions"
         }
     }
-    
+
     var method: HTTPMethod {
         switch self {
         case .exists, .info, .transactions:
             .get
         }
     }
-    
+
     var parameters: Parameters? {
         switch self {
         case let .exists(email, username):
-            if let email { ["email": email] }
-            else if let username { ["nickname": username] }
-            else { nil }
+            if let email { ["email": email] } else if let username { ["nickname": username] } else { nil }
         default:
             nil
         }
     }
-    
+
     var encoding: ParameterEncoding {
         switch self {
         default:
@@ -61,11 +59,11 @@ enum UserAPI: API {
             [TokenManager.shared.authHeader]
         }
     }
-    
+
     var url: String {
         baseURL + path
     }
-    
+
     var reponseType: Decodable.Type {
         Empty.self
     }

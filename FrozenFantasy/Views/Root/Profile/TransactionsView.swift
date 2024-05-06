@@ -9,30 +9,30 @@ import SwiftUI
 
 struct TransactionsView: View {
     var transactions: Transactions
-    
+
     private var groupedTransactions: [(Date, Transactions)] {
         transactions.groupedByDate.sorted { $0.key > $1.key }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("История операций")
                 .font(.customTitle1)
                 .foregroundStyle(.customBlack)
-            
+
             ForEach(groupedTransactions, id: \.0) { date, sameDayTransactions in
                 VStack(alignment: .leading, spacing: 8) {
                     Text(date.simpleDateString)
                         .font(.customTitle3)
                         .foregroundStyle(.customBlack)
-                    
+
                     VStack(spacing: 12) {
                         ForEach(sameDayTransactions) { transaction in
                             HStack(spacing: 8) {
                                 Text(transaction.details)
                                     .font(.customBody1)
                                     .lineLimit(2)
-                                
+
                                 Spacer()
                                 HStack(spacing: 4) {
                                     Text("\(transaction.amount)")

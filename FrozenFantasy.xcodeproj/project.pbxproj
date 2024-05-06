@@ -43,9 +43,6 @@
 		FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */; };
 		FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C112B94B34C009429C1 /* Assets.xcassets */; };
 		FFFA3C152B94B34C009429C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */; };
-		FFFA3C1F2B94B34C009429C1 /* FrozenFantasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */; };
-		FFFA3C292B94B34C009429C1 /* FrozenFantasyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */; };
-		FFFA3C2B2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */; };
 		FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */; };
 		FFFCB9FE2BC67C8E00B5D151 /* Exo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */; };
 		FFFCB9FF2BC67C8E00B5D151 /* Exo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */; };
@@ -54,23 +51,6 @@
 		FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */; };
 		FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCBA042BC686DB00B5D151 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		FFFA3C1B2B94B34C009429C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FFFA3C022B94B34A009429C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FFFA3C092B94B34A009429C1;
-			remoteInfo = FrozenFantasy;
-		};
-		FFFA3C252B94B34C009429C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FFFA3C022B94B34A009429C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FFFA3C092B94B34A009429C1;
-			remoteInfo = FrozenFantasy;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FF377B602BD5E60B00697FE1 /* RootTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarView.swift; sourceTree = "<group>"; };
@@ -109,11 +89,6 @@
 		FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyApp.swift; sourceTree = "<group>"; };
 		FFFA3C112B94B34C009429C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FFFA3C1A2B94B34C009429C1 /* FrozenFantasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrozenFantasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyTests.swift; sourceTree = "<group>"; };
-		FFFA3C242B94B34C009429C1 /* FrozenFantasyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrozenFantasyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyUITests.swift; sourceTree = "<group>"; };
-		FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Medium.ttf"; sourceTree = "<group>"; };
 		FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -130,20 +105,6 @@
 			files = (
 				FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */,
 				FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFFA3C172B94B34C009429C1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFFA3C212B94B34C009429C1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,8 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				FFFA3C0C2B94B34A009429C1 /* FrozenFantasy */,
-				FFFA3C1D2B94B34C009429C1 /* FrozenFantasyTests */,
-				FFFA3C272B94B34C009429C1 /* FrozenFantasyUITests */,
 				FFFA3C0B2B94B34A009429C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -310,8 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */,
-				FFFA3C1A2B94B34C009429C1 /* FrozenFantasyTests.xctest */,
-				FFFA3C242B94B34C009429C1 /* FrozenFantasyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,23 +297,6 @@
 				FF73D9692BDC540800184A5B /* Dummies.swift */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		FFFA3C1D2B94B34C009429C1 /* FrozenFantasyTests */ = {
-			isa = PBXGroup;
-			children = (
-				FFFA3C1E2B94B34C009429C1 /* FrozenFantasyTests.swift */,
-			);
-			path = FrozenFantasyTests;
-			sourceTree = "<group>";
-		};
-		FFFA3C272B94B34C009429C1 /* FrozenFantasyUITests */ = {
-			isa = PBXGroup;
-			children = (
-				FFFA3C282B94B34C009429C1 /* FrozenFantasyUITests.swift */,
-				FFFA3C2A2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift */,
-			);
-			path = FrozenFantasyUITests;
 			sourceTree = "<group>";
 		};
 		FFFCB9F42BC678EA00B5D151 /* Fonts */ = {
@@ -390,6 +330,7 @@
 				FFFA3C062B94B34A009429C1 /* Sources */,
 				FFFA3C072B94B34A009429C1 /* Frameworks */,
 				FFFA3C082B94B34A009429C1 /* Resources */,
+				FFDA491B2BE92E7E0078DFD2 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -404,42 +345,6 @@
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FFFA3C192B94B34C009429C1 /* FrozenFantasyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FFFA3C312B94B34C009429C1 /* Build configuration list for PBXNativeTarget "FrozenFantasyTests" */;
-			buildPhases = (
-				FFFA3C162B94B34C009429C1 /* Sources */,
-				FFFA3C172B94B34C009429C1 /* Frameworks */,
-				FFFA3C182B94B34C009429C1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FFFA3C1C2B94B34C009429C1 /* PBXTargetDependency */,
-			);
-			name = FrozenFantasyTests;
-			productName = FrozenFantasyTests;
-			productReference = FFFA3C1A2B94B34C009429C1 /* FrozenFantasyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		FFFA3C232B94B34C009429C1 /* FrozenFantasyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FFFA3C342B94B34C009429C1 /* Build configuration list for PBXNativeTarget "FrozenFantasyUITests" */;
-			buildPhases = (
-				FFFA3C202B94B34C009429C1 /* Sources */,
-				FFFA3C212B94B34C009429C1 /* Frameworks */,
-				FFFA3C222B94B34C009429C1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FFFA3C262B94B34C009429C1 /* PBXTargetDependency */,
-			);
-			name = FrozenFantasyUITests;
-			productName = FrozenFantasyUITests;
-			productReference = FFFA3C242B94B34C009429C1 /* FrozenFantasyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -452,14 +357,6 @@
 				TargetAttributes = {
 					FFFA3C092B94B34A009429C1 = {
 						CreatedOnToolsVersion = 15.2;
-					};
-					FFFA3C192B94B34C009429C1 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = FFFA3C092B94B34A009429C1;
-					};
-					FFFA3C232B94B34C009429C1 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = FFFA3C092B94B34A009429C1;
 					};
 				};
 			};
@@ -481,8 +378,6 @@
 			projectRoot = "";
 			targets = (
 				FFFA3C092B94B34A009429C1 /* FrozenFantasy */,
-				FFFA3C192B94B34C009429C1 /* FrozenFantasyTests */,
-				FFFA3C232B94B34C009429C1 /* FrozenFantasyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -501,21 +396,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFFA3C182B94B34C009429C1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFFA3C222B94B34C009429C1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FFDA491B2BE92E7E0078DFD2 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FFFA3C062B94B34A009429C1 /* Sources */ = {
@@ -560,37 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFFA3C162B94B34C009429C1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFFA3C1F2B94B34C009429C1 /* FrozenFantasyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFFA3C202B94B34C009429C1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFFA3C292B94B34C009429C1 /* FrozenFantasyUITests.swift in Sources */,
-				FFFA3C2B2B94B34C009429C1 /* FrozenFantasyUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FFFA3C1C2B94B34C009429C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FFFA3C092B94B34A009429C1 /* FrozenFantasy */;
-			targetProxy = FFFA3C1B2B94B34C009429C1 /* PBXContainerItemProxy */;
-		};
-		FFFA3C262B94B34C009429C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FFFA3C092B94B34A009429C1 /* FrozenFantasy */;
-			targetProxy = FFFA3C252B94B34C009429C1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FFFA3C2C2B94B34C009429C1 /* Debug */ = {
@@ -722,6 +595,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FrozenFantasy/Preview Content\"";
 				DEVELOPMENT_TEAM = 757KZK47PP;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrozenFantasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -758,6 +632,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FrozenFantasy/Preview Content\"";
 				DEVELOPMENT_TEAM = 757KZK47PP;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrozenFantasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -784,100 +659,6 @@
 			};
 			name = Release;
 		};
-		FFFA3C322B94B34C009429C1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 757KZK47PP;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikitasigal.FrozenFantasyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrozenFantasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FrozenFantasy";
-			};
-			name = Debug;
-		};
-		FFFA3C332B94B34C009429C1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 757KZK47PP;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikitasigal.FrozenFantasyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrozenFantasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FrozenFantasy";
-			};
-			name = Release;
-		};
-		FFFA3C352B94B34C009429C1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 757KZK47PP;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikitasigal.FrozenFantasyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = FrozenFantasy;
-			};
-			name = Debug;
-		};
-		FFFA3C362B94B34C009429C1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 757KZK47PP;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikitasigal.FrozenFantasyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = FrozenFantasy;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -895,24 +676,6 @@
 			buildConfigurations = (
 				FFFA3C2F2B94B34C009429C1 /* Debug */,
 				FFFA3C302B94B34C009429C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FFFA3C312B94B34C009429C1 /* Build configuration list for PBXNativeTarget "FrozenFantasyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FFFA3C322B94B34C009429C1 /* Debug */,
-				FFFA3C332B94B34C009429C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FFFA3C342B94B34C009429C1 /* Build configuration list for PBXNativeTarget "FrozenFantasyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FFFA3C352B94B34C009429C1 /* Debug */,
-				FFFA3C362B94B34C009429C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
