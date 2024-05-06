@@ -14,11 +14,11 @@ enum AuthAPI: API {
     case sendEmail(email: String)
     case refreshTokens(refreshToken: String)
     case logout(refreshToken: String)
-    
+
     var baseURL: String {
         Constants.API.baseURL + "/auth"
     }
-    
+
     var path: String {
         switch self {
         case .signIn:
@@ -33,11 +33,11 @@ enum AuthAPI: API {
             "/logout"
         }
     }
-    
+
     var method: HTTPMethod {
         .post
     }
-    
+
     var parameters: Parameters? {
         switch self {
         case let .signIn(email, password):
@@ -55,7 +55,7 @@ enum AuthAPI: API {
             ["refreshToken": refreshToken]
         }
     }
-    
+
     var encoding: ParameterEncoding {
         JSONEncoding.default
     }
@@ -63,11 +63,11 @@ enum AuthAPI: API {
     var headers: HTTPHeaders {
         [.contentType("application/json")]
     }
-    
+
     var url: String {
         baseURL + path
     }
-    
+
     var reponseType: Decodable.Type {
         Empty.self
     }

@@ -10,16 +10,16 @@ import Foundation
 @MainActor final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
-    
+
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
-    
+
     var isValid: Bool {
         isEmailValid && isPasswordValid
     }
 
     @Published var errorMessage: String = ""
-    
+
     @Published var alertMessage: String = ""
     @Published var presentingAlert: Bool = false
 
@@ -32,7 +32,7 @@ import Foundation
                 )
             ).data(as: TokenPair.self)
             TokenManager.shared.save(tokenPair)
-            
+
             return true
         } catch APIError.badRequest {
             errorMessage = "Неправильный логин/пароль"

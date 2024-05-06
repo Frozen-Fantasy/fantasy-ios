@@ -11,7 +11,7 @@ struct TournamentsView: View {
     @StateObject private var viewModel = TournamentsViewModel()
 
     init() {
-        
+
     }
 
     var body: some View {

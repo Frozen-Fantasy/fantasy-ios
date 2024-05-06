@@ -11,7 +11,7 @@ import SwiftUI
     enum Screen {
         case login, registration, main
     }
-    
+
     enum Tab {
         case tournaments,
              teams,
@@ -22,7 +22,7 @@ import SwiftUI
 
     @Published private(set) var currentScreen: Screen = .login
     @Published var currentTab: Tab = .tournaments
-    
+
     init() {
         currentScreen = TokenManager.shared.isTokenValid() ? .main : .login
     }

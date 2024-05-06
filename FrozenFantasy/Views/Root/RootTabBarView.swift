@@ -9,16 +9,16 @@ import SwiftUI
 
 struct RootTabBarView: View {
     @EnvironmentObject private var appState: AppState
-    
+
     init() {
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont(name: "Exo2-SemiBold", size: 13)!],
             for: .normal)
-        
+
         let itemAppearance = UITabBarItemAppearance()
         itemAppearance.normal.iconColor = .init(.customGray)
         itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(.customGray)]
-        
+
         let appearance = UITabBarAppearance()
         appearance.backgroundColor = .white
         appearance.stackedLayoutAppearance = itemAppearance
@@ -29,11 +29,11 @@ struct RootTabBarView: View {
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
-        
+
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Exo2-Bold", size: 32)!]
         UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "Exo2-SemiBold", size: 20)!]
     }
-    
+
     var body: some View {
         TabView(selection: $appState.currentTab) {
             TournamentsView()
@@ -43,7 +43,7 @@ struct RootTabBarView: View {
                         .renderingMode(.template)
                     Text("Турниры")
                 }
-            
+
             TeamsView()
                 .tag(AppState.Tab.teams)
                 .tabItem {
@@ -51,7 +51,7 @@ struct RootTabBarView: View {
                         .renderingMode(.template)
                     Text("Команды")
                 }
-            
+
             RatingsView()
                 .tag(AppState.Tab.rating)
                 .tabItem {
@@ -59,7 +59,7 @@ struct RootTabBarView: View {
                         .renderingMode(.template)
                     Text("Рейтинг")
                 }
-            
+
             CollectionView()
                 .tag(AppState.Tab.collection)
                 .tabItem {
@@ -67,7 +67,7 @@ struct RootTabBarView: View {
                         .renderingMode(.template)
                     Text("Коллекция")
                 }
-            
+
             ProfileView()
                 .tag(AppState.Tab.profile)
                 .tabItem {

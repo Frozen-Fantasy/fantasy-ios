@@ -32,8 +32,7 @@ struct RegistrationView: View {
                     .bindValidation(to: $viewModel.isEmailValid)
                 Button(secondsLeft == 0
                     ? "Отправить код"
-                    : "Подождите \(secondsLeft) с.")
-                {
+                    : "Подождите \(secondsLeft) с.") {
                     Task { await viewModel.sendCode() }
                     secondsLeft = 30
                 }
@@ -51,9 +50,16 @@ struct RegistrationView: View {
             }
 
             VStack(spacing: 4) {
-                CustomTextField(.nickname(isNew: true), text: $viewModel.nickname, placeholder: "Имя пользователя",tip: "Только латинские символы, цифры, тире и нижнее подчеркивание" ,required: true)
+                CustomTextField(.nickname(isNew: true),
+                                text: $viewModel.nickname,
+                                placeholder: "Имя пользователя",
+                                tip: "Только латинские символы, цифры, тире и нижнее подчеркивание",
+                                required: true)
                     .bindValidation(to: $viewModel.isNicknameValid)
-                CustomTextField(.password(isNew: true), text: $viewModel.password, placeholder: "Пароль", required: true)
+                CustomTextField(.password(isNew: true),
+                                text: $viewModel.password,
+                                placeholder: "Пароль",
+                                required: true)
                     .bindValidation(to: $viewModel.isPasswordValid)
             }
 

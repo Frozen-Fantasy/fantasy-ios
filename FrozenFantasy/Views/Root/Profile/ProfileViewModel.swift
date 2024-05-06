@@ -10,7 +10,7 @@ import Foundation
 final class ProfileViewModel: ObservableObject {
     @Published var user: User = .init()
     @Published var transactions: Transactions = []
-    
+
     @Published var presentingLogoutAlert = false
 
     @Published var alertMessage: String = ""
@@ -51,7 +51,7 @@ final class ProfileViewModel: ObservableObject {
     func logout() {
         let refreshToken = TokenManager.shared.tokenPair.refreshToken
         TokenManager.shared.deleteTokens()
-        
+
         Task {
             try? await NetworkManager.shared.request(
                 endpoint: AuthAPI.logout(refreshToken: refreshToken)

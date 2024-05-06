@@ -26,7 +26,7 @@ extension DataRequest {
             return try await self.validate().serializingDecodable(type, decoder: JSONDecoder.custom).value
         } catch let AFError.responseValidationFailed(reason: .unacceptableStatusCode(code)) {
             if let data {
-                debugPrint(try! JSONDecoder().decode([String: String].self, from: data))
+                debugPrint(try? JSONDecoder().decode([String: String].self, from: data))
             }
 
             switch code {

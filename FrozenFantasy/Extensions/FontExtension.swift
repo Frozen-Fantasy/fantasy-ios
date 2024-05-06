@@ -16,11 +16,11 @@ extension Font {
 
     static let customBody1: Font = .custom("Exo2-Regular", fixedSize: 16)
     static let customBodyMedium1: Font = .custom("Exo2-Bold", fixedSize: 16)
-    
+
     static let customBody2: Font = .custom("Exo2-Regular", fixedSize: 14)
 
     static let customButton: Font = .custom("Exo2-Medium", fixedSize: 16)
-    
+
     static let customCaption1: Font = .custom("Exo2-SemiBold", fixedSize: 14)
     static let customCaption2: Font = .custom("Exo2-SemiBold", fixedSize: 12)
 }

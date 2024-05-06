@@ -13,7 +13,9 @@ final class CustomTextFieldValidationManager {
     private var newPassword: String?
 
     private func checkRegex(_ pattern: String, for input: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: pattern)
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            fatalError("Failed to create regex with pattern '\(pattern)'")
+        }
 
         let range = NSRange(location: 0, length: input.utf16.count)
         let matches = regex.matches(in: input, range: range)
@@ -27,35 +29,29 @@ final class CustomTextFieldValidationManager {
 
     private func getFunction(for type: CustomTextField.ContentType) -> (String) -> String? {
         switch type {
-            case .firstName, .lastName:
-                isValidName(_:)
-            case let .email(isNew):
-                { self.isValidEmail($0, isNew: isNew) }
-            case let .nickname(isNew):
-                { self.isValidNickname($0, isNew: isNew) }
-            case let .password(isNew):
-                { self.isValidPassword($0, isNew: isNew) }
-            case .confirmPassword:
-                isValidConfirmPassword(_:)
-            case .verificationCode:
-                isValidVerificationCode(_:)
-            case .someInteger:
-                isValidInteger(_:)
-            case .someDecimal:
-                isValidDecimal(_:)
-            case .someText:
-                { _ in nil }
+        case .firstName, .lastName:
+            isValidName(_:)
+        case let .email(isNew): { self.isValidEmail($0, isNew: isNew) }
+        case let .nickname(isNew): { self.isValidNickname($0, isNew: isNew) }
+        case let .password(isNew): { self.isValidPassword($0, isNew: isNew) }
+        case .confirmPassword:
+            isValidConfirmPassword(_:)
+        case .verificationCode:
+            isValidVerificationCode(_:)
+        case .someInteger:
+            isValidInteger(_:)
+        case .someDecimal:
+            isValidDecimal(_:)
+        case .someText: { _ in nil }
         }
     }
 
     private func isValidInteger(_ input: String) -> String? {
-        if let _ = Int(input) { nil }
-        else { "Должно быть целым числом" }
+        if Int(input) != nil { nil } else { "Должно быть целым числом" }
     }
 
     private func isValidDecimal(_ input: String) -> String? {
-        if let _ = Double(input) { nil }
-        else { "Должно быть числом" }
+        if Double(input) != nil { nil } else { "Должно быть числом" }
     }
 
     private func isValidName(_ input: String) -> String? {

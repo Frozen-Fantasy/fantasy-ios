@@ -19,7 +19,7 @@ extension CustomTextField {
              someText,
              someInteger,
              someDecimal
-        
+
         var keyboardType: UIKeyboardType {
             switch self {
             case .firstName, .lastName:
@@ -36,7 +36,7 @@ extension CustomTextField {
                 .numbersAndPunctuation
             }
         }
-        
+
         var contentType: UITextContentType? {
             switch self {
             case .firstName:
@@ -55,7 +55,7 @@ extension CustomTextField {
                 nil
             }
         }
-        
+
         var autocapitalization: TextInputAutocapitalization {
             switch self {
             case .email, .nickname, .password, .confirmPassword:
@@ -66,7 +66,7 @@ extension CustomTextField {
                 .words
             }
         }
-        
+
         var shouldBeSecure: Bool {
             switch self {
             case .password, .confirmPassword:
@@ -75,7 +75,7 @@ extension CustomTextField {
                 false
             }
         }
-        
+
         var disableAutocorrection: Bool {
             switch self {
             case .email, .nickname, .password, .confirmPassword:

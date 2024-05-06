@@ -11,11 +11,11 @@ import Foundation
 enum TournamentsAPI: API {
     case getMatches(league: League)
     case getTournaments(league: League)
-    
+
     var baseURL: String {
         Constants.API.baseURL + "/tournament"
     }
-    
+
     var path: String {
         switch self {
         case let .getMatches(league):
@@ -24,21 +24,21 @@ enum TournamentsAPI: API {
             "/get_tournaments/\(league)"
         }
     }
-    
+
     var method: HTTPMethod {
         switch self {
         case .getMatches, .getTournaments:
             .get
         }
     }
-    
+
     var parameters: Parameters? {
         switch self {
         case .getMatches, .getTournaments:
             nil
         }
     }
-    
+
     var encoding: ParameterEncoding {
         switch self {
         case .getMatches, .getTournaments:
@@ -52,11 +52,11 @@ enum TournamentsAPI: API {
             [.contentType("application/json")]
         }
     }
-    
+
     var url: String {
         baseURL + path
     }
-    
+
     var reponseType: Decodable.Type {
         switch self {
         case .getTournaments:
@@ -66,4 +66,3 @@ enum TournamentsAPI: API {
         }
     }
 }
-

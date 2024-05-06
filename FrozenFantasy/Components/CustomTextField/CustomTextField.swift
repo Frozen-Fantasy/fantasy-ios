@@ -17,7 +17,11 @@ struct CustomTextField: View {
     private var tip: String
     private var isRequired: Bool
 
-    init(_ contentType: ContentType, text: Binding<String>, placeholder: String = "", tip: String = "      ", required: Bool = false) {
+    init(_ contentType: ContentType,
+         text: Binding<String>,
+         placeholder: String = "",
+         tip: String = "      ",
+         required: Bool = false) {
         self.contentType = contentType
         self._text = text
         self.placeholder = placeholder

@@ -12,7 +12,7 @@ struct User: Identifiable, Codable, Equatable {
     var nickname: String = ""
     var email: String = ""
     var registrationDate: Date = .now
-    var photo: URL? = nil
+    var photo: URL?
     var coins: Int = 0
 
     enum CodingKeys: String, CodingKey {
