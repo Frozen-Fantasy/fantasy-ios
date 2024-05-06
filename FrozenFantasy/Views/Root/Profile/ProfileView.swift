@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var appState: AppState
+    @StateObject private var viewModel = ProfileViewModel()
     
     var body: some View {
         NavigationView {
@@ -16,14 +17,25 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     headerView
                     
-                    transactionsView
+                    TransactionsView(transactions: viewModel.transactions)
                 }
                 .padding()
             }
             .navigationTitle("Профиль")
+            .animation(.default, value: viewModel.user)
+            .animation(.default, value: viewModel.transactions)
+            .task {
+                await viewModel.fetchUserInfo()
+                await viewModel.fetchTransactions()
+            }
+            .refreshable {
+                await viewModel.fetchTransactions()
+            }
             .toolbar {
                 ToolbarItem(placement: .destructiveAction) {
-                    Button(role: .destructive) {} label: {
+                    Button {
+                        viewModel.logout()
+                    } label: {
                         Image("icon:logout")
                             .renderingMode(.template)
                             .resizable()
@@ -35,7 +47,7 @@ struct ProfileView: View {
                 
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 4) {
-                        Text("10 000")
+                        Text("\(viewModel.user.coins)")
                             .font(.customBody1)
                             .bold()
                             .foregroundStyle(.customBlack)
@@ -54,7 +66,7 @@ struct ProfileView: View {
     private var headerView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 32) {
-                AsyncImage(url: URL(string: "https://cdn1.iconfinder.com/data/icons/sport-avatar-6/64/15-hockey_player-sport-hockey-avatar-people-256.png")!) { image in
+                AsyncImage(url: viewModel.user.photo) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -63,12 +75,12 @@ struct ProfileView: View {
                 }
                 .clipShape(Circle())
                 .shadow(color: .black.opacity(0.2), radius: 8, x: 2, y: 2)
-                .frame(height: 80)
+                .frame(width: 80, height: 80)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("PreviewNickname")
+                    Text("\(viewModel.user.nickname)")
                         .font(.customTitle2)
-                    Text("preview@server.domain")
+                    Text("\(viewModel.user.email)")
                         .font(.customBody1)
                 }
                 .foregroundStyle(.customBlack)
@@ -77,56 +89,9 @@ struct ProfileView: View {
                 Spacer()
             }
             
-            Text("На сервисе с марта 2024")
+            Text("На сервисе с \(viewModel.user.registrationDate.simpleDateString)")
                 .font(.customBody1)
                 .foregroundStyle(.customGray)
-        }
-    }
-    
-    private var transactionsView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("История операций")
-                .font(.customTitle1)
-                .foregroundStyle(.customBlack)
-            
-            ForEach(10..<13) { i in
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(i) апреля")
-                        .font(.customTitle3)
-                        .foregroundStyle(.customBlack)
-                        
-                    VStack(spacing: 12) {
-                        ForEach(0..<i - 9) { _ in
-                            HStack(spacing: 8) {
-                                Text("Покупка: Набор серебряных карточек НХЛ")
-                                    .font(.customBody1)
-                                    .bold()
-                                    .lineLimit(2)
-                                    
-                                Spacer()
-                                HStack(spacing: 4) {
-                                    Text("–500")
-                                        .font(.customBody1)
-                                        .bold()
-                                        .foregroundStyle(.customRed)
-                                    Image("icon:coins")
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundStyle(.customYellow)
-                                }
-                                .fixedSize()
-                            }
-                            .padding(12)
-                            .background(.white)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: 12)
-                            )
-                            .shadow(color: .black.opacity(0.1), radius: 8, x: 2, y: 2)
-                        }
-                    }
-                }
-            }
         }
     }
 }

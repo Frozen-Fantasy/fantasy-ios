@@ -29,7 +29,12 @@
 		FF723A872B97280300AC2471 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A862B97280300AC2471 /* API.swift */; };
 		FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A892B97296E00AC2471 /* AuthAPI.swift */; };
 		FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF723A8B2B972DB500AC2471 /* NetworkManager.swift */; };
+		FF73D9682BDC52D800184A5B /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73D9672BDC52D800184A5B /* UserModels.swift */; };
+		FF73D96A2BDC540800184A5B /* Dummies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73D9692BDC540800184A5B /* Dummies.swift */; };
+		FF73D96C2BDC5B4300184A5B /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73D96B2BDC5B4300184A5B /* TransactionsView.swift */; };
 		FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */; };
+		FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */; };
+		FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49192BE90E050078DFD2 /* DateExtension.swift */; };
 		FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FFE63A752BDC3A78005D8D50 /* Alamofire */; };
 		FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFE63A782BDC3A84005D8D50 /* KeychainSwift */; };
 		FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE851582BD5CCF700378C93 /* RegistrationView.swift */; };
@@ -91,7 +96,12 @@
 		FF723A892B97296E00AC2471 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		FF723A8B2B972DB500AC2471 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FF723A8D2B973C0500AC2471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF73D9672BDC52D800184A5B /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
+		FF73D9692BDC540800184A5B /* Dummies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummies.swift; sourceTree = "<group>"; };
+		FF73D96B2BDC5B4300184A5B /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		FFDA49192BE90E050078DFD2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FFE851582BD5CCF700378C93 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		FFE8515A2BD5CD5400378C93 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		FFE8515D2BD5CE2600378C93 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
@@ -262,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				FF377B6A2BD5E98400697FE1 /* ProfileView.swift */,
+				FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */,
+				FF73D96B2BDC5B4300184A5B /* TransactionsView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -279,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE8515D2BD5CE2600378C93 /* UserAPI.swift */,
+				FF73D9672BDC52D800184A5B /* UserModels.swift */,
 			);
 			path = UserAPI;
 			sourceTree = "<group>";
@@ -324,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */,
+				FF73D9692BDC540800184A5B /* Dummies.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -361,6 +375,7 @@
 			children = (
 				FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */,
 				FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */,
+				FFDA49192BE90E050078DFD2 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -450,11 +465,11 @@
 			};
 			buildConfigurationList = FFFA3C052B94B34A009429C1 /* Build configuration list for PBXProject "FrozenFantasy" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
 			);
 			mainGroup = FFFA3C012B94B34A009429C1;
 			packageReferences = (
@@ -508,10 +523,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF377B632BD5E65600697FE1 /* TournamentsView.swift in Sources */,
+				FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */,
 				FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */,
 				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */,
 				FF377B772BD61CE100697FE1 /* TournamentDetialView.swift in Sources */,
+				FF73D96C2BDC5B4300184A5B /* TransactionsView.swift in Sources */,
 				FF377B752BD613BE00697FE1 /* TournamentsViewModel.swift in Sources */,
 				FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
@@ -519,11 +536,13 @@
 				FF377B712BD5F56300697FE1 /* TournamentsModels.swift in Sources */,
 				FF377B6B2BD5E98400697FE1 /* ProfileView.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
+				FF73D96A2BDC540800184A5B /* Dummies.swift in Sources */,
 				FF377B6E2BD5F51100697FE1 /* TorunamentsAPI.swift in Sources */,
 				FF377B672BD5E96100697FE1 /* RatingsView.swift in Sources */,
 				FF377B612BD5E60B00697FE1 /* RootTabBarView.swift in Sources */,
 				FFE8515B2BD5CD5400378C93 /* RegistrationViewModel.swift in Sources */,
 				FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */,
+				FF73D9682BDC52D800184A5B /* UserModels.swift in Sources */,
 				FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */,
 				FF723A872B97280300AC2471 /* API.swift in Sources */,
 				FF4DAB832BD53FE000CC0836 /* LoginViewModel.swift in Sources */,
@@ -534,6 +553,7 @@
 				FF377B732BD5F99000697FE1 /* TournamentCard.swift in Sources */,
 				FF723A8A2B97296E00AC2471 /* AuthAPI.swift in Sources */,
 				FF377B652BD5E94B00697FE1 /* TeamsView.swift in Sources */,
+				FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */,
 				FF4DAB8E2BD58FC100CC0836 /* ValidationModifier.swift in Sources */,
 				FF4DAB8B2BD56A8600CC0836 /* CustomTextFieldType.swift in Sources */,
 				FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */,
@@ -709,6 +729,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,6 +765,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
