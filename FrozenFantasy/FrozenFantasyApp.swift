@@ -20,7 +20,7 @@ import SwiftUI
              profile
     }
 
-    @Published private(set) var currentScreen: Screen = .main
+    @Published private(set) var currentScreen: Screen = .login
     @Published var currentTab: Tab = .tournaments
     
     init() {
@@ -50,8 +50,6 @@ struct FrozenFantasyApp: App {
                     RootTabBarView()
                 }
             }
-            .transition(.slide)
-            .animation(.easeInOut, value: appState.currentScreen)
             .environmentObject(appState)
         }
     }

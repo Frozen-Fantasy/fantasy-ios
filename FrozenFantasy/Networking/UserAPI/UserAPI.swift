@@ -10,6 +10,8 @@ import Foundation
 
 enum UserAPI: API {
     case exists(email: String?, username: String?)
+    case info
+    case transactions
     
     var baseURL: String {
         Constants.API.baseURL + "/user"
@@ -19,12 +21,16 @@ enum UserAPI: API {
         switch self {
         case .exists:
             "/exists"
+        case .info:
+            "/info"
+        case .transactions:
+            "/transactions"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .exists:
+        case .exists, .info, .transactions:
             .get
         }
     }
@@ -35,12 +41,14 @@ enum UserAPI: API {
             if let email { ["email": email] }
             else if let username { ["nickname": username] }
             else { nil }
+        default:
+            nil
         }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .exists:
+        default:
             URLEncoding.default
         }
     }
@@ -49,6 +57,8 @@ enum UserAPI: API {
         switch self {
         case .exists:
             []
+        case .info, .transactions:
+            [TokenManager.shared.authHeader]
         }
     }
     

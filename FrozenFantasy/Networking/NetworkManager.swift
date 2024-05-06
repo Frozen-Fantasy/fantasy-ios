@@ -17,19 +17,18 @@ final class NetworkManager {
                    parameters: endpoint.parameters,
                    encoding: endpoint.encoding,
                    headers: endpoint.headers)
-            .validate()
     }
 }
 
 extension DataRequest {
     func data<T: Decodable>(as type: T.Type = Empty.self) async throws -> T {
         do {
-            return try await self.serializingDecodable(type).value
+            return try await self.validate().serializingDecodable(type, decoder: JSONDecoder.custom).value
         } catch let AFError.responseValidationFailed(reason: .unacceptableStatusCode(code)) {
             if let data {
                 debugPrint(try! JSONDecoder().decode([String: String].self, from: data))
             }
-            
+
             switch code {
             case 400:
                 throw APIError.badRequest
@@ -40,7 +39,7 @@ extension DataRequest {
             default:
                 throw APIError.failedWithStatusCode(code: code)
             }
-        } catch (AFError.responseSerializationFailed(let reason)) {
+        } catch let AFError.responseSerializationFailed(reason) {
             debugPrint(reason)
             fatalError("Unable to decode response into type '\(type)'")
         } catch {
