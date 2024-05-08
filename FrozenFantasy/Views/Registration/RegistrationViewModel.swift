@@ -19,53 +19,51 @@ import Foundation
     @Published var isNicknameValid: Bool = false
     @Published var isPasswordValid: Bool = false
 
+    @Published var errorMessage: String = ""
+
     var isValid: Bool {
         isEmailValid && isCodeValid && isNicknameValid && isPasswordValid
     }
 
-    @Published var errorMessage: String = ""
-
-    @Published var alertMessage: String = ""
-    @Published var presentingAlert: Bool = false
-
     func sendCode() async {
         do {
-            _ = try await NetworkManager.shared.request(
-                endpoint: AuthAPI.sendEmail(email: email)
-            ).data()
+            try await NetworkManager.shared.request(
+                from: AuthAPI.sendEmail(email: email)
+            )
         } catch {
-            alertMessage = error.localizedDescription
-            presentingAlert = true
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 
-    func register() async -> Bool {
+    func register() async {
         do {
-            _ = try await NetworkManager.shared.request(
-                endpoint: AuthAPI.signUp(
+            try await NetworkManager.shared.request(
+                from: AuthAPI.signUp(
                     code: Int(code)!,
                     email: email,
                     nickname: nickname,
                     password: password
                 )
-            ).data()
+            )
 
             let tokenPair = try await NetworkManager.shared.request(
-                endpoint: AuthAPI.signIn(
+                from: AuthAPI.signIn(
                     email: email,
                     password: password
-                )
-            ).data(as: TokenPair.self)
-            TokenManager.shared.save(tokenPair)
+                ),
+                expecting: TokenPair.self
+            )
 
-            return true
-        } catch APIError.badRequest {
-            errorMessage = "Неверный код верификации"
-            return false
+            TokenManager.shared.save(tokenPair)
+            await AppState.shared.setCurrentScreen(to: .main)
+        } catch APIError.badRequest(let reason) {
+            errorMessage = reason
         } catch {
-            alertMessage = error.localizedDescription
-            presentingAlert = true
-            return false
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
+    }
+
+    func routeToLogin() async {
+        await AppState.shared.setCurrentScreen(to: .login)
     }
 }

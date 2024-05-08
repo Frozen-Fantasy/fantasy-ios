@@ -150,10 +150,6 @@ struct TournamentCard: View {
 }
 
 #Preview {
-    TournamentCard(.init(title: "NHL Daily Tournament",
-                         leagueID: 1,
-                         players: 4,
-                         deposit: 0,
-                         prizeFund: 5000))
+    TournamentCard(.dummy)
         .padding()
 }

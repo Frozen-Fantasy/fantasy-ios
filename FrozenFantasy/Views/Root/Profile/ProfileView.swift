@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var appState: AppState
     @StateObject private var viewModel = ProfileViewModel()
 
     var body: some View {
@@ -17,7 +16,7 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     headerView
 
-                    TransactionsView(transactions: viewModel.transactions)
+                    TransactionsView(transactions: viewModel.transactions ?? [])
                 }
                 .padding()
             }
@@ -46,14 +45,10 @@ struct ProfileView: View {
                     title: Text("Подтвердите действие"),
                     message: Text("Вы уверены, что хотите выйти из аккаунта?"),
                     primaryButton: .destructive(Text("Выйти")) {
-                        viewModel.logout()
-                        appState.setScreen(to: .login)
+                        Task { await viewModel.logout() }
                     },
                     secondaryButton: .cancel()
                 )
-            }
-            .alert("Что-то пошло не так...", isPresented: $viewModel.presentingAlert) {} message: {
-                Text(viewModel.alertMessage)
             }
 
             // MARK: Toolbar
@@ -74,7 +69,7 @@ struct ProfileView: View {
 
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 4) {
-                        Text("\(viewModel.user.coins)")
+                        Text("\(viewModel.user?.coins ?? 0)")
                             .font(.customBody1)
                             .bold()
                             .foregroundStyle(.customBlack)
@@ -93,7 +88,7 @@ struct ProfileView: View {
     private var headerView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 32) {
-                AsyncImage(url: viewModel.user.photo) { image in
+                AsyncImage(url: viewModel.user?.photo) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -105,9 +100,9 @@ struct ProfileView: View {
                 .frame(width: 80, height: 80)
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("\(viewModel.user.nickname)")
+                    Text("\(viewModel.user?.nickname ?? "")")
                         .font(.customTitle2)
-                    Text("\(viewModel.user.email)")
+                    Text("\(viewModel.user?.email ?? "")")
                         .font(.customBody1)
                 }
                 .foregroundStyle(.customBlack)
@@ -116,7 +111,7 @@ struct ProfileView: View {
                 Spacer()
             }
 
-            Text("На сервисе с \(viewModel.user.registrationDate.simpleDateString)")
+            Text("На сервисе с \(viewModel.user?.registrationDate.simpleDateString ?? "")")
                 .font(.customBody1)
                 .foregroundStyle(.customGray)
         }

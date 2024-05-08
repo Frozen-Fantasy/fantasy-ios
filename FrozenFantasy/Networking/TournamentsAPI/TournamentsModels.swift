@@ -11,24 +11,24 @@ enum League: String, CaseIterable {
     case both = "Both", NHL, KHL
 }
 
+typealias Tournaments = [Tournament]
 struct Tournament: Codable, Identifiable {
-    var id: Int = 0
-    var title: String = ""
+    var id: Int = UUID().hashValue
+    var title: String
 
-    var leagueID: Int = 0
+    var leagueID: Int
     var league: League {
         .allCases[leagueID]
     }
 
-    var matchesIDs: [Int] = []
+    var matchesIDs: [Int]
 
-    // TODO: TEMPORARY FIX
-    var startDate: TimeInterval = 1000 * Date.now.advanced(by: 600).timeIntervalSince1970
-    var endDate: TimeInterval = 1000 * Date.now.advanced(by: 86400).timeIntervalSince1970
+    var startDate: TimeInterval
+    var endDate: TimeInterval
 
-    var players: Int = 0
-    var deposit: Int = 0
-    var prizeFund: Int = 0
+    var players: Int
+    var deposit: Int
+    var prizeFund: Int
 
     enum Status: String, Codable {
         case started,

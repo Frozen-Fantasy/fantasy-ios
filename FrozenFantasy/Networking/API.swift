@@ -20,8 +20,25 @@ protocol API {
 }
 
 enum APIError: Error {
-    case badRequest
-    case unauthorized
-    case serverDown
+    struct Details: Codable {
+        var error: String
+        var message: String
+    }
+
+    case badRequest(reason: String)
+    case noConnection
     case failedWithStatusCode(code: Int)
+}
+
+extension APIError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .badRequest(let reason):
+            reason
+        case .noConnection:
+            "Не удалось установить соединение с сервером. Проверьте подключение и попробуйте позже."
+        case .failedWithStatusCode(let code):
+            "Код ошибки: \(code)"
+        }
+    }
 }

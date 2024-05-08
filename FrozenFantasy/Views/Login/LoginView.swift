@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject private var appState: AppState
-
     @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
@@ -25,9 +23,15 @@ struct LoginView: View {
             }
 
             VStack(spacing: 4) {
-                CustomTextField(.email(), text: $viewModel.email, placeholder: "Почта", required: true)
+                CustomTextField(.email(),
+                                text: $viewModel.email,
+                                placeholder: "Почта",
+                                required: true)
                     .bindValidation(to: $viewModel.isEmailValid)
-                CustomTextField(.password(), text: $viewModel.password, placeholder: "Пароль", required: true)
+                CustomTextField(.password(),
+                                text: $viewModel.password,
+                                placeholder: "Пароль",
+                                required: true)
                     .bindValidation(to: $viewModel.isPasswordValid)
             }
 
@@ -37,11 +41,7 @@ struct LoginView: View {
                     .foregroundStyle(.customRed)
 
                 Button("Войти") {
-                    Task { @MainActor in
-                        if await viewModel.login() {
-                            appState.setScreen(to: .main)
-                        }
-                    }
+                    Task { await viewModel.login() }
                 }
                 .buttonStyle(.custom)
                 .disabled(!viewModel.isValid)
@@ -55,7 +55,7 @@ struct LoginView: View {
                     .foregroundColor(.customGray)
 
                 Button {
-                    appState.setScreen(to: .registration)
+                    Task { await viewModel.routeToRegistration() }
                 } label: {
                     Text("Зарегистрироваться")
                         .underline()
@@ -67,9 +67,6 @@ struct LoginView: View {
         .padding()
         .animation(.default, value: viewModel.errorMessage)
         .animation(.default, value: viewModel.isValid)
-        .alert("Что-то пошло не так...", isPresented: $viewModel.presentingAlert) {} message: {
-            Text(viewModel.alertMessage)
-        }
     }
 }
 

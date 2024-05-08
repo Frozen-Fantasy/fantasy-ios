@@ -9,11 +9,11 @@ import Foundation
 
 struct User: Identifiable, Codable, Equatable {
     var id: UUID = .init()
-    var nickname: String = ""
-    var email: String = ""
-    var registrationDate: Date = .now
-    var photo: URL?
-    var coins: Int = 0
+    var nickname: String
+    var email: String
+    var registrationDate: Date
+    var photo: URL
+    var coins: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "profileID"

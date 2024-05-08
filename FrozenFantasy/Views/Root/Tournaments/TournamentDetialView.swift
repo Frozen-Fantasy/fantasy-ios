@@ -20,5 +20,5 @@ struct TournamentDetialView: View {
 }
 
 #Preview {
-    TournamentDetialView(.init())
+    TournamentDetialView(.dummy)
 }

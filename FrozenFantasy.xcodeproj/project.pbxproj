@@ -147,8 +147,8 @@
 		FF4DAB7D2BD52F1200CC0836 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FFE851572BD5CCE600378C93 /* Registration */,
 				FF4DAB812BD53FD000CC0836 /* Login */,
+				FFE851572BD5CCE600378C93 /* Registration */,
 				FF377B5F2BD5E5F600697FE1 /* Root */,
 			);
 			path = Views;

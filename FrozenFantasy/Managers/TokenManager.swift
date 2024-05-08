@@ -12,69 +12,66 @@ import KeychainSwift
 protocol TokenManagerProtocol {
     var tokenPair: TokenPair! { get }
     var authHeader: HTTPHeader { get }
+    var isTokenValid: Bool { get }
 
     func save(_ newTokenPair: TokenPair)
-    func isTokenValid() -> Bool
     func deleteTokens()
 }
 
 final class TokenManager: TokenManagerProtocol {
     static let shared: TokenManagerProtocol = TokenManager()
 
-    var tokenPair: TokenPair!
+    private let keychain = KeychainSwift(keyPrefix: "frozenfantasy_")
+    private let networkManager = NetworkManager.shared
 
+    var tokenPair: TokenPair!
     var authHeader: HTTPHeader {
         .authorization(bearerToken: tokenPair.accessToken)
     }
 
-    private let keychain = KeychainSwift(keyPrefix: "frozenfantasy_")
+    let tokenKey = "tokens"
 
     func save(_ newTokenPair: TokenPair) {
         tokenPair = newTokenPair
         guard let data = try? JSONEncoder().encode(newTokenPair)
-        else {
-            fatalError("Failed to encode Token Pair")
-        }
-        keychain.set(data, forKey: "tokenPair")
+        else { fatalError("Failed to encode tokens") }
+
+        keychain.set(data, forKey: tokenKey)
     }
 
-    func isTokenValid() -> Bool {
-        if tokenPair == nil {
-            restoreTokens()
-        }
-
-        if let tokenPair, tokenPair.expirationDate > .now {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    private func restoreTokens() {
-        if let data = keychain.getData("tokenPair"),
+    lazy var isTokenValid: Bool = {
+        if let data = keychain.getData(tokenKey),
            let tokenPair = try? JSONDecoder().decode(TokenPair.self, from: data) {
             self.tokenPair = tokenPair
         }
-    }
+
+        if let tokenPair, tokenPair.expirationDate > .now {
+            refreshTokens()
+            return true
+        } else {
+            deleteTokens()
+            return false
+        }
+    }()
 
     private func refreshTokens() {
         Task {
             do {
-                let newTokenPair = try await NetworkManager.shared.request(
-                    endpoint: AuthAPI.refreshTokens(
+                let newTokenPair = try await networkManager.request(
+                    from: AuthAPI.refreshTokens(
                         refreshToken: tokenPair.refreshToken
-                    )
-                ).data(as: TokenPair.self)
+                    ), expecting: TokenPair.self
+                )
                 save(newTokenPair)
             } catch {
                 deleteTokens()
-                fatalError()
+                fatalError("Unable to refresh tokens")
             }
         }
     }
 
     func deleteTokens() {
         tokenPair = nil
-        keychain.delete("tokenPair")
+        keychain.delete(tokenKey)
     }
 }
