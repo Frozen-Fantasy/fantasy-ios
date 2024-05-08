@@ -11,6 +11,18 @@ protocol Dummy {
     static var dummy: Self { get }
 }
 
+extension Tournament: Dummy {
+    static var dummy: Tournament = .init(title: "NHL Daily Tournament",
+                                         leagueID: 1,
+                                         matchesIDs: [],
+                                         // TODO: Temporary fix
+                                         startDate: 1000 * Date.now.advanced(by: 600).timeIntervalSince1970,
+                                         endDate: 1000 * Date.now.advanced(by: 87000).timeIntervalSince1970,
+                                         players: 13,
+                                         deposit: 100,
+                                         prizeFund: 5000)
+}
+
 extension User: Dummy {
     static let dummy: User = .init(nickname: "drunkvermicelli",
                                    email: "nasigal@edu.hse.ru",

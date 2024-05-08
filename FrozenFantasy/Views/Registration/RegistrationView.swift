@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @EnvironmentObject private var appState: AppState
-
     @StateObject private var viewModel = RegistrationViewModel()
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -69,11 +67,7 @@ struct RegistrationView: View {
                     .foregroundStyle(.customRed)
 
                 Button("Создать аккаунт") {
-                    Task { @MainActor in
-                        if await viewModel.register() {
-                            appState.setScreen(to: .main)
-                        }
-                    }
+                    Task { await viewModel.register() }
                 }
                 .buttonStyle(.custom)
                 .disabled(!viewModel.isValid)
@@ -87,7 +81,7 @@ struct RegistrationView: View {
                     .foregroundColor(.customGray)
 
                 Button {
-                    appState.setScreen(to: .login)
+                    Task { await viewModel.routeToLogin() }
                 } label: {
                     Text("Войти")
                         .underline()
@@ -99,7 +93,6 @@ struct RegistrationView: View {
         .padding()
         .animation(.default, value: viewModel.errorMessage)
         .animation(.default, value: viewModel.isValid)
-        .alert("Что-то пошло не так...", isPresented: $viewModel.presentingAlert) {}
     }
 }
 

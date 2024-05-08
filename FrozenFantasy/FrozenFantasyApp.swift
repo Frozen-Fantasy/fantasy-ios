@@ -8,35 +8,34 @@
 import SwiftUI
 
 @MainActor final class AppState: ObservableObject {
+    static let shared = AppState()
+
     enum Screen {
         case login, registration, main
     }
 
-    enum Tab {
-        case tournaments,
-             teams,
-             rating,
-             collection,
-             profile
-    }
-
     @Published private(set) var currentScreen: Screen = .login
-    @Published var currentTab: Tab = .tournaments
+
+    @Published fileprivate var alertMessage: String = ""
+    @Published fileprivate var presentingAlert: Bool = false
 
     init() {
-        currentScreen = TokenManager.shared.isTokenValid() ? .main : .login
+        currentScreen = TokenManager.shared.isTokenValid ? .main : .login
     }
 
-    func setScreen(to screen: Screen) {
-        withAnimation {
-            currentScreen = screen
-        }
+    func setCurrentScreen(to screen: Screen) async {
+        currentScreen = screen
+    }
+
+    func presentAlert(message: String) async {
+        alertMessage = message
+        presentingAlert = true
     }
 }
 
 @main
 struct FrozenFantasyApp: App {
-    @StateObject private var appState = AppState()
+    @StateObject private var appState = AppState.shared
 
     var body: some Scene {
         WindowGroup {
@@ -50,7 +49,10 @@ struct FrozenFantasyApp: App {
                     RootTabBarView()
                 }
             }
-            .environmentObject(appState)
+            .animation(.default.speed(2), value: appState.currentScreen == .main)
+            .alert("Что-то пошло не так...", isPresented: $appState.presentingAlert) {} message: {
+                Text(appState.alertMessage)
+            }
         }
     }
 }

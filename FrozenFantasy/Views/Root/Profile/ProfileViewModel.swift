@@ -7,55 +7,46 @@
 
 import Foundation
 
-final class ProfileViewModel: ObservableObject {
-    @Published var user: User = .init()
-    @Published var transactions: Transactions = []
+@MainActor final class ProfileViewModel: ObservableObject {
+    @Published var user: User?
+    @Published var transactions: Transactions?
 
     @Published var presentingLogoutAlert = false
 
-    @Published var alertMessage: String = ""
-    @Published var presentingAlert: Bool = false
-
     func fetchUserInfo() async {
         do {
-            let data = try await NetworkManager.shared.request(
-                endpoint: UserAPI.info
-            ).data(as: User.self)
-            await MainActor.run {
-                self.user = data
-            }
+            user = try await NetworkManager.shared.request(
+                from: UserAPI.info,
+                expecting: User.self
+            )
         } catch {
-            await MainActor.run {
-                alertMessage = error.localizedDescription
-                presentingAlert = true
-            }
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 
     func fetchTransactions() async {
         do {
-            let data = try await NetworkManager.shared.request(
-                endpoint: UserAPI.transactions
-            ).data(as: Transactions.self)
-            await MainActor.run {
-                self.transactions = data
-            }
+            transactions = try await NetworkManager.shared.request(
+                from: UserAPI.transactions,
+                expecting: Transactions.self
+            )
         } catch {
-            await MainActor.run {
-                alertMessage = error.localizedDescription
-                presentingAlert = true
-            }
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 
-    func logout() {
-        let refreshToken = TokenManager.shared.tokenPair.refreshToken
-        TokenManager.shared.deleteTokens()
+    func logout() async {
+        do {
+            let refreshToken = TokenManager.shared.tokenPair.refreshToken
+            TokenManager.shared.deleteTokens()
 
-        Task {
-            try? await NetworkManager.shared.request(
-                endpoint: AuthAPI.logout(refreshToken: refreshToken)
-            ).data()
+            try await NetworkManager.shared.request(
+                from: AuthAPI.logout(refreshToken: refreshToken)
+            )
+
+            await AppState.shared.setCurrentScreen(to: .login)
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 }

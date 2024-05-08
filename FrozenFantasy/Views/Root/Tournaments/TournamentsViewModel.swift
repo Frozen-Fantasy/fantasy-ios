@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor final class TournamentsViewModel: ObservableObject {
-    @Published var tournaments: [Tournament] = []
+    @Published var tournaments: Tournaments = []
 
     @Published var alertMessage: String = ""
     @Published var presentingAlert: Bool = false
@@ -16,12 +16,11 @@ import Foundation
     func getTournaments() async {
         do {
             tournaments = try await NetworkManager.shared.request(
-                endpoint: TournamentsAPI.getTournaments(
-                    league: .both)
-            ).data(as: [Tournament].self)
+                from: TournamentsAPI.getTournaments(league: .both),
+                expecting: Tournaments.self
+            )
         } catch {
-            alertMessage = error.localizedDescription
-            presentingAlert = true
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 }

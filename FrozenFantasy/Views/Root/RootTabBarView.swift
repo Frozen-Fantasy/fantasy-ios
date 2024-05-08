@@ -10,6 +10,15 @@ import SwiftUI
 struct RootTabBarView: View {
     @EnvironmentObject private var appState: AppState
 
+    private enum Tab {
+        case tournaments,
+        teams,
+        rating,
+        collection,
+        profile
+    }
+    @State private var currentTab: Tab = .tournaments
+
     init() {
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont(name: "Exo2-SemiBold", size: 13)!],
@@ -35,9 +44,9 @@ struct RootTabBarView: View {
     }
 
     var body: some View {
-        TabView(selection: $appState.currentTab) {
+        TabView(selection: $currentTab) {
             TournamentsView()
-                .tag(AppState.Tab.tournaments)
+                .tag(Tab.tournaments)
                 .tabItem {
                     Image("icon:trophy")
                         .renderingMode(.template)
@@ -45,7 +54,7 @@ struct RootTabBarView: View {
                 }
 
             TeamsView()
-                .tag(AppState.Tab.teams)
+                .tag(Tab.teams)
                 .tabItem {
                     Image("icon:team")
                         .renderingMode(.template)
@@ -53,7 +62,7 @@ struct RootTabBarView: View {
                 }
 
             RatingsView()
-                .tag(AppState.Tab.rating)
+                .tag(Tab.rating)
                 .tabItem {
                     Image("icon:ratings")
                         .renderingMode(.template)
@@ -61,7 +70,7 @@ struct RootTabBarView: View {
                 }
 
             CollectionView()
-                .tag(AppState.Tab.collection)
+                .tag(Tab.collection)
                 .tabItem {
                     Image("icon:cards")
                         .renderingMode(.template)
@@ -69,7 +78,7 @@ struct RootTabBarView: View {
                 }
 
             ProfileView()
-                .tag(AppState.Tab.profile)
+                .tag(Tab.profile)
                 .tabItem {
                     Image("icon:account")
                         .renderingMode(.template)

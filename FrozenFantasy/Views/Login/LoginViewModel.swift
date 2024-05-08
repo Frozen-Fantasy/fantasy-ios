@@ -14,33 +14,32 @@ import Foundation
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
 
+    @Published var errorMessage: String = ""
+
     var isValid: Bool {
         isEmailValid && isPasswordValid
     }
 
-    @Published var errorMessage: String = ""
-
-    @Published var alertMessage: String = ""
-    @Published var presentingAlert: Bool = false
-
-    func login() async -> Bool {
+    func login() async {
         do {
             let tokenPair = try await NetworkManager.shared.request(
-                endpoint: AuthAPI.signIn(
+                from: AuthAPI.signIn(
                     email: email,
                     password: password
-                )
-            ).data(as: TokenPair.self)
-            TokenManager.shared.save(tokenPair)
+                ),
+                expecting: TokenPair.self
+            )
 
-            return true
-        } catch APIError.badRequest {
-            errorMessage = "Неправильный логин/пароль"
-            return false
+            TokenManager.shared.save(tokenPair)
+            await AppState.shared.setCurrentScreen(to: .main)
+        } catch APIError.badRequest(let reason) {
+            errorMessage = reason
         } catch {
-            alertMessage = error.localizedDescription
-            presentingAlert = true
-            return false
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
+    }
+
+    func routeToRegistration() async {
+        await AppState.shared.setCurrentScreen(to: .registration)
     }
 }
