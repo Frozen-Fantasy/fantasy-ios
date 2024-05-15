@@ -1,27 +1,17 @@
 //
-//  TournamentsModels.swift
+//  TournamentModel.swift
 //  FrozenFantasy
 //
-//  Created by Никита Сигал on 22.04.2024.
+//  Created by Никита Сигал on 15.05.2024.
 //
 
 import Foundation
-
-enum League: String, CaseIterable {
-    case both = "Both", NHL, KHL
-}
 
 typealias Tournaments = [Tournament]
 struct Tournament: Codable, Identifiable {
     var id: Int = UUID().hashValue
     var title: String
-
-    var leagueID: Int
-    var league: League {
-        .allCases[leagueID]
-    }
-
-    var matchesIDs: [Int]
+    var league: League
 
     var startDate: TimeInterval
     var endDate: TimeInterval
@@ -30,6 +20,7 @@ struct Tournament: Codable, Identifiable {
     var deposit: Int
     var prizeFund: Int
 
+    var status: Status = .notStarted
     enum Status: String, Codable {
         case started,
              notStarted = "not_yet_started"
@@ -44,13 +35,10 @@ struct Tournament: Codable, Identifiable {
         }
     }
 
-    var status: Status = .notStarted
-
     enum CodingKeys: String, CodingKey {
         case id = "tournamentId"
-        case leagueID = "league"
+        case league
         case title
-        case matchesIDs = "matchesIds"
         case startDate = "TimeStart"
         case endDate = "timeEnd"
         case players = "playersAmount"

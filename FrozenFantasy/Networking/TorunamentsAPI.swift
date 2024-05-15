@@ -19,9 +19,9 @@ enum TournamentsAPI: API {
     var path: String {
         switch self {
         case let .getMatches(league):
-            "/get_matches/\(league)"
+            "/get_matches/\(league.title)"
         case let .getTournaments(league):
-            "/get_tournaments/\(league)"
+            "/get_tournaments/\(league.title)"
         }
     }
 
@@ -48,8 +48,11 @@ enum TournamentsAPI: API {
 
     var headers: HTTPHeaders {
         switch self {
-        case .getMatches, .getTournaments:
+        case .getMatches:
             [.contentType("application/json")]
+        case .getTournaments:
+            [.contentType("application/json"),
+             TokenManager.shared.authHeader]
         }
     }
 

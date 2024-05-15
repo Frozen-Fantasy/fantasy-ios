@@ -1,32 +1,14 @@
 //
-//  UserModels.swift
+//  TransactionModel.swift
 //  FrozenFantasy
 //
-//  Created by Никита Сигал on 27.04.2024.
+//  Created by Никита Сигал on 15.05.2024.
 //
 
 import Foundation
 
-struct User: Identifiable, Codable, Equatable {
-    var id: UUID = .init()
-    var nickname: String
-    var email: String
-    var registrationDate: Date
-    var photo: URL
-    var coins: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id = "profileID"
-        case nickname
-        case email
-        case registrationDate = "dateRegistration"
-        case photo = "photoLink"
-        case coins
-    }
-}
-
 typealias Transactions = [Transaction]
-struct Transaction: Identifiable, Codable, Equatable {
+struct Transaction: Codable, Identifiable, Equatable {
     var id: Int = UUID().hashValue
     var amount: Int
     var details: String
