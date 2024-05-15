@@ -13,7 +13,7 @@ final class AlamofireLogger: EventMonitor {
     private let logger = Logger()
 
     func requestDidResume(_ request: Request) {
-        let body = request.request.flatMap { $0.httpBody.map { String(decoding: $0, as: UTF8.self) } } ?? "None"
+        let body = prettyPrinted(data: request.request?.httpBody)
         logger.info("""
         ⬆ \(request)
         Body: \(body)
@@ -21,12 +21,21 @@ final class AlamofireLogger: EventMonitor {
     }
 
     func request<Value>(_ request: DataRequest, didParseResponse response: DataResponse<Value, AFError>) {
-        let body = String(decoding: response.data ?? Data(), as: UTF8.self)
+        let body = prettyPrinted(data: request.data)
         logger.log(level: response.error == nil ? .info : .error,
                    """
                    ⬇ \(request)
                    Body: \(body)
                    """)
+    }
+
+    private func prettyPrinted(data: Data?) -> String {
+        guard let object = try? JSONSerialization.jsonObject(with: data ?? Data()),
+              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+              let prettyPrintedString = String(data: data, encoding: .utf8)
+        else { return "None" }
+
+        return prettyPrintedString
     }
 }
 

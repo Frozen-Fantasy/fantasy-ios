@@ -1,0 +1,54 @@
+//
+//  CardModel.swift
+//  FrozenFantasy
+//
+//  Created by Никита Сигал on 15.05.2024.
+//
+
+import Foundation
+
+typealias Cards = [Card]
+struct Card: Codable, Identifiable, Equatable {
+    var id: Int = UUID().hashValue
+    var profileID: UUID
+    var playerID: Int
+
+    var rarity: Rarity
+    enum Rarity: String, Codable, CaseIterable {
+        case silver = "Silver",
+             gold = "Gold"
+    }
+
+    var bonusMetric: Int
+    var bonusMetricName: String
+    var multiplicator: Double
+    var unpacked: Bool
+
+    var name: String
+    var sweaterNumber: Int
+    var photo: URL
+
+    var teamID: Int
+    var teamName: String
+
+    var position: Position
+    var league: League
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case profileID
+        case playerID
+        case rarity = "rarityName"
+        case bonusMetric
+        case bonusMetricName
+        case multiplicator = "multiply"
+        case unpacked
+        case name
+        case sweaterNumber
+        case photo
+        case teamID
+        case teamName
+        case position
+        case league
+    }
+}

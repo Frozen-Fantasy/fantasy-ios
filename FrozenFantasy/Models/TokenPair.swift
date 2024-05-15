@@ -1,8 +1,8 @@
 //
-//  AuthModels.swift
+//  TokenPair.swift
 //  FrozenFantasy
 //
-//  Created by Никита Сигал on 21.04.2024.
+//  Created by Никита Сигал on 15.05.2024.
 //
 
 import Foundation
