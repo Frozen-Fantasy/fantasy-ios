@@ -14,9 +14,8 @@ protocol Dummy {
 extension Tournament: Dummy {
     static var dummy: Tournament = .init(title: "NHL Daily Tournament",
                                          league: .NHL,
-                                         // TODO: Temporary fix
-                                         startDate: 1000*Date.now.advanced(by: 600).timeIntervalSince1970,
-                                         endDate: 1000*Date.now.advanced(by: 87000).timeIntervalSince1970,
+                                         startDate: .now.advanced(by: 600),
+                                         endDate: .now.advanced(by: 87000),
                                          players: 13,
                                          deposit: 100,
                                          prizeFund: 5000)
@@ -39,9 +38,7 @@ extension Transactions: Dummy {
 }
 
 extension Card: Dummy {
-    static var dummy: Card = .init(profileID: UUID(),
-                                   playerID: 0,
-                                   rarity: .silver,
+    static var dummy: Card = .init(rarity: .silver,
                                    bonusMetric: 3,
                                    bonusMetricName: "Голы",
                                    multiplicator: 1.25,
@@ -49,8 +46,17 @@ extension Card: Dummy {
                                    name: "David Gustaffson",
                                    sweaterNumber: 19,
                                    photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
-                                   teamID: 22,
                                    teamName: "Winnipeg Jets",
                                    position: .forward,
                                    league: .NHL)
+}
+
+extension Match: Dummy {
+    static var dummy: Match = .init(homeTeamAbbr: "DAL",
+                                    homeTeamScore: 0,
+                                    awayTeamAbbr: "COL",
+                                    awayTeamScore: 0,
+                                    startsAt: 1715817600000,
+                                    endsAt: 1715828400000,
+                                    league: .NHL)
 }

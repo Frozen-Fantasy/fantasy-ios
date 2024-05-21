@@ -10,17 +10,13 @@ import SwiftUI
 struct TournamentsView: View {
     @StateObject private var viewModel = TournamentsViewModel()
 
-    init() {
-
-    }
-
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(viewModel.tournaments) { tournament in
                         NavigationLink {
-                            TournamentDetialView(tournament)
+                            TournamentDetailView(tournament)
                         } label: {
                             TournamentCard(tournament)
                         }

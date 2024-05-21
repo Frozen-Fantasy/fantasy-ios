@@ -13,8 +13,8 @@ struct Tournament: Codable, Identifiable {
     var title: String
     var league: League
 
-    var startDate: TimeInterval
-    var endDate: TimeInterval
+    var startDate: Date
+    var endDate: Date
 
     var players: Int
     var deposit: Int
@@ -22,8 +22,9 @@ struct Tournament: Codable, Identifiable {
 
     var status: Status = .notStarted
     enum Status: String, Codable {
-        case started,
-             notStarted = "not_yet_started"
+        case notStarted = "not_yet_started",
+             started,
+             finished
 
         var displayed: String {
             switch self {
@@ -31,6 +32,8 @@ struct Tournament: Codable, Identifiable {
                 "Текущий"
             case .notStarted:
                 "Предстоящий"
+            case .finished:
+                "Закончился"
             }
         }
     }
@@ -39,8 +42,8 @@ struct Tournament: Codable, Identifiable {
         case id = "tournamentId"
         case league
         case title
-        case startDate = "TimeStart"
-        case endDate = "timeEnd"
+        case startDate = "timeStartTS"
+        case endDate = "timeEndTS"
         case players = "playersAmount"
         case deposit
         case prizeFund = "prizeFond"
