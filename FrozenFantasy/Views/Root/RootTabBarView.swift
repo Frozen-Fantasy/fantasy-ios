@@ -12,11 +12,12 @@ struct RootTabBarView: View {
 
     private enum Tab {
         case tournaments,
-        teams,
-        rating,
-        collection,
-        profile
+             teams,
+             rating,
+             collection,
+             profile
     }
+
     @State private var currentTab: Tab = .tournaments
 
     init() {
@@ -41,6 +42,9 @@ struct RootTabBarView: View {
 
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Exo2-Bold", size: 32)!]
         UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "Exo2-SemiBold", size: 20)!]
+        UIBarButtonItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont(name: "Exo2-Regular", size: 18)!],
+            for: .normal)
     }
 
     var body: some View {

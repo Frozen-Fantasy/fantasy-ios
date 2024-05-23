@@ -11,19 +11,11 @@ struct TokenPair: Codable {
     var accessToken: String = ""
     var refreshToken: String = ""
 
-    var expiresIn: Int = 0
-    var expirationDate: Date {
-        get {
-            .now.advanced(by: TimeInterval(expiresIn))
-        }
-        set {
-            expiresIn = Int(newValue.timeIntervalSinceNow)
-        }
-    }
+    var expirationDate: Date
 
     enum CodingKeys: String, CodingKey {
         case accessToken
         case refreshToken
-        case expiresIn
+        case expirationDate = "expiresIn"
     }
 }

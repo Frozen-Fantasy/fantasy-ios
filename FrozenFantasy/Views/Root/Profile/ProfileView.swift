@@ -68,18 +68,7 @@ struct ProfileView: View {
                 }
 
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 4) {
-                        Text("\(viewModel.user?.coins ?? 0)")
-                            .font(.customBody1)
-                            .bold()
-                            .foregroundStyle(.customBlack)
-                        Image("icon:coins")
-                            .renderingMode(.template)
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(.customYellow)
-                    }
-                    .fixedSize()
+                    CoinLabel(viewModel.user?.coins ?? 0)
                 }
             }
         }
@@ -111,7 +100,7 @@ struct ProfileView: View {
                 Spacer()
             }
 
-            Text("На сервисе с \(viewModel.user?.registrationDate.simpleDateString ?? "")")
+            Text("На сервисе с \(viewModel.user?.registrationDate.formatted(date: .long, time: .omitted) ?? "")")
                 .font(.customBody1)
                 .foregroundStyle(.customGray)
         }

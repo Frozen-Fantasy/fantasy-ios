@@ -12,38 +12,32 @@ struct Tournament: Codable, Identifiable {
     var id: Int = UUID().hashValue
     var title: String
     var league: League
+    var status: Status
 
-    var startDate: TimeInterval
-    var endDate: TimeInterval
+    var participatingString: String
+    var participating: Bool {
+        participatingString == "true"
+    }
+
+    var startDate: Date
+    var endDate: Date
 
     var players: Int
     var deposit: Int
     var prizeFund: Int
 
-    var status: Status = .notStarted
-    enum Status: String, Codable {
-        case started,
-             notStarted = "not_yet_started"
-
-        var displayed: String {
-            switch self {
-            case .started:
-                "Текущий"
-            case .notStarted:
-                "Предстоящий"
-            }
-        }
-    }
-
     enum CodingKeys: String, CodingKey {
         case id = "tournamentId"
-        case league
         case title
-        case startDate = "TimeStart"
-        case endDate = "timeEnd"
+        case league
+        case status = "statusTournament"
+        case participatingString = "statusParticipation"
+
+        case startDate = "timeStartTS"
+        case endDate = "timeEndTS"
+
         case players = "playersAmount"
         case deposit
         case prizeFund = "prizeFond"
-        case status = "statusTournament"
     }
 }

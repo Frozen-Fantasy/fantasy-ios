@@ -33,21 +33,12 @@ struct TournamentCard: View {
                     .scaledToFit()
                     .frame(width: 100)
 
-                Label {
-                    Text("1 день")
-                        .font(.customBodyMedium1)
-                } icon: {
-                    Image("icon:calendar")
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 19)
-                }
-                .foregroundStyle(.customGray)
+                CustomLabel("1 день", image: "icon:calendar")
+                    .foregroundStyle(.customGray)
             }
 
             VStack(alignment: .leading, spacing: 0) {
-                Text(tournament.status.displayed)
+                Text(tournament.status.rawValue)
                     .font(.customCaption2)
                     .foregroundStyle(.customGray)
                 Text(tournament.title)
@@ -63,30 +54,8 @@ struct TournamentCard: View {
                     .foregroundStyle(.customBlack)
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Label {
-                            Text("\(tournament.deposit)")
-                                .font(.customBodyMedium1)
-                                .foregroundStyle(.customBlack)
-                        } icon: {
-                            Image("icon:coins")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 19)
-                                .foregroundStyle(.customYellow)
-                        }
-                        Label {
-                            Text("\(tournament.prizeFund)")
-                                .font(.customBodyMedium1)
-                                .foregroundStyle(.customBlack)
-                        } icon: {
-                            Image("icon:coins")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 19)
-                                .foregroundStyle(.customYellow)
-                        }
+                        CoinLabel(tournament.deposit)
+                        CoinLabel(tournament.prizeFund)
                     }
                 }
                 .padding(.top, 4)
@@ -94,17 +63,8 @@ struct TournamentCard: View {
                 Spacer()
 
                 HStack(spacing: 0) {
-                    Label {
-                        Text("\(tournament.players)")
-                            .font(.customBodyMedium1)
-                    } icon: {
-                        Image("icon:group")
-                            .renderingMode(.template)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 19)
-                    }
-                    .foregroundStyle(.customGray)
+                    CustomLabel(tournament.players.formatted(), image: "icon:group")
+                        .foregroundStyle(.customGray)
 
                     Spacer()
 
@@ -132,8 +92,7 @@ struct TournamentCard: View {
         .animation(.default, value: secondsUntilStart == 0)
         .onAppear {
             if tournament.status == .notStarted {
-                // TODO: TEMPORARY FIX
-                secondsUntilStart = tournament.startDate / 1000 - Date.now.timeIntervalSince1970
+                secondsUntilStart = tournament.startDate.timeIntervalSinceNow
                 timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
                     if secondsUntilStart == 0 {
                         timer?.invalidate()

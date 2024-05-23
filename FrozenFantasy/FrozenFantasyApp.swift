@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SDWebImage
+import SDWebImageSVGCoder
 
 @MainActor final class AppState: ObservableObject {
     static let shared = AppState()
@@ -37,6 +39,10 @@ import SwiftUI
 struct FrozenFantasyApp: App {
     @StateObject private var appState = AppState.shared
 
+    init() {
+        setupDependencies()
+    }
+
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -54,5 +60,11 @@ struct FrozenFantasyApp: App {
                 Text(appState.alertMessage)
             }
         }
+    }
+}
+
+extension FrozenFantasyApp {
+    func setupDependencies() {
+        SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
     }
 }

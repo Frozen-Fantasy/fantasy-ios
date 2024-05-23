@@ -10,8 +10,8 @@ import Foundation
 typealias Cards = [Card]
 struct Card: Codable, Identifiable, Equatable {
     var id: Int = UUID().hashValue
-    var profileID: UUID
-    var playerID: Int
+    var profileID: UUID = UUID()
+    var playerID: Int = UUID().hashValue
 
     var rarity: Rarity
     enum Rarity: String, Codable, CaseIterable {
@@ -28,7 +28,7 @@ struct Card: Codable, Identifiable, Equatable {
     var sweaterNumber: Int
     var photo: URL
 
-    var teamID: Int
+    var teamID: Int = UUID().hashValue
     var teamName: String
 
     var position: Position

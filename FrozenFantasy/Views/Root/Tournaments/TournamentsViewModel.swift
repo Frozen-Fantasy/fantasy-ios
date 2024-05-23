@@ -16,9 +16,9 @@ import Foundation
     func getTournaments() async {
         do {
             tournaments = try await NetworkManager.shared.request(
-                from: TournamentsAPI.getTournaments(league: .both),
+                from: TournamentsAPI.getTournaments(showAll: true, tournamentID: nil, league: nil, status: nil),
                 expecting: Tournaments.self
-            )
+            ).sorted { $0.startDate > $1.startDate }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

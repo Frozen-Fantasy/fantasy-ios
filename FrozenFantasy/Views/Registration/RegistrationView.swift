@@ -29,8 +29,8 @@ struct RegistrationView: View {
                 CustomTextField(.email(isNew: true), text: $viewModel.email, placeholder: "Почта", required: true)
                     .bindValidation(to: $viewModel.isEmailValid)
                 Button(secondsLeft == 0
-                    ? "Отправить код"
-                    : "Подождите \(secondsLeft) с.") {
+                        ? "Отправить код"
+                        : "Подождите \(secondsLeft) с.") {
                     Task { await viewModel.sendCode() }
                     secondsLeft = 30
                 }
