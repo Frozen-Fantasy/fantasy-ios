@@ -11,6 +11,7 @@ import Foundation
 enum TournamentsAPI: API {
     case getTournaments(showAll: Bool, tournamentID: Int?, league: League?, status: Status?)
     case getMatches(tournamentID: Int)
+    case getRoster(tournamentID: Int)
 
     var baseURL: String {
         Constants.API.baseURL + "/tournament"
@@ -22,12 +23,14 @@ enum TournamentsAPI: API {
             "s"
         case let .getMatches(tournamentID):
             "/matches_by_tournament_id/\(tournamentID)"
+        case .getRoster:
+            "/roster"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getMatches, .getTournaments:
+        case .getMatches, .getTournaments, .getRoster:
             .get
         }
     }
@@ -52,19 +55,21 @@ enum TournamentsAPI: API {
             return parameters
         case .getMatches:
             return nil
+        case let .getRoster(tournamentID):
+            return ["tournamentID": tournamentID]
         }
     }
 
     var encoding: ParameterEncoding {
         switch self {
-        case .getMatches, .getTournaments:
+        case .getTournaments, .getMatches, .getRoster:
             URLEncoding.default
         }
     }
 
     var headers: HTTPHeaders {
         switch self {
-        case .getTournaments, .getMatches:
+        case .getTournaments, .getMatches, .getRoster:
             [.contentType("application/json"),
              TokenManager.shared.authHeader]
         }

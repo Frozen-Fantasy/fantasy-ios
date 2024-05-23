@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FantasyPointLabel: View {
-    let value: Int
+    let value: Double
 
-    init(_ value: Int) {
+    init(_ value: Double) {
         self.value = value
     }
 

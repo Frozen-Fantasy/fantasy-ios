@@ -18,24 +18,38 @@ struct PlayerCard: View {
         self._isSelected = isSelected
     }
 
+    var positionColor: Color {
+        switch player.position {
+        case .goaltender:
+            .customBlack
+        case .defender:
+            .customBlue
+        case .forward:
+            .customOrange
+        }
+    }
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack(alignment: .topTrailing) {
                 AsyncImage(url: player.photo) { image in
                     image
                         .resizable()
+                        .scaledToFit()
                 } placeholder: {
                     ProgressView()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .aspectRatio(1, contentMode: .fit)
                 }
-                .scaledToFit()
 
-                Text("F")
-                    .font(.customBody1)
+                Text(player.position.abbreviation)
+                    .font(.customCaption1)
                     .bold()
                     .foregroundStyle(.white)
-                    .padding(8)
-                    .background(.customOrange)
-                    .clipShape(Circle())
+                    .padding([.horizontal, .bottom], 4)
+                    .background(positionColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 2))
+                    .offset(x: 4)
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -43,7 +57,7 @@ struct PlayerCard: View {
                     .font(.customTitle4)
                     .foregroundStyle(.customBlack)
 
-                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                HStack(alignment: .firstTextBaseline) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("AvFP")
                             .font(.customBody1)
@@ -51,13 +65,17 @@ struct PlayerCard: View {
 
                         FantasyPointLabel(player.averageFP)
                     }
+                    .frame(width: 100, alignment: .leading)
 
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("Cost")
                             .font(.customBody1)
                             .foregroundStyle(.customBlack)
 
-                        Text(player.cost.formatted(.currency(code: "USD").rounded(rule: .down, increment: 1)))
+                        Text(player.cost
+                                .formatted(.currency(code: "USD")
+                                            .rounded(rule: .toNearestOrAwayFromZero,
+                                                     increment: 0.1)))
                             .font(.customBody1)
                             .bold()
                             .foregroundStyle(.customBlack)
@@ -65,7 +83,7 @@ struct PlayerCard: View {
                 }
             }
             .padding(.vertical, 12)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             Button {
                 isSelected.toggle()

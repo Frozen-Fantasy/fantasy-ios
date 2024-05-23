@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct TeamView: View {
+    let tournamentID: Int
+
+    init(for tournamentID: Int) {
+        self.tournamentID = tournamentID
+    }
+
     @StateObject var viewModel = TeamViewModel()
 
     var body: some View {
@@ -23,24 +29,18 @@ struct TeamView: View {
                 .padding(.bottom, 12)
 
                 ForEach(viewModel.visiblePlayers) { player in
-                    PlayerCard(player, isSelected: .init(get: {
-                        viewModel.selectedPlayers.contains(player)
-                    }, set: { newValue in
-                        if newValue {
-                            viewModel.selectedPlayers.insert(player)
-                        } else {
-                            viewModel.selectedPlayers.remove(player)
-                        }
-                    }))
-                    .disabled(!viewModel.canContain(player.position))
+                    PlayerCard(player, isSelected: viewModel.createBinding(for: player))
+                        .disabled(!viewModel.isEnabled(player))
                 }
             }
-            .padding(16)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 32)
         }
         .frame(maxWidth: .infinity)
         .navigationTitle("Создать команду")
         .animation(.default, value: viewModel.visiblePlayers)
         .task {
+            viewModel.tournamentID = tournamentID
             await viewModel.fetchPlayers()
         }
     }
@@ -48,6 +48,6 @@ struct TeamView: View {
 
 #Preview {
     NavigationView {
-        TeamView()
+        TeamView(for: 0)
     }
 }

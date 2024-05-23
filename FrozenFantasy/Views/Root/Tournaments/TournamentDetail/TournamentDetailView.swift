@@ -23,7 +23,7 @@ struct TournamentDetailView: View {
 
                 Button {} label: {
                     NavigationLink {
-                        Text("Create Team Placeholder")
+                        TeamView(for: tournament.id)
                     } label: {
                         Text("Участвовать")
                     }

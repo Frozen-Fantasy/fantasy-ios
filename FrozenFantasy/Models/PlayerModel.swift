@@ -21,8 +21,8 @@ struct Player: Identifiable, Codable, Equatable, Hashable {
     var teamName: String
     var teamLogo: URL
 
-    var cost: Int
-    var averageFP: Int
+    var cost: Double
+    var averageFP: Double
     var rarity: Rarity
 
     enum CodingKeys: String, CodingKey {
@@ -39,7 +39,11 @@ struct Player: Identifiable, Codable, Equatable, Hashable {
         case teamLogo
 
         case cost = "playerCost"
-        case averageFP = "averageFantasyPoints"
+        case averageFP = "avgFantasyPoints"
         case rarity = "cardRarity"
     }
+}
+
+struct Roster: Codable {
+    var players: Players
 }
