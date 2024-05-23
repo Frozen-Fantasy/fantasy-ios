@@ -7,14 +7,14 @@
 
 import Foundation
 
-@MainActor final class LoginViewModel: ObservableObject {
+final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
 
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
 
-    @Published var errorMessage: String = ""
+    @MainActor @Published var errorMessage: String = ""
 
     var isValid: Bool {
         isEmailValid && isPasswordValid
@@ -32,8 +32,10 @@ import Foundation
 
             TokenManager.shared.save(tokenPair)
             await AppState.shared.setCurrentScreen(to: .main)
-        } catch APIError.badRequest(let reason) {
-            errorMessage = reason
+        } catch let APIError.badRequest(reason) {
+            await MainActor.run {
+                errorMessage = reason
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

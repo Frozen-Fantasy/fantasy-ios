@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor final class RegistrationViewModel: ObservableObject {
+final class RegistrationViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var code: String = ""
 
@@ -19,7 +19,7 @@ import Foundation
     @Published var isNicknameValid: Bool = false
     @Published var isPasswordValid: Bool = false
 
-    @Published var errorMessage: String = ""
+    @MainActor @Published var errorMessage: String = ""
 
     var isValid: Bool {
         isEmailValid && isCodeValid && isNicknameValid && isPasswordValid
@@ -56,8 +56,10 @@ import Foundation
 
             TokenManager.shared.save(tokenPair)
             await AppState.shared.setCurrentScreen(to: .main)
-        } catch APIError.badRequest(let reason) {
-            errorMessage = reason
+        } catch let APIError.badRequest(reason) {
+            await MainActor.run {
+                errorMessage = reason
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

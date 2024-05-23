@@ -13,7 +13,7 @@ struct TournamentsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 16) {
+                LazyVStack(spacing: 16) {
                     ForEach(viewModel.tournaments) { tournament in
                         NavigationLink {
                             TournamentDetailView(tournament)
@@ -23,11 +23,16 @@ struct TournamentsView: View {
                     }
                 }
                 .padding(16)
+                .frame(maxWidth: .infinity)
             }
             .navigationTitle("Турниры")
             .task {
                 await viewModel.getTournaments()
             }
+            .refreshable {
+                await viewModel.getTournaments()
+            }
+            .animation(.default, value: viewModel.tournaments)
         }
     }
 }

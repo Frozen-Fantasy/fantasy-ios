@@ -27,6 +27,9 @@ struct CollectionView: View {
             .task {
                 await viewModel.fetchCards()
             }
+            .refreshable {
+                await viewModel.fetchCards()
+            }
         }
     }
 }

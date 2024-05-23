@@ -13,7 +13,7 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+                LazyVStack(alignment: .leading, spacing: 24) {
                     headerView
 
                     TransactionsView(transactions: viewModel.transactions ?? [])
@@ -21,14 +21,8 @@ struct ProfileView: View {
                 .padding()
             }
             .navigationTitle("Профиль")
-
-            // MARK: Animation
-
             .animation(.default, value: viewModel.user)
             .animation(.default, value: viewModel.transactions)
-
-            // MARK: Fetch actions
-
             .task {
                 await viewModel.fetchUserInfo()
                 await viewModel.fetchTransactions()
@@ -37,9 +31,6 @@ struct ProfileView: View {
                 await viewModel.fetchUserInfo()
                 await viewModel.fetchTransactions()
             }
-
-            // MARK: Alerts
-
             .alert(isPresented: $viewModel.presentingLogoutAlert) {
                 Alert(
                     title: Text("Подтвердите действие"),
@@ -50,9 +41,6 @@ struct ProfileView: View {
                     secondaryButton: .cancel()
                 )
             }
-
-            // MARK: Toolbar
-
             .toolbar {
                 ToolbarItem(placement: .destructiveAction) {
                     Button {
