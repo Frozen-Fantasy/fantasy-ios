@@ -7,18 +7,21 @@
 
 import Foundation
 
-@MainActor final class ProfileViewModel: ObservableObject {
-    @Published var user: User?
-    @Published var transactions: Transactions?
+final class ProfileViewModel: ObservableObject {
+    @MainActor @Published var user: User?
+    @MainActor @Published var transactions: Transactions?
 
     @Published var presentingLogoutAlert = false
 
     func fetchUserInfo() async {
         do {
-            user = try await NetworkManager.shared.request(
+            let data = try await NetworkManager.shared.request(
                 from: UserAPI.info,
                 expecting: User.self
             )
+            await MainActor.run {
+                user = data
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
@@ -26,10 +29,13 @@ import Foundation
 
     func fetchTransactions() async {
         do {
-            transactions = try await NetworkManager.shared.request(
+            let data = try await NetworkManager.shared.request(
                 from: UserAPI.transactions,
                 expecting: Transactions.self
             )
+            await MainActor.run {
+                transactions = data
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

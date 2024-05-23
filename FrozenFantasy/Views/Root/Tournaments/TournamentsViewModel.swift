@@ -7,18 +7,18 @@
 
 import Foundation
 
-@MainActor final class TournamentsViewModel: ObservableObject {
-    @Published var tournaments: Tournaments = []
-
-    @Published var alertMessage: String = ""
-    @Published var presentingAlert: Bool = false
+final class TournamentsViewModel: ObservableObject {
+    @MainActor @Published var tournaments: Tournaments = []
 
     func getTournaments() async {
         do {
-            tournaments = try await NetworkManager.shared.request(
+            let data = try await NetworkManager.shared.request(
                 from: TournamentsAPI.getTournaments(showAll: true, tournamentID: nil, league: nil, status: nil),
                 expecting: Tournaments.self
             ).sorted { $0.startDate > $1.startDate }
+            await MainActor.run {
+                tournaments = data
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

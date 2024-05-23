@@ -16,7 +16,7 @@ extension Tournament: Dummy {
         title: "NHL Daily Tournament",
         league: .NHL,
         status: .notStarted,
-        participatingString: "false",
+        participating: false,
         startDate: .now.advanced(by: 600),
         endDate: .now.advanced(by: 87000),
         players: 13,

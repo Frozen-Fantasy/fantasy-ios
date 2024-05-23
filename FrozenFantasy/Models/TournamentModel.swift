@@ -8,16 +8,12 @@
 import Foundation
 
 typealias Tournaments = [Tournament]
-struct Tournament: Codable, Identifiable {
+struct Tournament: Codable, Identifiable, Equatable {
     var id: Int = UUID().hashValue
     var title: String
     var league: League
     var status: Status
-
-    var participatingString: String
-    var participating: Bool {
-        participatingString == "true"
-    }
+    var participating: Bool
 
     var startDate: Date
     var endDate: Date
@@ -31,7 +27,7 @@ struct Tournament: Codable, Identifiable {
         case title
         case league
         case status = "statusTournament"
-        case participatingString = "statusParticipation"
+        case participating = "statusParticipation"
 
         case startDate = "timeStartTS"
         case endDate = "timeEndTS"

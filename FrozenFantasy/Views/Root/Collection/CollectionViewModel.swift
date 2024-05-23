@@ -7,20 +7,23 @@
 
 import Foundation
 
-@MainActor final class CollectionViewModel: ObservableObject {
-    @Published var cards: Cards = []
+final class CollectionViewModel: ObservableObject {
+    @MainActor @Published var cards: Cards = []
 
     func fetchCards() async {
         do {
             async let userID = NetworkManager.shared.request(
                 from: UserAPI.info,
                 expecting: User.self).id
-            cards = try await NetworkManager.shared.request(
+            let data = try await NetworkManager.shared.request(
                 from: PlayersAPI.playerCards(profileID: await userID,
                                              rarity: nil,
                                              league: nil,
                                              unpacked: nil),
                 expecting: Cards.self)
+            await MainActor.run {
+                cards = data
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
