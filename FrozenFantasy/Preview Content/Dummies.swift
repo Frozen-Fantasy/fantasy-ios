@@ -43,6 +43,24 @@ extension Transactions: Dummy {
     ]
 }
 
+extension Match: Dummy {
+    static var dummy: Match = .init(
+        league: .NHL,
+        status: .notStarted,
+
+        homeTeamAbbr: "FLA",
+        homeTeamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg")!,
+        homeTeamScore: 0,
+
+        awayTeamAbbr: "COL",
+        awayTeamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/COL_light.svg")!,
+        awayTeamScore: 0,
+
+        startsAt: .now.advanced(by: 8*60*60),
+        endsAt: .now.advanced(by: 10*60*60)
+    )
+}
+
 extension Card: Dummy {
     static var dummy: Card = .init(
         rarity: .silver,
@@ -59,20 +77,20 @@ extension Card: Dummy {
     )
 }
 
-extension Match: Dummy {
-    static var dummy: Match = .init(
+extension Player: Dummy {
+    static var dummy: Player = .init(
+        name: "David Gustaffson",
+        photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
+
         league: .NHL,
-        status: .notStarted,
+        sweaterNumber: 19,
+        position: .forward,
 
-        homeTeamAbbr: "FLA",
-        homeTeamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg")!,
-        homeTeamScore: 0,
+        teamName: "Winnipeg Jets",
+        teamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/WPG_light.svg")!,
 
-        awayTeamAbbr: "COL",
-        awayTeamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/COL_light.svg")!,
-        awayTeamScore: 0,
-
-        startsAt: .now.advanced(by: 8*60*60),
-        endsAt: .now.advanced(by: 10*60*60)
+        cost: 20,
+        averageFP: 30,
+        rarity: .silver
     )
 }

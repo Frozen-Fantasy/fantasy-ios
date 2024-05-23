@@ -14,10 +14,6 @@ struct Card: Codable, Identifiable, Equatable {
     var playerID: Int = UUID().hashValue
 
     var rarity: Rarity
-    enum Rarity: String, Codable, CaseIterable {
-        case silver = "Silver",
-             gold = "Gold"
-    }
 
     var bonusMetric: Int
     var bonusMetricName: String

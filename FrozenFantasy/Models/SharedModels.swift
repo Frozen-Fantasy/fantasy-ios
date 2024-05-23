@@ -54,3 +54,9 @@ enum Position: Int, Codable, CaseIterable {
         }
     }
 }
+
+enum Rarity: Int, Codable, CaseIterable {
+    case none = 0,
+         silver = 1,
+         gold = 2
+}
