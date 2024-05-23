@@ -13,7 +13,7 @@
 		FF377B672BD5E96100697FE1 /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B662BD5E96100697FE1 /* RatingsView.swift */; };
 		FF377B692BD5E97A00697FE1 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B682BD5E97A00697FE1 /* CollectionView.swift */; };
 		FF377B6B2BD5E98400697FE1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B6A2BD5E98400697FE1 /* ProfileView.swift */; };
-		FF377B6E2BD5F51100697FE1 /* TorunamentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B6D2BD5F51100697FE1 /* TorunamentsAPI.swift */; };
+		FF377B6E2BD5F51100697FE1 /* TournamentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B6D2BD5F51100697FE1 /* TournamentsAPI.swift */; };
 		FF377B732BD5F99000697FE1 /* TournamentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B722BD5F99000697FE1 /* TournamentCard.swift */; };
 		FF377B752BD613BE00697FE1 /* TournamentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B742BD613BE00697FE1 /* TournamentsViewModel.swift */; };
 		FF377B772BD61CE100697FE1 /* TournamentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B762BD61CE100697FE1 /* TournamentDetailView.swift */; };
@@ -33,6 +33,8 @@
 		FF9D57E12BEB8E50005151A9 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D57E02BEB8E50005151A9 /* CollectionViewModel.swift */; };
 		FF9D57E62BEB95BE005151A9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D57E52BEB95BE005151A9 /* CardView.swift */; };
 		FFA43F532BEB9C600032F7CE /* PlayersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */; };
+		FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */; };
+		FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */; };
 		FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */; };
 		FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49192BE90E050078DFD2 /* DateExtension.swift */; };
 		FFE499582BF4CBBE0052CB64 /* TokenPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE499572BF4CBBE0052CB64 /* TokenPair.swift */; };
@@ -70,7 +72,7 @@
 		FF377B662BD5E96100697FE1 /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		FF377B682BD5E97A00697FE1 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		FF377B6A2BD5E98400697FE1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		FF377B6D2BD5F51100697FE1 /* TorunamentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorunamentsAPI.swift; sourceTree = "<group>"; };
+		FF377B6D2BD5F51100697FE1 /* TournamentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsAPI.swift; sourceTree = "<group>"; };
 		FF377B722BD5F99000697FE1 /* TournamentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCard.swift; sourceTree = "<group>"; };
 		FF377B742BD613BE00697FE1 /* TournamentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewModel.swift; sourceTree = "<group>"; };
 		FF377B762BD61CE100697FE1 /* TournamentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentDetailView.swift; sourceTree = "<group>"; };
@@ -125,8 +127,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */,
 				FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */,
 				FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */,
+				FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				FF377B622BD5E65600697FE1 /* TournamentsView.swift */,
-				FF377B722BD5F99000697FE1 /* TournamentCard.swift */,
 				FF377B742BD613BE00697FE1 /* TournamentsViewModel.swift */,
+				FF377B722BD5F99000697FE1 /* TournamentCard.swift */,
 				FFF535222BF4EA6E0066508C /* TournamentDetail */,
 			);
 			path = Tournaments;
@@ -219,7 +223,7 @@
 				FF723A862B97280300AC2471 /* API.swift */,
 				FF723A892B97296E00AC2471 /* AuthAPI.swift */,
 				FFE8515D2BD5CE2600378C93 /* UserAPI.swift */,
-				FF377B6D2BD5F51100697FE1 /* TorunamentsAPI.swift */,
+				FF377B6D2BD5F51100697FE1 /* TournamentsAPI.swift */,
 				FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */,
 			);
 			path = Networking;
@@ -373,6 +377,8 @@
 			packageProductDependencies = (
 				FFE63A752BDC3A78005D8D50 /* Alamofire */,
 				FFE63A782BDC3A84005D8D50 /* KeychainSwift */,
+				FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */,
+				FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */,
 			);
 			productName = FrozenFantasy;
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
@@ -405,6 +411,8 @@
 			packageReferences = (
 				FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FFE63A772BDC3A84005D8D50 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			productRefGroup = FFFA3C0B2B94B34A009429C1 /* Products */;
 			projectDirPath = "";
@@ -475,7 +483,7 @@
 				FF377B6B2BD5E98400697FE1 /* ProfileView.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
 				FF73D96A2BDC540800184A5B /* Dummies.swift in Sources */,
-				FF377B6E2BD5F51100697FE1 /* TorunamentsAPI.swift in Sources */,
+				FF377B6E2BD5F51100697FE1 /* TournamentsAPI.swift in Sources */,
 				FF377B672BD5E96100697FE1 /* RatingsView.swift in Sources */,
 				FFE4995C2BF4CC020052CB64 /* TransactionModel.swift in Sources */,
 				FFF535262BF4EB0D0066508C /* MatchModel.swift in Sources */,
@@ -727,6 +735,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
+		FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -746,6 +770,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
+		};
 		FFE63A752BDC3A78005D8D50 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */;

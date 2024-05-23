@@ -7,15 +7,18 @@
 
 import Foundation
 
+enum Status: String, Codable {
+    case notStarted = "not_yet_started",
+         started,
+         finished
+}
+
 enum League: Int, Codable, CaseIterable {
-    case both = 0,
-         NHL = 1,
+    case NHL = 1,
          KHL = 2
 
     var title: String {
         switch self {
-        case .both:
-            "Both"
         case .KHL:
             "KHL"
         case .NHL:

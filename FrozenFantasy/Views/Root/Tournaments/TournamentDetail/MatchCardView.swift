@@ -5,6 +5,7 @@
 //  Created by Никита Сигал on 20.05.2024.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct MatchCardView: View {
@@ -14,13 +15,38 @@ struct MatchCardView: View {
         self.match = match
     }
 
+    private var scoreText: String {
+        if match.status == .notStarted {
+            "– : –"
+        } else {
+            "\(match.homeTeamScore) : \(match.awayTeamScore)"
+        }
+    }
+
+    private var statusText: String {
+        switch match.status {
+        case .notStarted:
+            match.startsAt.formatted(date: .long, time: .shortened)
+        case .started:
+            "Идет сейчас"
+        case .finished:
+            "Завершён"
+        }
+    }
+
     var body: some View {
         HStack(spacing: 0) {
-            Image("team:BUF")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 48)
-                .padding(4)
+            WebImage(url: match.homeTeamLogo) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+            }
+            .antialiased(true)
+            .transition(.fade)
+            .aspectRatio(1.5, contentMode: .fit)
+            .frame(height: 48)
+            .padding(4)
 
             VStack(spacing: 0) {
                 HStack {
@@ -29,7 +55,7 @@ struct MatchCardView: View {
                         .font(.customTitle2)
                     Spacer()
 
-                    Text("\(match.homeTeamScore) : \(match.awayTeamScore)")
+                    Text(scoreText)
                         .font(.customTitle3)
 
                     Spacer()
@@ -38,17 +64,22 @@ struct MatchCardView: View {
                     Spacer()
                 }
 
-                Text(Date(timeIntervalSince1970: match.startsAt / 1000)
-                        .formatted(date: .long, time: .shortened))
+                Text(statusText)
                     .font(.customCaption1)
-                    .foregroundStyle(.customGray)
+                    .foregroundStyle(match.status == .started ? .customGreen : .customGray)
             }
 
-            Image("team:DET")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 48)
-                .padding(4)
+            WebImage(url: match.awayTeamLogo) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+            }
+            .antialiased(true)
+            .transition(.fade)
+            .aspectRatio(1.5, contentMode: .fit)
+            .frame(height: 48)
+            .padding(4)
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 12)
@@ -61,6 +92,18 @@ struct MatchCardView: View {
 }
 
 #Preview {
-    MatchCardView(.dummy)
-        .padding()
+    VStack {
+        MatchCardView(.dummy)
+        MatchCardView({
+            var match: Match = .dummy
+            match.status = .started
+            return match
+        }())
+        MatchCardView({
+            var match: Match = .dummy
+            match.status = .finished
+            return match
+        }())
+    }
+    .padding()
 }

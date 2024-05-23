@@ -38,7 +38,7 @@ struct TournamentCard: View {
             }
 
             VStack(alignment: .leading, spacing: 0) {
-                Text(tournament.status.displayed)
+                Text(tournament.status.rawValue)
                     .font(.customCaption2)
                     .foregroundStyle(.customGray)
                 Text(tournament.title)

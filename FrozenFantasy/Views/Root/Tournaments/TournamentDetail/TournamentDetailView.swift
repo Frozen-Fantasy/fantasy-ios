@@ -15,10 +15,6 @@ struct TournamentDetailView: View {
         self.tournament = tournament
     }
 
-    private func format(_ date: Date) -> String {
-        date.formatted(date: .numeric, time: .shortened)
-    }
-
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
@@ -37,9 +33,13 @@ struct TournamentDetailView: View {
             .padding(16)
         }
         .navigationTitle(tournament.title)
-        .onAppear {
+        .animation(.default.speed(1.5), value: viewModel.matches)
+        .task {
             viewModel.tournamentID = tournament.id
-            viewModel.fetchMatches()
+            await viewModel.fetchMatches()
+        }
+        .refreshable {
+            await viewModel.fetchMatches()
         }
     }
 
@@ -67,6 +67,10 @@ struct TournamentDetailView: View {
                 Spacer()
             }
         }
+    }
+
+    private func format(_ date: Date) -> String {
+        date.formatted(date: .numeric, time: .shortened)
     }
 
     private var startSegment: some View {
@@ -120,6 +124,7 @@ struct TournamentDetailView: View {
             Text("Матчи")
                 .font(.customTitle1)
                 .foregroundStyle(.customBlack)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(spacing: 16) {
                 ForEach(viewModel.matches) { match in
