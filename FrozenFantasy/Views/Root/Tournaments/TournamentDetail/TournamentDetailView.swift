@@ -41,6 +41,7 @@ struct TournamentDetailView: View {
         .refreshable {
             await viewModel.fetchMatches()
         }
+        .isTabBarVisible(true)
     }
 
     // MARK: INf

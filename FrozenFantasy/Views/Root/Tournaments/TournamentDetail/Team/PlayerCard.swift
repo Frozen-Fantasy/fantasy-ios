@@ -18,17 +18,6 @@ struct PlayerCard: View {
         self._isSelected = isSelected
     }
 
-    var positionColor: Color {
-        switch player.position {
-        case .goaltender:
-            .customBlack
-        case .defender:
-            .customBlue
-        case .forward:
-            .customOrange
-        }
-    }
-
     var body: some View {
         HStack(spacing: 16) {
             ZStack(alignment: .topTrailing) {
@@ -47,7 +36,7 @@ struct PlayerCard: View {
                     .bold()
                     .foregroundStyle(.white)
                     .padding([.horizontal, .bottom], 4)
-                    .background(positionColor)
+                    .background(player.position.color)
                     .clipShape(RoundedRectangle(cornerRadius: 2))
                     .offset(x: 4)
             }

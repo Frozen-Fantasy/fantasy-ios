@@ -88,4 +88,8 @@ extension TeamViewModel {
             }
         )
     }
+
+    @MainActor var canRegister: Bool {
+        selectedPlayers.count == 6
+    }
 }
