@@ -10,10 +10,13 @@ import SwiftUI
 struct TournamentDetailView: View {
     @StateObject var viewModel = TournamentDetailViewModel()
 
-    let tournament: Tournament
-
+    let initialTournament: Tournament
     init(_ tournament: Tournament) {
-        self.tournament = tournament
+        self.initialTournament = tournament
+    }
+
+    var tournament: Tournament {
+        viewModel.tournament ?? initialTournament
     }
 
     var body: some View {
@@ -22,28 +25,43 @@ struct TournamentDetailView: View {
                 info
                 matches
 
-                Button {} label: {
-                    NavigationLink {
-                        EditTeamView(for: tournament)
-                    } label: {
-                        Text(tournament.participating ? "Изменить состав" : "Участвовать")
+                if tournament.participating {
+                    myTeam
+                } else {
+                    Button {} label: {
+                        NavigationLink {
+                            EditTeamView(of: tournament)
+                        } label: {
+                            Text("Участвовать")
+                        }
                     }
+                    .buttonStyle(.custom)
                 }
-                .buttonStyle(.custom)
             }
             .padding(16)
         }
         .navigationTitle(tournament.title)
         .animation(.default.speed(1.5), value: viewModel.matches)
+        .animation(.default.speed(1.5), value: viewModel.players)
         .task {
-            viewModel.tournamentID = tournament.id
+            viewModel.tournament = tournament
+            await viewModel.fetchTournament()
             await viewModel.fetchMatches()
+            if tournament.participating {
+                await viewModel.fetchTeam()
+            }
         }
         .refreshable {
+            await viewModel.fetchTournament()
             await viewModel.fetchMatches()
+            if tournament.participating {
+                await viewModel.fetchTeam()
+            }
         }
         .isTabBarVisible(true)
     }
+
+    // MARK: Info
 
     var info: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -119,8 +137,10 @@ struct TournamentDetailView: View {
         }
     }
 
+    // MARK: Matches
+
     private var matches: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("Матчи")
                 .font(.customTitle1)
                 .foregroundStyle(.customBlack)
@@ -129,6 +149,48 @@ struct TournamentDetailView: View {
             VStack(spacing: 16) {
                 ForEach(viewModel.matches) { match in
                     MatchCard(match)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    // MARK: My Team
+
+    private var myTeam: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Моя команда")
+                    .font(.customTitle1)
+                    .foregroundStyle(.customBlack)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Spacer()
+
+                if tournament.status == .notStarted {
+                    Button {} label: {
+                        NavigationLink {
+                            EditTeamView(of: tournament, currentTeam: viewModel.players)
+                        } label: {
+                            Label {
+                                Text("Изменить")
+                            } icon: {
+                                Image("icon:edit")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 20)
+                                    .foregroundStyle(.customBlue)
+                            }
+                        }
+                    }
+                    .buttonStyle(.customText)
+                }
+            }
+
+            VStack(spacing: 8) {
+                ForEach(viewModel.players) { player in
+                    PlayerCard(player)
                 }
             }
         }

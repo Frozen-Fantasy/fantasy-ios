@@ -13,9 +13,11 @@ struct EditTeamView: View {
     @Environment(\.dismiss) private var dismiss
 
     let tournament: Tournament
+    let selectedPlayers: Players
 
-    init(for tournament: Tournament) {
+    init(of tournament: Tournament, currentTeam: Players = []) {
         self.tournament = tournament
+        self.selectedPlayers = currentTeam
     }
 
     var body: some View {
@@ -32,7 +34,7 @@ struct EditTeamView: View {
                     .padding(.bottom, 12)
 
                     ForEach(viewModel.visiblePlayers) { player in
-                        PlayerCard(player, isSelected: viewModel.createBinding(for: player))
+                        SelectPlayerCard(player, isSelected: viewModel.createBinding(for: player))
                             .disabled(!viewModel.isAvailable(player: player))
                     }
                 }
@@ -112,10 +114,8 @@ struct EditTeamView: View {
         .animation(.default, value: viewModel.selectedPlayers)
         .task {
             viewModel.tournamentID = tournament.id
+            viewModel.selectedPlayers = .init(selectedPlayers)
             await viewModel.fetchPlayers()
-            if tournament.participating {
-                await viewModel.fetchTeam()
-            }
         }
         .isTabBarVisible(false)
     }
@@ -123,6 +123,6 @@ struct EditTeamView: View {
 
 #Preview {
     NavigationView {
-        EditTeamView(for: .dummy)
+        EditTeamView(of: .dummy)
     }
 }

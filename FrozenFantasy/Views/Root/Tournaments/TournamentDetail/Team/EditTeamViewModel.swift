@@ -43,20 +43,6 @@ final class EditTeamViewModel: ObservableObject {
         }
     }
 
-    func fetchTeam() async {
-        do {
-            let data = try await NetworkManager.shared.request(
-                from: TournamentsAPI.getTeam(tournamentID: tournamentID),
-                expecting: Roster.self
-            ).players
-            await MainActor.run {
-                selectedPlayers = .init(data)
-            }
-        } catch {
-            await AppState.shared.presentAlert(message: error.localizedDescription)
-        }
-    }
-
     func setTeam(isNew: Bool) async -> Bool {
         do {
             try await NetworkManager.shared.request(

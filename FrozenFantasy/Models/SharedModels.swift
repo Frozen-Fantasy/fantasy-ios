@@ -71,4 +71,15 @@ enum Rarity: Int, Codable, CaseIterable {
     case none = 0,
          silver = 1,
          gold = 2
+
+    var color: Color {
+        switch self {
+        case .none:
+            .clear
+        case .silver:
+            .customGray
+        case .gold:
+            .customYellow
+        }
+    }
 }

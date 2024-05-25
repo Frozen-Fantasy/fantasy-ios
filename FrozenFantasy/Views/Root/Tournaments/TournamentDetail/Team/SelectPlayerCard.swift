@@ -1,5 +1,5 @@
 //
-//  PlayerCard.swift
+//  SelectPlayerCard.swift
 //  FrozenFantasy
 //
 //  Created by Никита Сигал on 23.05.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayerCard: View {
+struct SelectPlayerCard: View {
     let player: Player
 
     @Binding var isSelected: Bool
@@ -31,20 +31,39 @@ struct PlayerCard: View {
                         .aspectRatio(1, contentMode: .fit)
                 }
 
-                Text(player.position.abbreviation)
-                    .font(.customCaption1)
-                    .bold()
-                    .foregroundStyle(.white)
-                    .padding([.horizontal, .bottom], 4)
-                    .background(player.position.color)
-                    .clipShape(RoundedRectangle(cornerRadius: 2))
-                    .offset(x: 4)
+                VStack(spacing: 2) {
+                    Text(player.position.abbreviation)
+                        .font(.customCaption1)
+                        .bold()
+                        .foregroundStyle(.white)
+                        .padding([.horizontal, .bottom], 4)
+                        .background(player.position.color)
+                        .clipShape(RoundedRectangle(cornerRadius: 2))
+
+                    if player.rarity != .none {
+                        Image("icon:double-arrow-up")
+                            .renderingMode(.template)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(player.rarity.color)
+                            .frame(width: 24)
+                    }
+
+                    Spacer()
+                }
+                .offset(x: 8)
             }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(player.name)
-                    .font(.customTitle4)
-                    .foregroundStyle(.customBlack)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text(player.name)
+                        .font(.customTitle4)
+                        .foregroundStyle(.customBlack)
+                    Text("#\(player.sweaterNumber)")
+                        .font(.customBody1)
+                        .bold()
+                        .foregroundStyle(.customGray)
+                }
 
                 HStack(alignment: .firstTextBaseline) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
@@ -99,12 +118,12 @@ struct PlayerCard: View {
 
 #Preview {
     VStack {
-        PlayerCard(.dummy, isSelected: .constant(false))
-        PlayerCard(.dummy, isSelected: .constant(true))
+        SelectPlayerCard(.dummy, isSelected: .constant(false))
+        SelectPlayerCard(.dummy, isSelected: .constant(true))
 
         Group {
-            PlayerCard(.dummy, isSelected: .constant(false))
-            PlayerCard(.dummy, isSelected: .constant(true))
+            SelectPlayerCard(.dummy, isSelected: .constant(false))
+            SelectPlayerCard(.dummy, isSelected: .constant(true))
         }
         .disabled(true)
     }

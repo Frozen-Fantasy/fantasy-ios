@@ -38,11 +38,12 @@
 		FFA63EB22BFFAA89000C31A9 /* EditTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */; };
 		FFA63EB42BFFAA95000C31A9 /* EditTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */; };
 		FFB1699E2BFFAC1300A9FC61 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1699D2BFFAC1300A9FC61 /* PlayerModel.swift */; };
-		FFB169A02BFFAF4200A9FC61 /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1699F2BFFAF4200A9FC61 /* PlayerCard.swift */; };
+		FFB169A02BFFAF4200A9FC61 /* SelectPlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */; };
 		FFB169A22BFFB45900A9FC61 /* FantasyPointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169A12BFFB45900A9FC61 /* FantasyPointLabel.swift */; };
 		FFB169AA2C00AFF100A9FC61 /* SelectedPlayersRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */; };
 		FFB169AD2C00B6D200A9FC61 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = FFB169AC2C00B6D200A9FC61 /* SwiftUIIntrospect */; };
 		FFB169AF2C00B7B300A9FC61 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169AE2C00B7B300A9FC61 /* TabBarModifier.swift */; };
+		FFB169B32C02328B00A9FC61 /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169B22C02328B00A9FC61 /* PlayerCard.swift */; };
 		FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */; };
 		FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49192BE90E050078DFD2 /* DateExtension.swift */; };
 		FFE499582BF4CBBE0052CB64 /* TokenPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE499572BF4CBBE0052CB64 /* TokenPair.swift */; };
@@ -104,10 +105,11 @@
 		FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamViewModel.swift; sourceTree = "<group>"; };
 		FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
 		FFB1699D2BFFAC1300A9FC61 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
-		FFB1699F2BFFAF4200A9FC61 /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
+		FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerCard.swift; sourceTree = "<group>"; };
 		FFB169A12BFFB45900A9FC61 /* FantasyPointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FantasyPointLabel.swift; sourceTree = "<group>"; };
 		FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPlayersRow.swift; sourceTree = "<group>"; };
 		FFB169AE2C00B7B300A9FC61 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
+		FFB169B22C02328B00A9FC61 /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FFDA49192BE90E050078DFD2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FFE499572BF4CBBE0052CB64 /* TokenPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPair.swift; sourceTree = "<group>"; };
@@ -272,7 +274,7 @@
 			children = (
 				FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */,
 				FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */,
-				FFB1699F2BFFAF4200A9FC61 /* PlayerCard.swift */,
+				FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */,
 				FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */,
 			);
 			path = Team;
@@ -318,6 +320,7 @@
 				FF377B762BD61CE100697FE1 /* TournamentDetailView.swift */,
 				FFF535232BF4EA840066508C /* TournamentDetailViewModel.swift */,
 				FFFB699C2BFBA2A300DE48EC /* MatchCard.swift */,
+				FFB169B22C02328B00A9FC61 /* PlayerCard.swift */,
 				FFA63EAE2BFFAA60000C31A9 /* Team */,
 			);
 			path = TournamentDetail;
@@ -521,7 +524,7 @@
 				FF73D96A2BDC540800184A5B /* Dummies.swift in Sources */,
 				FFA63EB22BFFAA89000C31A9 /* EditTeamViewModel.swift in Sources */,
 				FF377B6E2BD5F51100697FE1 /* TournamentsAPI.swift in Sources */,
-				FFB169A02BFFAF4200A9FC61 /* PlayerCard.swift in Sources */,
+				FFB169A02BFFAF4200A9FC61 /* SelectPlayerCard.swift in Sources */,
 				FFB1699E2BFFAC1300A9FC61 /* PlayerModel.swift in Sources */,
 				FF377B672BD5E96100697FE1 /* RatingsView.swift in Sources */,
 				FFE4995C2BF4CC020052CB64 /* TransactionModel.swift in Sources */,
@@ -537,6 +540,7 @@
 				FF9D57E62BEB95BE005151A9 /* CardView.swift in Sources */,
 				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
+				FFB169B32C02328B00A9FC61 /* PlayerCard.swift in Sources */,
 				FF4DAB932BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift in Sources */,
 				FFFB699D2BFBA2A300DE48EC /* MatchCard.swift in Sources */,
 				FFE4996A2BF4CE6A0052CB64 /* SharedModels.swift in Sources */,
