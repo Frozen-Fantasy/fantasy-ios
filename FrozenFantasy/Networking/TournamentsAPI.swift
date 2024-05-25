@@ -16,6 +16,8 @@ enum TournamentsAPI: API {
     case getTeam(tournamentID: Int)
     case editTeam(tournamentID: Int, playerIDs: [Int], isNew: Bool)
 
+    case getTournamentResult(tournamentID: Int)
+
     var baseURL: String {
         Constants.API.baseURL + "/tournament"
     }
@@ -32,12 +34,14 @@ enum TournamentsAPI: API {
             "/team"
         case let .editTeam(tournamentID, _, isNew):
             "/team" + (isNew ? "/create" : "/edit") + "?tournamentID=\(tournamentID)"
+        case .getTournamentResult:
+            "/results"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getMatches, .getTournaments, .getRoster, .getTeam:
+        case .getMatches, .getTournaments, .getRoster, .getTeam, .getTournamentResult:
             .get
         case let .editTeam(_, _, isNew):
             isNew ? .post : .put
@@ -67,7 +71,8 @@ enum TournamentsAPI: API {
             return nil
 
         case let .getRoster(tournamentID),
-             let .getTeam(tournamentID):
+             let .getTeam(tournamentID),
+             let .getTournamentResult(tournamentID):
             return ["tournamentID": tournamentID]
 
         case let .editTeam(_, playerIDs, _):
@@ -77,7 +82,7 @@ enum TournamentsAPI: API {
 
     var encoding: ParameterEncoding {
         switch self {
-        case .getTournaments, .getMatches, .getRoster, .getTeam:
+        case .getTournaments, .getMatches, .getRoster, .getTeam, .getTournamentResult:
             URLEncoding.default
         case .editTeam:
             JSONEncoding.default

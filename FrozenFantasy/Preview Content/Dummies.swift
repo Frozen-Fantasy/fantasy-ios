@@ -81,9 +81,9 @@ extension Player: Dummy {
     static var dummy: Player = .init(
         name: "David Gustaffson",
         photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
+        sweaterNumber: 19,
 
         league: .NHL,
-        sweaterNumber: 19,
         position: .forward,
 
         teamName: "Winnipeg Jets",

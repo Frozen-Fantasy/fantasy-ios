@@ -37,3 +37,25 @@ struct Tournament: Codable, Identifiable, Equatable {
         case prizeFund = "prizeFond"
     }
 }
+
+struct TournamentResult: Codable {
+    var winner: String
+    var winnerPhoto: URL
+
+    var place: Int
+    var scoreFP: Int
+    var coinsWon: Int
+
+    var teamStats: [PlayerStats]
+
+    enum CodingKeys: String, CodingKey {
+        case winner = "nickname"
+        case winnerPhoto = "userPhoto"
+
+        case place
+        case scoreFP = "fantasyPoints"
+        case coinsWon = "coins"
+
+        case teamStats = "userTeam"
+    }
+}
