@@ -35,6 +35,15 @@
 		FFA43F532BEB9C600032F7CE /* PlayersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */; };
 		FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */; };
 		FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */; };
+		FFA63EB22BFFAA89000C31A9 /* EditTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */; };
+		FFA63EB42BFFAA95000C31A9 /* EditTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */; };
+		FFB1699E2BFFAC1300A9FC61 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1699D2BFFAC1300A9FC61 /* PlayerModel.swift */; };
+		FFB169A02BFFAF4200A9FC61 /* SelectPlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */; };
+		FFB169A22BFFB45900A9FC61 /* FantasyPointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169A12BFFB45900A9FC61 /* FantasyPointLabel.swift */; };
+		FFB169AA2C00AFF100A9FC61 /* SelectedPlayersRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */; };
+		FFB169AD2C00B6D200A9FC61 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = FFB169AC2C00B6D200A9FC61 /* SwiftUIIntrospect */; };
+		FFB169AF2C00B7B300A9FC61 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169AE2C00B7B300A9FC61 /* TabBarModifier.swift */; };
+		FFB169B32C02328B00A9FC61 /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169B22C02328B00A9FC61 /* PlayerCard.swift */; };
 		FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */; };
 		FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49192BE90E050078DFD2 /* DateExtension.swift */; };
 		FFE499582BF4CBBE0052CB64 /* TokenPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE499572BF4CBBE0052CB64 /* TokenPair.swift */; };
@@ -53,7 +62,7 @@
 		FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */; };
 		FFFA3C122B94B34C009429C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C112B94B34C009429C1 /* Assets.xcassets */; };
 		FFFA3C152B94B34C009429C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */; };
-		FFFB699D2BFBA2A300DE48EC /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB699C2BFBA2A300DE48EC /* MatchCardView.swift */; };
+		FFFB699D2BFBA2A300DE48EC /* MatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB699C2BFBA2A300DE48EC /* MatchCard.swift */; };
 		FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */; };
 		FFFCB9FE2BC67C8E00B5D151 /* Exo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FC2BC67C8A00B5D151 /* Exo2-Regular.ttf */; };
 		FFFCB9FF2BC67C8E00B5D151 /* Exo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */; };
@@ -93,6 +102,14 @@
 		FF9D57E02BEB8E50005151A9 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		FF9D57E52BEB95BE005151A9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersAPI.swift; sourceTree = "<group>"; };
+		FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamViewModel.swift; sourceTree = "<group>"; };
+		FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
+		FFB1699D2BFFAC1300A9FC61 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerCard.swift; sourceTree = "<group>"; };
+		FFB169A12BFFB45900A9FC61 /* FantasyPointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FantasyPointLabel.swift; sourceTree = "<group>"; };
+		FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPlayersRow.swift; sourceTree = "<group>"; };
+		FFB169AE2C00B7B300A9FC61 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
+		FFB169B22C02328B00A9FC61 /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FFDA49192BE90E050078DFD2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FFE499572BF4CBBE0052CB64 /* TokenPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPair.swift; sourceTree = "<group>"; };
@@ -110,7 +127,7 @@
 		FFFA3C0D2B94B34A009429C1 /* FrozenFantasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFantasyApp.swift; sourceTree = "<group>"; };
 		FFFA3C112B94B34C009429C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFFA3C142B94B34C009429C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FFFB699C2BFBA2A300DE48EC /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		FFFB699C2BFBA2A300DE48EC /* MatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCard.swift; sourceTree = "<group>"; };
 		FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		FFFCB9FA2BC67C8A00B5D151 /* Exo2-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Medium.ttf"; sourceTree = "<group>"; };
 		FFFCB9FB2BC67C8A00B5D151 /* Exo2-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -130,6 +147,7 @@
 				FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */,
 				FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */,
 				FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */,
+				FFB169AD2C00B6D200A9FC61 /* SwiftUIIntrospect in Frameworks */,
 				FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,8 +252,9 @@
 			children = (
 				FF4DAB8F2BD595A000CC0836 /* CustomTextField */,
 				FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */,
-				FFFDC1BF2BFCF27B0047F245 /* CoinLabel.swift */,
 				FFFDC1C12BFCF4DB0047F245 /* CustomLabel.swift */,
+				FFFDC1BF2BFCF27B0047F245 /* CoinLabel.swift */,
+				FFB169A12BFFB45900A9FC61 /* FantasyPointLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,6 +269,17 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		FFA63EAE2BFFAA60000C31A9 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */,
+				FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */,
+				FFB1699F2BFFAF4200A9FC61 /* SelectPlayerCard.swift */,
+				FFB169A92C00AFF100A9FC61 /* SelectedPlayersRow.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
 		FFE499562BF4CBA80052CB64 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +290,7 @@
 				FFE4995D2BF4CC5A0052CB64 /* CardModel.swift */,
 				FFE4995B2BF4CC020052CB64 /* TransactionModel.swift */,
 				FFF535252BF4EB0D0066508C /* MatchModel.swift */,
+				FFB1699D2BFFAC1300A9FC61 /* PlayerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,7 +319,9 @@
 			children = (
 				FF377B762BD61CE100697FE1 /* TournamentDetailView.swift */,
 				FFF535232BF4EA840066508C /* TournamentDetailViewModel.swift */,
-				FFFB699C2BFBA2A300DE48EC /* MatchCardView.swift */,
+				FFFB699C2BFBA2A300DE48EC /* MatchCard.swift */,
+				FFB169B22C02328B00A9FC61 /* PlayerCard.swift */,
+				FFA63EAE2BFFAA60000C31A9 /* Team */,
 			);
 			path = TournamentDetail;
 			sourceTree = "<group>";
@@ -353,6 +386,7 @@
 				FFFCB9F82BC67BAA00B5D151 /* FontExtension.swift */,
 				FFFCBA022BC6820E00B5D151 /* ColorExtension.swift */,
 				FFDA49192BE90E050078DFD2 /* DateExtension.swift */,
+				FFB169AE2C00B7B300A9FC61 /* TabBarModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +413,7 @@
 				FFE63A782BDC3A84005D8D50 /* KeychainSwift */,
 				FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */,
 				FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */,
+				FFB169AC2C00B6D200A9FC61 /* SwiftUIIntrospect */,
 			);
 			productName = FrozenFantasy;
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
@@ -413,6 +448,7 @@
 				FFE63A772BDC3A84005D8D50 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
+				FFB169AB2C00B6D200A9FC61 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = FFFA3C0B2B94B34A009429C1 /* Products */;
 			projectDirPath = "";
@@ -472,18 +508,24 @@
 				FFFCBA052BC686DB00B5D151 /* CustomTextField.swift in Sources */,
 				FF723A7E2B97104200AC2471 /* TokenManager.swift in Sources */,
 				FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */,
+				FFB169A22BFFB45900A9FC61 /* FantasyPointLabel.swift in Sources */,
 				FF377B772BD61CE100697FE1 /* TournamentDetailView.swift in Sources */,
 				FF73D96C2BDC5B4300184A5B /* TransactionsView.swift in Sources */,
 				FFF535242BF4EA840066508C /* TournamentDetailViewModel.swift in Sources */,
 				FFE4995E2BF4CC5A0052CB64 /* CardModel.swift in Sources */,
 				FF377B752BD613BE00697FE1 /* TournamentsViewModel.swift in Sources */,
+				FFA63EB42BFFAA95000C31A9 /* EditTeamView.swift in Sources */,
 				FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
 				FF377B692BD5E97A00697FE1 /* CollectionView.swift in Sources */,
+				FFB169AA2C00AFF100A9FC61 /* SelectedPlayersRow.swift in Sources */,
 				FF377B6B2BD5E98400697FE1 /* ProfileView.swift in Sources */,
 				FF723A8C2B972DB500AC2471 /* NetworkManager.swift in Sources */,
 				FF73D96A2BDC540800184A5B /* Dummies.swift in Sources */,
+				FFA63EB22BFFAA89000C31A9 /* EditTeamViewModel.swift in Sources */,
 				FF377B6E2BD5F51100697FE1 /* TournamentsAPI.swift in Sources */,
+				FFB169A02BFFAF4200A9FC61 /* SelectPlayerCard.swift in Sources */,
+				FFB1699E2BFFAC1300A9FC61 /* PlayerModel.swift in Sources */,
 				FF377B672BD5E96100697FE1 /* RatingsView.swift in Sources */,
 				FFE4995C2BF4CC020052CB64 /* TransactionModel.swift in Sources */,
 				FFF535262BF4EB0D0066508C /* MatchModel.swift in Sources */,
@@ -498,8 +540,9 @@
 				FF9D57E62BEB95BE005151A9 /* CardView.swift in Sources */,
 				FFFCB9F92BC67BAA00B5D151 /* FontExtension.swift in Sources */,
 				FF723A7C2B970EA700AC2471 /* Constants.swift in Sources */,
+				FFB169B32C02328B00A9FC61 /* PlayerCard.swift in Sources */,
 				FF4DAB932BD5BF6900CC0836 /* CustomTextFieldValidationManager.swift in Sources */,
-				FFFB699D2BFBA2A300DE48EC /* MatchCardView.swift in Sources */,
+				FFFB699D2BFBA2A300DE48EC /* MatchCard.swift in Sources */,
 				FFE4996A2BF4CE6A0052CB64 /* SharedModels.swift in Sources */,
 				FFFDC1C02BFCF27B0047F245 /* CoinLabel.swift in Sources */,
 				FF377B732BD5F99000697FE1 /* TournamentCard.swift in Sources */,
@@ -508,6 +551,7 @@
 				FFFDC1C22BFCF4DB0047F245 /* CustomLabel.swift in Sources */,
 				FF377B652BD5E94B00697FE1 /* TeamsView.swift in Sources */,
 				FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */,
+				FFB169AF2C00B7B300A9FC61 /* TabBarModifier.swift in Sources */,
 				FF4DAB8E2BD58FC100CC0836 /* ValidationModifier.swift in Sources */,
 				FF4DAB8B2BD56A8600CC0836 /* CustomTextFieldType.swift in Sources */,
 				FFFCBA032BC6820E00B5D151 /* ColorExtension.swift in Sources */,
@@ -650,6 +694,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrozenFantasy/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -687,6 +732,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrozenFantasy/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -751,6 +797,14 @@
 				minimumVersion = 1.7.0;
 			};
 		};
+		FFB169AB2C00B6D200A9FC61 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.4;
+			};
+		};
 		FFE63A742BDC3A78005D8D50 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -779,6 +833,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
 			productName = SDWebImageSVGCoder;
+		};
+		FFB169AC2C00B6D200A9FC61 /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB169AB2C00B6D200A9FC61 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 		FFE63A752BDC3A78005D8D50 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Status: String, Codable {
     case notStarted = "not_yet_started",
@@ -51,6 +52,34 @@ enum Position: Int, Codable, CaseIterable {
             "Защитник"
         case .forward:
             "Нападающий"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .goaltender:
+            .customBlack
+        case .defender:
+            .customBlue
+        case .forward:
+            .customOrange
+        }
+    }
+}
+
+enum Rarity: Int, Codable, CaseIterable {
+    case none = 0,
+         silver = 1,
+         gold = 2
+
+    var color: Color {
+        switch self {
+        case .none:
+            .clear
+        case .silver:
+            .customGray
+        case .gold:
+            .customYellow
         }
     }
 }

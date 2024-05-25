@@ -1,16 +1,16 @@
 //
-//  CoinLabel.swift
+//  FantasyPointLabel.swift
 //  FrozenFantasy
 //
-//  Created by Никита Сигал on 21.05.2024.
+//  Created by Никита Сигал on 23.05.2024.
 //
 
 import SwiftUI
 
-struct CoinLabel: View {
-    let value: Int
+struct FantasyPointLabel: View {
+    let value: Double
 
-    init(_ value: Int) {
+    init(_ value: Double) {
         self.value = value
     }
 
@@ -20,17 +20,17 @@ struct CoinLabel: View {
                 .font(.customBodyMedium1)
                 .foregroundStyle(.customBlack)
         } icon: {
-            Image("icon:coins")
+            Image("icon:points")
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 19)
-                .foregroundStyle(.customYellow)
+                .foregroundStyle(.customBlue)
         }
         .labelStyle(.titleAndIcon)
     }
 }
 
 #Preview {
-    CoinLabel(1234567890)
+    FantasyPointLabel(1234567890)
 }
