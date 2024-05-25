@@ -13,6 +13,9 @@ enum TournamentsAPI: API {
     case getMatches(tournamentID: Int)
     case getRoster(tournamentID: Int)
 
+    case getTeam(tournamentID: Int)
+    case editTeam(tournamentID: Int, playerIDs: [Int], isNew: Bool)
+
     var baseURL: String {
         Constants.API.baseURL + "/tournament"
     }
@@ -25,13 +28,19 @@ enum TournamentsAPI: API {
             "/matches_by_tournament_id/\(tournamentID)"
         case .getRoster:
             "/roster"
+        case .getTeam:
+            "/team"
+        case let .editTeam(tournamentID, _, isNew):
+            "/team" + (isNew ? "/create" : "/edit") + "?tournamentID=\(tournamentID)"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getMatches, .getTournaments, .getRoster:
+        case .getMatches, .getTournaments, .getRoster, .getTeam:
             .get
+        case let .editTeam(_, _, isNew):
+            isNew ? .post : .put
         }
     }
 
@@ -53,26 +62,31 @@ enum TournamentsAPI: API {
             }
 
             return parameters
+
         case .getMatches:
             return nil
-        case let .getRoster(tournamentID):
+
+        case let .getRoster(tournamentID),
+             let .getTeam(tournamentID):
             return ["tournamentID": tournamentID]
+
+        case let .editTeam(_, playerIDs, _):
+            return ["team": playerIDs]
         }
     }
 
     var encoding: ParameterEncoding {
         switch self {
-        case .getTournaments, .getMatches, .getRoster:
+        case .getTournaments, .getMatches, .getRoster, .getTeam:
             URLEncoding.default
+        case .editTeam:
+            JSONEncoding.default
         }
     }
 
     var headers: HTTPHeaders {
-        switch self {
-        case .getTournaments, .getMatches, .getRoster:
-            [.contentType("application/json"),
-             TokenManager.shared.authHeader]
-        }
+        [.contentType("application/json"),
+         TokenManager.shared.authHeader]
     }
 
     var url: String {

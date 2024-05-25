@@ -11,6 +11,7 @@ struct TournamentDetailView: View {
     @StateObject var viewModel = TournamentDetailViewModel()
 
     let tournament: Tournament
+
     init(_ tournament: Tournament) {
         self.tournament = tournament
     }
@@ -23,9 +24,9 @@ struct TournamentDetailView: View {
 
                 Button {} label: {
                     NavigationLink {
-                        TeamView(for: tournament.id)
+                        EditTeamView(for: tournament)
                     } label: {
-                        Text("Участвовать")
+                        Text(tournament.participating ? "Изменить состав" : "Участвовать")
                     }
                 }
                 .buttonStyle(.custom)
@@ -43,8 +44,6 @@ struct TournamentDetailView: View {
         }
         .isTabBarVisible(true)
     }
-
-    // MARK: INf
 
     var info: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -129,7 +128,7 @@ struct TournamentDetailView: View {
 
             VStack(spacing: 16) {
                 ForEach(viewModel.matches) { match in
-                    MatchCardView(match)
+                    MatchCard(match)
                 }
             }
         }

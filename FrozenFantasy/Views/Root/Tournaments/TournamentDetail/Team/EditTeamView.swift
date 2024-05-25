@@ -1,5 +1,5 @@
 //
-//  TeamView.swift
+//  EditTeamView.swift
 //  FrozenFantasy
 //
 //  Created by Никита Сигал on 23.05.2024.
@@ -8,14 +8,15 @@
 import SwiftUI
 import SwiftUIIntrospect
 
-struct TeamView: View {
-    let tournamentID: Int
+struct EditTeamView: View {
+    @StateObject private var viewModel = EditTeamViewModel()
+    @Environment(\.dismiss) private var dismiss
 
-    init(for tournamentID: Int) {
-        self.tournamentID = tournamentID
+    let tournament: Tournament
+
+    init(for tournament: Tournament) {
+        self.tournament = tournament
     }
-
-    @StateObject var viewModel = TeamViewModel()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -32,7 +33,7 @@ struct TeamView: View {
 
                     ForEach(viewModel.visiblePlayers) { player in
                         PlayerCard(player, isSelected: viewModel.createBinding(for: player))
-                            .disabled(!viewModel.isEnabled(player))
+                            .disabled(!viewModel.isAvailable(player: player))
                     }
                 }
                 .padding(.horizontal, 16)
@@ -54,30 +55,45 @@ struct TeamView: View {
 
                     Spacer()
 
-                    Text("\(viewModel.currentBudget.formatted(.currency(code: "USD"))) / \(Constants.Tournaments.maxBudget.formatted(.currency(code: "USD")))")
-                        .font(.customBody1)
-                        .foregroundStyle(.customBlack)
+                    Text(viewModel.currentBudget.formatted(.currency(code: "USD"))
+                            + " / "
+                            + Constants.Tournaments.maxBudget.formatted(.currency(code: "USD"))
+                    )
+                    .font(.customBody1)
+                    .foregroundStyle(.customBlack)
                 }
 
                 SelectedPlayersRow(Array(viewModel.selectedPlayers))
 
-                Button {} label: {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("Зарегистрироваться")
-
-                        Label {
-                            Text(100.formatted())
-                                .font(.customBodyMedium1)
-                                .foregroundStyle(.white)
-                        } icon: {
-                            Image("icon:coins")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 19)
-                                .foregroundStyle(.customYellow)
+                Button {
+                    Task {
+                        if await viewModel.setTeam(isNew: !tournament.participating) {
+                            await MainActor.run {
+                                dismiss()
+                            }
                         }
-                        .labelStyle(.titleAndIcon)
+                    }
+                } label: {
+                    if tournament.participating {
+                        Text("Сохранить изменения")
+                    } else {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text("Зарегистрироваться")
+
+                            Label {
+                                Text(tournament.deposit.formatted())
+                                    .font(.customBodyMedium1)
+                                    .foregroundStyle(.white)
+                            } icon: {
+                                Image("icon:coins")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 19)
+                                    .foregroundStyle(.customYellow)
+                            }
+                            .labelStyle(.titleAndIcon)
+                        }
                     }
                 }
                 .buttonStyle(.custom)
@@ -91,12 +107,15 @@ struct TeamView: View {
             .shadow(color: .black.opacity(0.1), radius: 16, x: 0, y: 0)
             .mask(Rectangle().padding(.top, -40))
         }
-        .navigationTitle("Соберите команду")
+        .navigationTitle(tournament.participating ? "Измените команду" : "Соберите команду")
         .animation(.default, value: viewModel.visiblePlayers)
         .animation(.default, value: viewModel.selectedPlayers)
         .task {
-            viewModel.tournamentID = tournamentID
+            viewModel.tournamentID = tournament.id
             await viewModel.fetchPlayers()
+            if tournament.participating {
+                await viewModel.fetchTeam()
+            }
         }
         .isTabBarVisible(false)
     }
@@ -104,6 +123,6 @@ struct TeamView: View {
 
 #Preview {
     NavigationView {
-        TeamView(for: 0)
+        EditTeamView(for: .dummy)
     }
 }

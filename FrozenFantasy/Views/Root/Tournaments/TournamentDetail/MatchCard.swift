@@ -1,5 +1,5 @@
 //
-//  MatchCardView.swift
+//  MatchCard.swift
 //  FrozenFantasy
 //
 //  Created by Никита Сигал on 20.05.2024.
@@ -8,7 +8,7 @@
 import SDWebImageSwiftUI
 import SwiftUI
 
-struct MatchCardView: View {
+struct MatchCard: View {
     let match: Match
 
     init(_ match: Match) {
@@ -93,13 +93,13 @@ struct MatchCardView: View {
 
 #Preview {
     VStack {
-        MatchCardView(.dummy)
-        MatchCardView({
+        MatchCard(.dummy)
+        MatchCard({
             var match: Match = .dummy
             match.status = .started
             return match
         }())
-        MatchCardView({
+        MatchCard({
             var match: Match = .dummy
             match.status = .finished
             return match

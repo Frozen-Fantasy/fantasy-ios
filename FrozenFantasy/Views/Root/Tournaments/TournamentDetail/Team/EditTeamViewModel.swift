@@ -1,5 +1,5 @@
 //
-//  TeamViewModel.swift
+//  EditTeamViewModel.swift
 //  FrozenFantasy
 //
 //  Created by Никита Сигал on 23.05.2024.
@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-final class TeamViewModel: ObservableObject {
+final class EditTeamViewModel: ObservableObject {
     var tournamentID: Int = 0
 
     @Published var selectedPosition: Position?
-    @Published var currentBudget = Constants.Tournaments.maxBudget
 
     @MainActor @Published var players: Players = []
     @MainActor @Published var selectedPlayers: Set<Player> = .init()
@@ -43,12 +42,46 @@ final class TeamViewModel: ObservableObject {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
+
+    func fetchTeam() async {
+        do {
+            let data = try await NetworkManager.shared.request(
+                from: TournamentsAPI.getTeam(tournamentID: tournamentID),
+                expecting: Roster.self
+            ).players
+            await MainActor.run {
+                selectedPlayers = .init(data)
+            }
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
+        }
+    }
+
+    func setTeam(isNew: Bool) async -> Bool {
+        do {
+            try await NetworkManager.shared.request(
+                from: TournamentsAPI.editTeam(
+                    tournamentID: tournamentID,
+                    playerIDs: selectedPlayers.map { $0.id },
+                    isNew: isNew
+                )
+            )
+            return true
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
+            return false
+        }
+    }
 }
 
 // MARK: Selection Management
 
-extension TeamViewModel {
-    @MainActor private func canContain(_ position: Position) -> Bool {
+extension EditTeamViewModel {
+    @MainActor var currentBudget: Double {
+        Constants.Tournaments.maxBudget - selectedPlayers.reduce(into: 0) { acc, player in acc += player.cost}
+    }
+
+    @MainActor private func isNeeded(position: Position) -> Bool {
         selectedPlayers.filter { $0.position == position }.count < position.rawValue
     }
 
@@ -60,18 +93,16 @@ extension TeamViewModel {
         player.cost <= currentBudget
     }
 
-    @MainActor func isEnabled(_ player: Player) -> Bool {
-        isSelected(player) || canContain(player.position) && isAffordable(player)
+    @MainActor func isAvailable(player: Player) -> Bool {
+        isSelected(player) || isNeeded(position: player.position) && isAffordable(player)
     }
 
     @MainActor private func addPlayer(_ player: Player) {
         selectedPlayers.insert(player)
-        currentBudget -= player.cost
     }
 
     @MainActor private func removePlayer(_ player: Player) {
         selectedPlayers.remove(player)
-        currentBudget += player.cost
     }
 
     @MainActor func createBinding(for player: Player) -> Binding<Bool> {
