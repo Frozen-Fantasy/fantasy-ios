@@ -94,3 +94,41 @@ extension Player: Dummy {
         rarity: .silver
     )
 }
+
+extension PlayerStats: Dummy {
+    static var dummy: PlayerStats = .init(
+        name: "David Gustaffson",
+        photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
+        //        sweaterNumber: 19,
+
+        position: .forward,
+
+        teamName: "Winnipeg Jets",
+        teamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/WPG_light.svg")!,
+
+        rarity: .silver,
+        scoreFP: 36,
+
+        goals: 0,
+        assists: 0,
+        shots: 0,
+        pims: 0,
+        hits: 0,
+        saves: 0,
+        missed: 0,
+        shutout: false
+    )
+}
+
+extension TournamentResult: Dummy {
+    static var dummy: TournamentResult = .init(
+        nickname: "drunkvermicelli",
+        photo: URL(string: "https://cdn1.iconfinder.com/data/icons/sport-avatar-6/64/15-hockey_player-sport-hockey-avatar-people-256.png")!,
+
+        place: 1,
+        scoreFP: 36,
+        coinsWon: 5000,
+
+        teamStats: [.dummy]
+    )
+}

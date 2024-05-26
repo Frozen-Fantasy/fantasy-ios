@@ -7,8 +7,19 @@
 
 import Foundation
 
+protocol PlayerCommon {
+    var name: String { get }
+    var photo: URL { get }
+    var position: Position { get }
+    //    var sweaterNumber: Int { get }
+    var rarity: Rarity { get }
+
+    var teamName: String { get }
+    var teamLogo: URL { get }
+}
+
 typealias Players = [Player]
-struct Player: Identifiable, Codable, Equatable, Hashable {
+struct Player: PlayerCommon, Identifiable, Codable, Equatable, Hashable {
     var id: Int = UUID().hashValue
     var name: String
     var photo: URL
@@ -46,13 +57,12 @@ struct Roster: Codable {
     var players: Players
 }
 
-struct PlayerStats: Identifiable, Codable {
+struct PlayerStats: PlayerCommon, Identifiable, Codable, Equatable {
     var id: Int = UUID().hashValue
     var name: String
     var photo: URL
-    var sweaterNumber: Int
+    //    var sweaterNumber: Int
 
-    var league: League
     var position: Position
 
     var teamName: String
@@ -62,7 +72,7 @@ struct PlayerStats: Identifiable, Codable {
     var scoreFP: Double
 
     var goals: Int
-    var assits: Int
+    var assists: Int
     var shots: Int
     var pims: Int
     var hits: Int
@@ -74,9 +84,8 @@ struct PlayerStats: Identifiable, Codable {
         case id = "playerID"
         case name
         case photo
-        case sweaterNumber
+        //        case sweaterNumber
 
-        case league
         case position
 
         case teamName
@@ -86,12 +95,12 @@ struct PlayerStats: Identifiable, Codable {
         case scoreFP = "fantasyPoint"
 
         case goals
-        case assits
+        case assists
         case shots
         case pims
         case hits
         case saves
-        case missed
+        case missed = "missedGoals"
         case shutout
     }
 }

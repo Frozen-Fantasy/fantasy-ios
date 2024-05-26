@@ -16,7 +16,11 @@ struct TournamentsView: View {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.tournaments) { tournament in
                         NavigationLink {
-                            TournamentDetailView(tournament)
+                            if tournament.status == .finished {
+                                TournamentResultView(of: tournament)
+                            } else {
+                                TournamentDetailView(tournament)
+                            }
                         } label: {
                             TournamentCard(tournament)
                         }
