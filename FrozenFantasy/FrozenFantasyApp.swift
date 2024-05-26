@@ -66,5 +66,9 @@ struct FrozenFantasyApp: App {
 extension FrozenFantasyApp {
     func setupDependencies() {
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
+
+        let cache = SDImageCache()
+        SDImageCachesManager.shared.addCache(cache)
+        SDWebImageManager.defaultImageCache = SDImageCachesManager.shared
     }
 }

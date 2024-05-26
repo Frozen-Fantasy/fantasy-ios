@@ -61,19 +61,23 @@ extension Match: Dummy {
     )
 }
 
-extension Card: Dummy {
-    static var dummy: Card = .init(
+extension CollectionCard: Dummy {
+    static var dummy: CollectionCard = .init(
+        name: "David Gustaffson",
+        photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
+        sweaterNumber: 19,
+
+        league: .NHL,
+        position: .forward,
+
         rarity: .silver,
         bonusMetric: 3,
         bonusMetricName: "Голы",
         multiplicator: 1.25,
         unpacked: true,
-        name: "David Gustaffson",
-        sweaterNumber: 19,
-        photo: URL(string: "https://assets.nhle.com/mugs/nhl/20232024/WPG/8481019.png")!,
+
         teamName: "Winnipeg Jets",
-        position: .forward,
-        league: .NHL
+        teamLogo: URL(string: "https://assets.nhle.com/logos/nhl/svg/WPG_light.svg")!
     )
 }
 

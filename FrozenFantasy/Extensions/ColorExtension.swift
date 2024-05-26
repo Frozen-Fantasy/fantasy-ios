@@ -37,6 +37,7 @@ public extension Color {
     static let customRed = Color(hex: 0xEC4034)
 
     static let customYellow = Color(hex: 0xFDB935)
+    static let customSilver = Color(hex: 0x6F6F6F)
 }
 
 extension ShapeStyle where Self == Color {
@@ -50,6 +51,7 @@ extension ShapeStyle where Self == Color {
     static var customRed: Self { .customRed }
 
     static var customYellow: Self { .customYellow }
+    static var customSilver: Self { .customSilver }
 }
 
 #Preview {
