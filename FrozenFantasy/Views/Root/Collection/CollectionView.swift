@@ -13,11 +13,11 @@ struct CollectionView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
-                    LazyVGrid(columns: [GridItem(), GridItem()]) {
-                        ForEach(viewModel.cards) { card in
-                            CardView(card: card)
-                        }
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 12),
+                                    GridItem(.flexible(), spacing: 12)],
+                          spacing: 12) {
+                    ForEach(viewModel.cards) { card in
+                        CollectionCardView(card: card)
                     }
                 }
                 .padding(16)
@@ -29,6 +29,11 @@ struct CollectionView: View {
             }
             .refreshable {
                 await viewModel.fetchCards()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    CoinLabel(viewModel.coins)
+                }
             }
         }
     }

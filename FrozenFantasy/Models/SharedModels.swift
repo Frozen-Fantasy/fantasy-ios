@@ -77,7 +77,7 @@ enum Rarity: Int, Codable, CaseIterable {
         case .none:
             .clear
         case .silver:
-            .customGray
+            .customSilver
         case .gold:
             .customYellow
         }
