@@ -12,6 +12,17 @@ final class TournamentDetailViewModel: ObservableObject {
     @MainActor @Published var matches: Matches = []
     @MainActor @Published var players: Players = []
 
+    func fetchAll() async {
+        guard let tournament = await tournament else { return }
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { await self.fetchTournament() }
+            group.addTask { await self.fetchMatches() }
+            if tournament.participating {
+                group.addTask { await self.fetchTeam() }
+            }
+        }
+    }
+
     func fetchTournament() async {
         guard let tournamentID = await tournament?.id else { return }
         do {

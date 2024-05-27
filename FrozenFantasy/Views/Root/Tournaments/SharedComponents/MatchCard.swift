@@ -22,14 +22,20 @@ struct MatchCard: View {
         }
     }
 
-    private var statusText: String {
+    private var statusLabel: some View {
         switch match.status {
         case .notStarted:
-            match.startsAt.formatted(date: .long, time: .shortened)
-        case .started:
-            "Идет сейчас"
-        case .finished:
-            "Завершён"
+            Text(match.startsAt.formatted(date: .long, time: .shortened))
+                .font(.customCaption1)
+                .foregroundStyle(.customBlue)
+        case .started where match.endsAt > .now:
+            Text("Идет сейчас")
+                .font(.customCaption1)
+                .foregroundStyle(.customGreen)
+        case .started, .finished:
+            Text("Завершён")
+                .font(.customCaption1)
+                .foregroundStyle(.customGray)
         }
     }
 
@@ -58,9 +64,8 @@ struct MatchCard: View {
                     Spacer()
                 }
 
-                Text(statusText)
+                statusLabel
                     .font(.customCaption1)
-                    .foregroundStyle(match.status == .started ? .customGreen : .customGray)
             }
 
             CustomImage(url: match.awayTeamLogo) { image in
@@ -91,6 +96,12 @@ struct MatchCard: View {
         MatchCard({
             var match: Match = .dummy
             match.status = .finished
+            return match
+        }())
+        MatchCard({
+            var match: Match = .dummy
+            match.homeTeamLogo = URL(string: "https://example.com")!
+            match.awayTeamLogo = URL(string: "https://example.com")!
             return match
         }())
     }
