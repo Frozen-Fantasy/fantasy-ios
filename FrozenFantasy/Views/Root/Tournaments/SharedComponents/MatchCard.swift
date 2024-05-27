@@ -5,7 +5,6 @@
 //  Created by Никита Сигал on 20.05.2024.
 //
 
-import SDWebImageSwiftUI
 import SwiftUI
 
 struct MatchCard: View {
@@ -36,14 +35,9 @@ struct MatchCard: View {
 
     var body: some View {
         HStack(spacing: 0) {
-            WebImage(url: match.homeTeamLogo) { image in
+            CustomImage(url: match.homeTeamLogo) { image in
                 image.resizable()
-            } placeholder: {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
             }
-            .antialiased(true)
-            .transition(.fade)
             .aspectRatio(1.5, contentMode: .fit)
             .frame(height: 48)
             .padding(4)
@@ -69,14 +63,9 @@ struct MatchCard: View {
                     .foregroundStyle(match.status == .started ? .customGreen : .customGray)
             }
 
-            WebImage(url: match.awayTeamLogo) { image in
+            CustomImage(url: match.awayTeamLogo) { image in
                 image.resizable()
-            } placeholder: {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
             }
-            .antialiased(true)
-            .transition(.fade)
             .aspectRatio(1.5, contentMode: .fit)
             .frame(height: 48)
             .padding(4)
