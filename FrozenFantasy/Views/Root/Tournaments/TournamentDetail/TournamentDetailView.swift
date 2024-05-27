@@ -32,7 +32,7 @@ struct TournamentDetailView: View {
                         NavigationLink {
                             EditTeamView(of: tournament)
                         } label: {
-                            Text("Участвовать")
+                            Text("Собрать команду")
                         }
                     }
                     .buttonStyle(.custom)
@@ -45,18 +45,10 @@ struct TournamentDetailView: View {
         .animation(.default.speed(1.5), value: viewModel.players)
         .task {
             viewModel.tournament = tournament
-            await viewModel.fetchTournament()
-            await viewModel.fetchMatches()
-            if tournament.participating {
-                await viewModel.fetchTeam()
-            }
+            await viewModel.fetchAll()
         }
         .refreshable {
-            await viewModel.fetchTournament()
-            await viewModel.fetchMatches()
-            if tournament.participating {
-                await viewModel.fetchTeam()
-            }
+            await viewModel.fetchAll()
         }
         .isTabBarVisible(true)
     }

@@ -5,9 +5,9 @@
 //  Created by Никита Сигал on 03.03.2024.
 //
 
-import SwiftUI
 import SDWebImage
 import SDWebImageSVGCoder
+import SwiftUI
 
 @MainActor final class AppState: ObservableObject {
     static let shared = AppState()
