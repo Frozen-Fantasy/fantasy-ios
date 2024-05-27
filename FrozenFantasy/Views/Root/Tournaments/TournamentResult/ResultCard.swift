@@ -30,14 +30,10 @@ struct ResultCard: View {
                     .frame(width: 32)
             }
 
-            AsyncImage(url: result.photo) { image in
+            CustomImage(url: result.photo) { image in
                 image
                     .resizable()
                     .background(.white)
-            } placeholder: {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.black.opacity(0.1))
             }
             .scaledToFit()
             .clipShape(Circle())

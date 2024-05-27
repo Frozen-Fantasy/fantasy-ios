@@ -5,7 +5,6 @@
 //  Created by Никита Сигал on 08.05.2024.
 //
 
-import SDWebImageSwiftUI
 import SwiftUI
 
 struct CollectionCardView: View {
@@ -19,7 +18,7 @@ struct CollectionCardView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .top) {
-                AsyncImage(url: card.photo) { image in
+                CustomImage(url: card.photo) { image in
                     GeometryReader { geometry in
                         image
                             .resizable()
@@ -28,9 +27,6 @@ struct CollectionCardView: View {
                                    height: geometry.size.height,
                                    alignment: .top)
                     }
-                } placeholder: {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
 
                 HStack(alignment: .top) {
@@ -39,9 +35,11 @@ struct CollectionCardView: View {
                             .resizable()
                             .scaledToFit()
 
-                        WebImage(url: card.teamLogo)
-                            .resizable()
-                            .scaledToFit()
+                        CustomImage(url: card.teamLogo) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                     .frame(width: 40)
                     .padding(4)

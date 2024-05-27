@@ -21,10 +21,8 @@ struct SelectedPlayersRow: View {
         HStack(spacing: 8) {
             ForEach(players) { player in
                 VStack(spacing: 4) {
-                    AsyncImage(url: player.photo) { image in
+                    CustomImage(url: player.photo) { image in
                         image.resizable()
-                    } placeholder: {
-                        Color.black.opacity(0.1)
                     }
                     .background(.white)
                     .aspectRatio(1, contentMode: .fit)

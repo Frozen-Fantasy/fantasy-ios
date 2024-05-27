@@ -65,12 +65,10 @@ struct ProfileView: View {
     private var headerView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 32) {
-                AsyncImage(url: viewModel.user?.photo) { image in
+                CustomImage(url: viewModel.user?.photo) { image in
                     image
                         .resizable()
                         .scaledToFit()
-                } placeholder: {
-                    ProgressView()
                 }
                 .clipShape(Circle())
                 .shadow(color: .black.opacity(0.2), radius: 8, x: 2, y: 2)

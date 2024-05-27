@@ -21,15 +21,12 @@ struct SelectPlayerCard: View {
     var body: some View {
         HStack(spacing: 16) {
             ZStack(alignment: .topTrailing) {
-                AsyncImage(url: player.photo) { image in
+                CustomImage(url: player.photo) { image in
                     image
                         .resizable()
                         .scaledToFit()
-                } placeholder: {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .aspectRatio(1, contentMode: .fit)
                 }
+                .aspectRatio(1, contentMode: .fit)
 
                 VStack(spacing: 2) {
                     Text(player.position.abbreviation)

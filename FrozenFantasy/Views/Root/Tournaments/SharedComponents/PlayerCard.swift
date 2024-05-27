@@ -5,7 +5,6 @@
 //  Created by Никита Сигал on 25.05.2024.
 //
 
-import SDWebImageSwiftUI
 import SwiftUI
 
 struct PlayerCard: View {
@@ -19,15 +18,12 @@ struct PlayerCard: View {
         VStack(spacing: 0) {
             HStack(spacing: 16) {
                 ZStack(alignment: .topTrailing) {
-                    AsyncImage(url: player.photo) { image in
+                    CustomImage(url: player.photo) { image in
                         image
                             .resizable()
                             .scaledToFit()
-                    } placeholder: {
-                        ProgressView()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .aspectRatio(1, contentMode: .fit)
                     }
+                    .aspectRatio(1, contentMode: .fit)
 
                     VStack(spacing: 2) {
                         Text(player.position.abbreviation)
@@ -66,13 +62,9 @@ struct PlayerCard: View {
                     }
 
                     HStack(spacing: 4) {
-                        WebImage(url: player.teamLogo) { image in
+                        CustomImage(url: player.teamLogo) { image in
                             image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
                         }
-                        .antialiased(true)
                         .transition(.fade)
                         .aspectRatio(1.5, contentMode: .fit)
 
