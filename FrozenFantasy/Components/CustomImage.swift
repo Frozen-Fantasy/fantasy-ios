@@ -5,8 +5,15 @@
 //  Created by Никита Сигал on 27.05.2024.
 //
 
+import CachedAsyncImage
 import SDWebImageSwiftUI
 import SwiftUI
+
+extension URLCache {
+    static let imageCache = URLCache(
+        memoryCapacity: 256*1000*1000,
+        diskCapacity: 1000*1000*1000)
+}
 
 struct CustomImage<Content>: View where Content: View {
     let url: URL?
@@ -27,7 +34,7 @@ struct CustomImage<Content>: View where Content: View {
                     .background(.black.opacity(0.05))
             }
         } else {
-            AsyncImage(url: url) { image in
+            CachedAsyncImage(url: url) { image in
                 content(image)
             } placeholder: {
                 ProgressView()
