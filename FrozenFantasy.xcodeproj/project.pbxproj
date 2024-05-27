@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF22B4292C0409DE0097A398 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FF22B4282C0409DE0097A398 /* CachedAsyncImage */; };
 		FF377B612BD5E60B00697FE1 /* RootTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B602BD5E60B00697FE1 /* RootTabBarView.swift */; };
 		FF377B632BD5E65600697FE1 /* TournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B622BD5E65600697FE1 /* TournamentsView.swift */; };
 		FF377B652BD5E94B00697FE1 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF377B642BD5E94B00697FE1 /* TeamsView.swift */; };
@@ -161,6 +162,7 @@
 				FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */,
 				FFE63A792BDC3A84005D8D50 /* KeychainSwift in Frameworks */,
 				FFE63A762BDC3A78005D8D50 /* Alamofire in Frameworks */,
+				FF22B4292C0409DE0097A398 /* CachedAsyncImage in Frameworks */,
 				FFB169AD2C00B6D200A9FC61 /* SwiftUIIntrospect in Frameworks */,
 				FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */,
 			);
@@ -451,6 +453,7 @@
 				FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */,
 				FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */,
 				FFB169AC2C00B6D200A9FC61 /* SwiftUIIntrospect */,
+				FF22B4282C0409DE0097A398 /* CachedAsyncImage */,
 			);
 			productName = FrozenFantasy;
 			productReference = FFFA3C0A2B94B34A009429C1 /* FrozenFantasy.app */;
@@ -486,6 +489,7 @@
 				FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				FFA63EAB2BFF461F000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 				FFB169AB2C00B6D200A9FC61 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				FF22B4272C0409DE0097A398 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = FFFA3C0B2B94B34A009429C1 /* Products */;
 			projectDirPath = "";
@@ -825,6 +829,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FF22B4272C0409DE0097A398 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
 		FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -868,6 +880,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FF22B4282C0409DE0097A398 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF22B4272C0409DE0097A398 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
 		FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FFA63EA82BFF4379000C31A9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
