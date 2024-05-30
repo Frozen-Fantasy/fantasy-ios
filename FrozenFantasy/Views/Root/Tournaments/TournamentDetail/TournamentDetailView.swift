@@ -41,6 +41,7 @@ struct TournamentDetailView: View {
             .padding(16)
         }
         .navigationTitle(tournament.title)
+        .animation(.default.speed(1.5), value: tournament)
         .animation(.default.speed(1.5), value: viewModel.matches)
         .animation(.default.speed(1.5), value: viewModel.players)
         .task {
