@@ -37,7 +37,9 @@ final class TournamentDetailViewModel: ObservableObject {
             await MainActor.run {
                 tournament = data
             }
-
+            if data.participating {
+                await fetchTeam()
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
