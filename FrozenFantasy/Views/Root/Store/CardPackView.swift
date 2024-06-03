@@ -16,12 +16,9 @@ struct CardPackView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            CustomImage(url: cardPack.image) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            }
-            .aspectRatio(1.3, contentMode: .fit)
+            Image("cardpack:\(cardPack.league.title.lowercased()):\(cardPack.rarity.string)")
+                .resizable()
+                .scaledToFit()
 
             ZStack(alignment: .leading) {
                 Text("\n\n")
@@ -37,7 +34,7 @@ struct CardPackView: View {
 
             HStack(alignment: .firstTextBaseline) {
                 CustomLabel(cardPack.cardCount.formatted(), image: "icon:cards")
-                    .foregroundColor(cardPack.rariry.color)
+                    .foregroundColor(cardPack.rarity.color)
                 Spacer()
                 CoinLabel(cardPack.price)
                 Spacer()
@@ -64,7 +61,7 @@ struct CardPackView: View {
             cardCount: 3,
             price: 700,
             league: .NHL,
-            rariry: .gold
+            rarity: .gold
         ))
     }
     .padding()

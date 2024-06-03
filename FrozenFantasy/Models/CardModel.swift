@@ -61,7 +61,7 @@ struct CollectionCardPack: Codable, Identifiable, Equatable {
     var price: Int
 
     var league: League
-    var rariry: Rarity
+    var rarity: Rarity
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -71,6 +71,6 @@ struct CollectionCardPack: Codable, Identifiable, Equatable {
         case price
 
         case league
-        case rariry
+        case rarity
     }
 }

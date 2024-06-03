@@ -11,8 +11,24 @@ final class StoreViewModel: ObservableObject {
     @MainActor @Published var cardPacks: [CollectionCardPack] = []
 
     func fetchCardPacks() async {
-        await MainActor.run {
-            cardPacks = [.dummy]
+        do {
+            let data = try await NetworkManager.shared.request(
+                from: StoreAPI.getProducts,
+                expecting: [CollectionCardPack].self)
+            await MainActor.run {
+                cardPacks = data
+            }
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
+        }
+    }
+
+    func buyCardPack(id: Int) async {
+        do {
+            try await NetworkManager.shared.request(
+                from: StoreAPI.buyProduct(id: id))
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
 }

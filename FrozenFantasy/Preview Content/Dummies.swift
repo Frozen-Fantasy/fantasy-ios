@@ -144,5 +144,5 @@ extension CollectionCardPack: Dummy {
         cardCount: 3,
         price: 500,
         league: .KHL,
-        rariry: .silver)
+        rarity: .silver)
 }

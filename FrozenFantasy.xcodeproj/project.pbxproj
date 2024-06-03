@@ -54,6 +54,7 @@
 		FFB169B32C02328B00A9FC61 /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB169B22C02328B00A9FC61 /* PlayerCard.swift */; };
 		FFB33C1B2C0DD2E800521621 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB33C1A2C0DD2E800521621 /* StoreViewModel.swift */; };
 		FFB33C1D2C0DD4F700521621 /* CardPackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB33C1C2C0DD4F700521621 /* CardPackView.swift */; };
+		FFB33C212C0DE98000521621 /* StoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB33C202C0DE98000521621 /* StoreAPI.swift */; };
 		FFDA49182BE908070078DFD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */; };
 		FFDA491A2BE90E050078DFD2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA49192BE90E050078DFD2 /* DateExtension.swift */; };
 		FFE499582BF4CBBE0052CB64 /* TokenPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE499572BF4CBBE0052CB64 /* TokenPair.swift */; };
@@ -129,6 +130,7 @@
 		FFB169B22C02328B00A9FC61 /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		FFB33C1A2C0DD2E800521621 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
 		FFB33C1C2C0DD4F700521621 /* CardPackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPackView.swift; sourceTree = "<group>"; };
+		FFB33C202C0DE98000521621 /* StoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAPI.swift; sourceTree = "<group>"; };
 		FFDA49172BE908070078DFD2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FFDA49192BE90E050078DFD2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FFE499572BF4CBBE0052CB64 /* TokenPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPair.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				FFE8515D2BD5CE2600378C93 /* UserAPI.swift */,
 				FF377B6D2BD5F51100697FE1 /* TournamentsAPI.swift */,
 				FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */,
+				FFB33C202C0DE98000521621 /* StoreAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				FFB33C1D2C0DD4F700521621 /* CardPackView.swift in Sources */,
 				FFA63EB42BFFAA95000C31A9 /* EditTeamView.swift in Sources */,
 				FF8C797B2C03A3C3009E7DDF /* TournamentResultDetailView.swift in Sources */,
+				FFB33C212C0DE98000521621 /* StoreAPI.swift in Sources */,
 				FFE8515E2BD5CE2600378C93 /* UserAPI.swift in Sources */,
 				FFFA3C0E2B94B34A009429C1 /* FrozenFantasyApp.swift in Sources */,
 				FF377B692BD5E97A00697FE1 /* CollectionView.swift in Sources */,
