@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct CollectionCardView: View {
-    let card: CollectionCard
+    @Binding var card: CollectionCard
+    let openCardHandler: (Int) async -> Void
+
+    init(_ card: Binding<CollectionCard>, openCardHandler: @escaping (Int) async -> Void) {
+        self._card = card
+        self.openCardHandler = openCardHandler
+    }
 
     private var playerName: String {
         let components = card.name.split(separator: " ")
@@ -80,18 +86,32 @@ struct CollectionCardView: View {
             RoundedRectangle(cornerRadius: 12)
         )
         .shadow(color: .black.opacity(0.1), radius: 8, x: 2, y: 2)
+        .overlay {
+            if !card.unpacked {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.ultraThinMaterial)
+
+                Button("Открыть") {
+                    card.unpacked = true
+                    Task { await openCardHandler(card.id) }
+                }
+                .buttonStyle(.custom)
+            }
+        }
+        .animation(.default, value: card.unpacked)
     }
 }
 
 #Preview {
     HStack(spacing: 24) {
-        CollectionCardView(card: .dummy)
-        CollectionCardView(card: {
+        CollectionCardView(.constant(.dummy)) { _ in }
+        CollectionCardView(.constant({
             var card = CollectionCard.dummy
             card.photo = URL(string: "https://www.khl.ru/img/teamplayers_db/14133/35060.jpg")!
             card.rarity = .gold
+            card.unpacked = true
             return card
-        }())
+        }())) { _ in }
     }
     .padding()
 }
