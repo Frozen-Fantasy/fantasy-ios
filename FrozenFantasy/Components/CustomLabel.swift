@@ -19,7 +19,8 @@ struct CustomLabel: View {
     var body: some View {
         Label {
             Text(text)
-                .font(.customBodyMedium1)
+                .font(.customBody1)
+                .bold()
         } icon: {
             Image(image)
                 .renderingMode(.template)

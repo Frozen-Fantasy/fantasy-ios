@@ -38,7 +38,11 @@ enum UserAPI: API {
     var parameters: Parameters? {
         switch self {
         case let .exists(email, username):
-            if let email { ["email": email] } else if let username { ["nickname": username] } else { nil }
+            if let email {
+                ["email": email]
+            } else if let username {
+                ["nickname": username]
+            } else { nil }
         default:
             nil
         }
@@ -57,7 +61,7 @@ enum UserAPI: API {
             case .exists:
                 []
             case .info, .transactions:
-                [try TokenManager.shared.authHeader]
+                try [TokenManager.shared.authHeader]
             }
         }
     }

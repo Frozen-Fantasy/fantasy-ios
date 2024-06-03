@@ -82,4 +82,15 @@ enum Rarity: Int, Codable, CaseIterable {
             .customYellow
         }
     }
+
+    var string: String {
+        switch self {
+        case .none:
+            ""
+        case .silver:
+            "silver"
+        case .gold:
+            "gold"
+        }
+    }
 }
