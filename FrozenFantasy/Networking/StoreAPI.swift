@@ -5,8 +5,8 @@
 //  Created by Никита Сигал on 03.06.2024.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 enum StoreAPI: API {
     case getProducts,
@@ -20,8 +20,8 @@ enum StoreAPI: API {
         switch self {
         case .getProducts:
             "/products"
-        case let .buyProduct(id):
-            "/prodcuts/buy"
+        case .buyProduct:
+            "/products/buy"
         }
     }
 
@@ -44,11 +44,18 @@ enum StoreAPI: API {
     }
 
     var encoding: any Alamofire.ParameterEncoding {
-        URLEncoding.default
+        URLEncoding.queryString
     }
 
     var headers: Alamofire.HTTPHeaders {
-        []
+        get throws {
+            switch self {
+            case .getProducts:
+                []
+            case .buyProduct:
+                try [TokenManager.shared.authHeader]
+            }
+        }
     }
 
     var url: String {

@@ -16,7 +16,9 @@ struct StoreView: View {
                 LazyVGrid(columns: [GridItem(),
                                     GridItem()]) {
                     ForEach(viewModel.cardPacks) { cardPack in
-                        CardPackView(cardPack)
+                        CardPackView(cardPack) { id in
+                            await viewModel.buyCardPack(id: id)
+                        }
                     }
                 }
                 .padding()
@@ -28,6 +30,9 @@ struct StoreView: View {
             }
             .refreshable {
                 await viewModel.fetchCardPacks()
+            }
+            .alert("Покупка успешна!", isPresented: $viewModel.presentingSuccess) {} message: {
+                Text("Новые карточки добавлены в Коллекцию.")
             }
         }
     }

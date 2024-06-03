@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CardPackView: View {
     let cardPack: CollectionCardPack
+    let buyHandler: (Int) async -> Void
 
-    init(_ cardPack: CollectionCardPack) {
+    init(_ cardPack: CollectionCardPack, buyHandler: @escaping (Int) async -> Void) {
         self.cardPack = cardPack
+        self.buyHandler = buyHandler
     }
 
     var body: some View {
@@ -40,8 +42,10 @@ struct CardPackView: View {
                 Spacer()
             }
 
-            Button("Купить") {}
-                .buttonStyle(.custom)
+            Button("Купить") {
+                Task { await buyHandler(cardPack.id) }
+            }
+            .buttonStyle(.custom)
         }
         .padding(12)
         .background(.white)
@@ -54,7 +58,7 @@ struct CardPackView: View {
 
 #Preview {
     HStack(spacing: 12) {
-        CardPackView(.dummy)
+        CardPackView(.dummy) { _ in }
         CardPackView(.init(
             title: "Набор золотых карточек НХЛ",
             image: URL(string: "https://i.postimg.cc/XYzzMZYg/nhl-gold.png")!,
@@ -62,7 +66,7 @@ struct CardPackView: View {
             price: 700,
             league: .NHL,
             rarity: .gold
-        ))
+        )) { _ in }
     }
     .padding()
 }

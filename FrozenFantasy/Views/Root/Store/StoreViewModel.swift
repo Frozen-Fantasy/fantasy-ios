@@ -9,6 +9,7 @@ import Foundation
 
 final class StoreViewModel: ObservableObject {
     @MainActor @Published var cardPacks: [CollectionCardPack] = []
+    @MainActor @Published var presentingSuccess: Bool = false
 
     func fetchCardPacks() async {
         do {
@@ -27,6 +28,9 @@ final class StoreViewModel: ObservableObject {
         do {
             try await NetworkManager.shared.request(
                 from: StoreAPI.buyProduct(id: id))
+            await MainActor.run {
+                presentingSuccess = true
+            }
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
