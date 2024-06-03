@@ -9,12 +9,23 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-protocol TokenManagerProtocol {
-    var tokenPair: TokenPair! { get }
-    var authHeader: HTTPHeader { get }
-    var isTokenValid: Bool { get }
+enum TokenManagerError: Error, LocalizedError {
+    case noTokens
 
-    func save(_ newTokenPair: TokenPair)
+    var errorDescription: String? {
+        switch self {
+        case .noTokens:
+            "Проблемы "
+        }
+    }
+}
+
+protocol TokenManagerProtocol {
+    var tokenPair: TokenPair? { get }
+    var authHeader: HTTPHeader { get throws }
+    var hasValidToken: Bool { get }
+
+    func saveTokens(_ newTokenPair: TokenPair)
     func deleteTokens()
 }
 
@@ -22,31 +33,23 @@ final class TokenManager: TokenManagerProtocol {
     static let shared: TokenManagerProtocol = TokenManager()
 
     private let keychain = KeychainSwift(keyPrefix: "frozenfantasy_")
+    private let keychainKey = "tokens"
     private let networkManager = NetworkManager.shared
 
-    var tokenPair: TokenPair!
+    var tokenPair: TokenPair?
     var authHeader: HTTPHeader {
-        .authorization(bearerToken: tokenPair.accessToken)
-    }
-
-    let tokenKey = "tokens"
-
-    func save(_ newTokenPair: TokenPair) {
-        tokenPair = newTokenPair
-        guard let data = try? JSONEncoder().encode(newTokenPair)
-        else { fatalError("Failed to encode tokens") }
-
-        keychain.set(data, forKey: tokenKey)
-    }
-
-    lazy var isTokenValid: Bool = {
-        if let data = keychain.getData(tokenKey),
-           let tokenPair = try? JSONDecoder().decode(TokenPair.self, from: data) {
-            self.tokenPair = tokenPair
+        get throws {
+            guard let tokenPair else { throw TokenManagerError.noTokens }
+            return .authorization(bearerToken: tokenPair.accessToken)
         }
+    }
 
-        if let tokenPair, tokenPair.expirationDate > .now {
-            refreshTokens()
+    lazy var hasValidToken: Bool = {
+        if let data = keychain.getData(keychainKey),
+           let tokenPair = try? JSONDecoder().decode(TokenPair.self, from: data),
+           tokenPair.expirationDate > .now {
+            self.tokenPair = tokenPair
+            refreshTokens(with: tokenPair.refreshToken)
             return true
         } else {
             deleteTokens()
@@ -54,15 +57,14 @@ final class TokenManager: TokenManagerProtocol {
         }
     }()
 
-    private func refreshTokens() {
+    private func refreshTokens(with refreshToken: String) {
         Task {
             do {
                 let newTokenPair = try await networkManager.request(
-                    from: AuthAPI.refreshTokens(
-                        refreshToken: tokenPair.refreshToken
-                    ), expecting: TokenPair.self
+                    from: AuthAPI.refreshTokens(refreshToken: refreshToken),
+                    expecting: TokenPair.self
                 )
-                save(newTokenPair)
+                saveTokens(newTokenPair)
             } catch {
                 deleteTokens()
                 fatalError("Unable to refresh tokens")
@@ -70,8 +72,16 @@ final class TokenManager: TokenManagerProtocol {
         }
     }
 
+    func saveTokens(_ newTokenPair: TokenPair) {
+        tokenPair = newTokenPair
+        guard let data = try? JSONEncoder().encode(newTokenPair)
+        else { fatalError("Failed to encode tokens") }
+
+        keychain.set(data, forKey: keychainKey)
+    }
+
     func deleteTokens() {
         tokenPair = nil
-        keychain.delete(tokenKey)
+        keychain.delete(keychainKey)
     }
 }

@@ -24,6 +24,9 @@ struct ProfileView: View {
             .animation(.default, value: viewModel.user)
             .animation(.default, value: viewModel.transactions)
             .task {
+                guard AppState.shared.currentScreen == .main
+                else { return }
+
                 await viewModel.fetchUserInfo()
                 await viewModel.fetchTransactions()
             }

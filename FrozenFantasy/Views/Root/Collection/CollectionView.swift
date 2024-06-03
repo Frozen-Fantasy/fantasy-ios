@@ -25,6 +25,9 @@ struct CollectionView: View {
             .animation(.default, value: viewModel.cards)
             .navigationTitle("Коллекция")
             .task {
+                guard AppState.shared.currentScreen == .main
+                else { return }
+
                 await viewModel.fetchCards()
             }
             .refreshable {

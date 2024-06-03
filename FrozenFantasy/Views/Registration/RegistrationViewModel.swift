@@ -54,7 +54,7 @@ final class RegistrationViewModel: ObservableObject {
                 expecting: TokenPair.self
             )
 
-            TokenManager.shared.save(tokenPair)
+            TokenManager.shared.saveTokens(tokenPair)
             await AppState.shared.setCurrentScreen(to: .main)
         } catch let APIError.badRequest(reason) {
             await MainActor.run {
