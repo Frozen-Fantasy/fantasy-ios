@@ -32,6 +32,7 @@ struct CustomImage<Content>: View where Content: View {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.black.opacity(0.05))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         } else {
             CachedAsyncImage(url: url) { image in

@@ -136,3 +136,13 @@ extension TournamentResult: Dummy {
         teamStats: [.dummy]
     )
 }
+
+extension CollectionCardPack: Dummy {
+    static var dummy: CollectionCardPack = .init(
+        title: "Набор серебрянных карточек КХЛ",
+        image: URL(string: "https://i.postimg.cc/1zVYy9g1/khl-silver.png")!,
+        cardCount: 3,
+        price: 500,
+        league: .KHL,
+        rariry: .silver)
+}

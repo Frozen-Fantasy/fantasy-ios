@@ -65,12 +65,12 @@ struct RootTabBarView: View {
                     Text("Команды")
                 }
 
-            RatingsView()
+            StoreView()
                 .tag(Tab.rating)
                 .tabItem {
-                    Image("icon:ratings")
+                    Image("icon:store")
                         .renderingMode(.template)
-                    Text("Рейтинг")
+                    Text("Магазин")
                 }
 
             CollectionView()

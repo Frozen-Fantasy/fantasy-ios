@@ -52,3 +52,25 @@ struct CollectionCard: Codable, Identifiable, Equatable {
         case teamLogo
     }
 }
+
+struct CollectionCardPack: Codable, Identifiable, Equatable {
+    var id: Int = UUID().hashValue
+    var title: String
+    var image: URL
+    var cardCount: Int
+    var price: Int
+
+    var league: League
+    var rariry: Rarity
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title = "productName"
+        case image = "photoLink"
+        case cardCount = "playerCardsCount"
+        case price
+
+        case league
+        case rariry
+    }
+}
