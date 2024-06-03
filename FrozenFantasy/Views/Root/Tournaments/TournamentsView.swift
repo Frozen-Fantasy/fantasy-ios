@@ -31,6 +31,9 @@ struct TournamentsView: View {
             }
             .navigationTitle("Турниры")
             .task {
+                guard AppState.shared.currentScreen == .main
+                else { return }
+
                 await viewModel.getTournaments()
             }
             .refreshable {

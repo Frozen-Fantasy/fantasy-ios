@@ -50,7 +50,7 @@ final class NetworkManager {
                                       method: endpoint.method,
                                       parameters: endpoint.parameters,
                                       encoding: endpoint.encoding,
-                                      headers: endpoint.headers)
+                                      headers: try endpoint.headers)
 
         do {
             return try await request

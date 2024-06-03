@@ -14,7 +14,7 @@ protocol API {
     var method: HTTPMethod { get }
     var parameters: Parameters? { get }
     var encoding: ParameterEncoding { get }
-    var headers: HTTPHeaders { get }
+    var headers: HTTPHeaders { get throws }
     var url: String { get }
     var reponseType: Decodable.Type { get }
 }

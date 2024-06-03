@@ -52,11 +52,13 @@ enum UserAPI: API {
     }
 
     var headers: HTTPHeaders {
-        switch self {
-        case .exists:
-            []
-        case .info, .transactions:
-            [TokenManager.shared.authHeader]
+        get throws {
+            switch self {
+            case .exists:
+                []
+            case .info, .transactions:
+                [try TokenManager.shared.authHeader]
+            }
         }
     }
 

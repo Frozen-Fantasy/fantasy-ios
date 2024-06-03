@@ -90,8 +90,10 @@ enum TournamentsAPI: API {
     }
 
     var headers: HTTPHeaders {
-        [.contentType("application/json"),
-         TokenManager.shared.authHeader]
+        get throws {
+            [.contentType("application/json"),
+             try TokenManager.shared.authHeader]
+        }
     }
 
     var url: String {

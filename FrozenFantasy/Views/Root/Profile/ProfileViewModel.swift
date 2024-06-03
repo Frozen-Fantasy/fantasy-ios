@@ -43,12 +43,13 @@ final class ProfileViewModel: ObservableObject {
 
     func logout() async {
         do {
-            let refreshToken = TokenManager.shared.tokenPair.refreshToken
-            TokenManager.shared.deleteTokens()
+            guard let refreshToken = TokenManager.shared.tokenPair?.refreshToken
+            else { return }
 
             try await NetworkManager.shared.request(
                 from: AuthAPI.logout(refreshToken: refreshToken)
             )
+            TokenManager.shared.deleteTokens()
 
             await AppState.shared.setCurrentScreen(to: .login)
         } catch {

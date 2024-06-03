@@ -22,7 +22,7 @@ import SwiftUI
     @Published fileprivate var presentingAlert: Bool = false
 
     init() {
-        currentScreen = TokenManager.shared.isTokenValid ? .main : .login
+        currentScreen = TokenManager.shared.hasValidToken ? .main : .login
     }
 
     func setCurrentScreen(to screen: Screen) async {
