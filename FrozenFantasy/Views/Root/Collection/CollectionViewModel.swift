@@ -30,4 +30,13 @@ final class CollectionViewModel: ObservableObject {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }
     }
+
+    func unpackCard(id: Int) async {
+        do {
+            try await NetworkManager.shared.request(
+                from: PlayersAPI.unpackCard(id: id))
+        } catch {
+            await AppState.shared.presentAlert(message: error.localizedDescription)
+        }
+    }
 }

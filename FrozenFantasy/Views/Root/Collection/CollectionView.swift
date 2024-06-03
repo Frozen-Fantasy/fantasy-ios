@@ -16,8 +16,10 @@ struct CollectionView: View {
                 LazyVGrid(columns: [GridItem(.flexible(), spacing: 12),
                                     GridItem(.flexible(), spacing: 12)],
                           spacing: 12) {
-                    ForEach(viewModel.cards) { card in
-                        CollectionCardView(card: card)
+                    ForEach($viewModel.cards) { $card in
+                        CollectionCardView($card) { id in
+                            await viewModel.unpackCard(id: id)
+                        }
                     }
                 }
                 .padding(16)

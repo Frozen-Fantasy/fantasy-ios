@@ -10,6 +10,7 @@ import Foundation
 
 enum PlayersAPI: API {
     case playerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
+    case unpackCard(id: Int)
 
     var baseURL: String {
         Constants.API.baseURL + "/players"
@@ -19,6 +20,8 @@ enum PlayersAPI: API {
         switch self {
         case .playerCards:
             "/cards"
+        case .unpackCard:
+            "/cards/unpack"
         }
     }
 
@@ -26,6 +29,8 @@ enum PlayersAPI: API {
         switch self {
         case .playerCards:
             .get
+        case .unpackCard:
+            .post
         }
     }
 
@@ -46,20 +51,27 @@ enum PlayersAPI: API {
                 params["unpacked"] = String(unpacked)
             }
             return params
+
+        case let .unpackCard(id):
+            return ["id": id]
         }
     }
 
     var encoding: any ParameterEncoding {
         switch self {
-        case .playerCards:
-            URLEncoding.default
+        case .playerCards, .unpackCard:
+            URLEncoding.queryString
         }
     }
 
     var headers: HTTPHeaders {
-        switch self {
-        default:
-            []
+        get throws {
+            switch self {
+            case .playerCards:
+                []
+            default:
+                try [TokenManager.shared.authHeader]
+            }
         }
     }
 
