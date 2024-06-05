@@ -17,10 +17,10 @@ final class CollectionViewModel: ObservableObject {
                 from: UserAPI.info,
                 expecting: User.self)
             let data = try await NetworkManager.shared.request(
-                from: PlayersAPI.playerCards(profileID: user.id,
-                                             rarity: nil,
-                                             league: nil,
-                                             unpacked: nil),
+                from: PlayersAPI.getPlayerCards(profileID: user.id,
+                                                rarity: nil,
+                                                league: nil,
+                                                unpacked: nil),
                 expecting: [CollectionCard].self)
             await MainActor.run {
                 cards = data

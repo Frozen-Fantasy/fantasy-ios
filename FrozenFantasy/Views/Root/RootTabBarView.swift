@@ -57,12 +57,12 @@ struct RootTabBarView: View {
                     Text("Турниры")
                 }
 
-            TeamsView()
+            StatisticsView()
                 .tag(Tab.teams)
                 .tabItem {
-                    Image("icon:team")
+                    Image("icon:statistics")
                         .renderingMode(.template)
-                    Text("Команды")
+                    Text("Статистика")
                 }
 
             StoreView()

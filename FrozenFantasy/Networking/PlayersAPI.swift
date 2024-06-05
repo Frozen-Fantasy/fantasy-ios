@@ -9,8 +9,10 @@ import Alamofire
 import Foundation
 
 enum PlayersAPI: API {
-    case playerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
+    case getPlayers(rarity: String?, league: League?)
+    case getPlayerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
     case unpackCard(id: Int)
+    case getStats(playerID: Int)
 
     var baseURL: String {
         Constants.API.baseURL + "/players"
@@ -18,16 +20,20 @@ enum PlayersAPI: API {
 
     var path: String {
         switch self {
-        case .playerCards:
+        case .getPlayers:
+            "/info"
+        case .getPlayerCards:
             "/cards"
         case .unpackCard:
             "/cards/unpack"
+        case .getStats(let playerID):
+            "/statistic_player/\(playerID)"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .playerCards:
+        case .getPlayers, .getPlayerCards, .getStats:
             .get
         case .unpackCard:
             .post
@@ -36,7 +42,17 @@ enum PlayersAPI: API {
 
     var parameters: Parameters? {
         switch self {
-        case let .playerCards(profileID, rarity, league, unpacked):
+        case let .getPlayers(rarity, league):
+            var params: [String: String] = [:]
+            if let rarity {
+                params["rarity"] = rarity
+            }
+            if let league {
+                params["league"] = league.title
+            }
+            return params
+
+        case let .getPlayerCards(profileID, rarity, league, unpacked):
             var params: [String: String] = [:]
             if let profileID {
                 params["profileID"] = profileID.uuidString
@@ -54,12 +70,14 @@ enum PlayersAPI: API {
 
         case let .unpackCard(id):
             return ["id": id]
+        case .getStats:
+            return nil
         }
     }
 
     var encoding: any ParameterEncoding {
         switch self {
-        case .playerCards, .unpackCard:
+        case .getPlayers, .getPlayerCards, .unpackCard, .getStats:
             URLEncoding.queryString
         }
     }
@@ -67,9 +85,9 @@ enum PlayersAPI: API {
     var headers: HTTPHeaders {
         get throws {
             switch self {
-            case .playerCards:
+            case .getPlayers, .getPlayerCards:
                 []
-            default:
+            case .unpackCard, .getStats:
                 try [TokenManager.shared.authHeader]
             }
         }
