@@ -45,6 +45,7 @@
 		FF8F83092BBC40A000441C88 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */; };
 		FF9D57E12BEB8E50005151A9 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D57E02BEB8E50005151A9 /* CollectionViewModel.swift */; };
 		FF9D57E62BEB95BE005151A9 /* CollectionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D57E52BEB95BE005151A9 /* CollectionCardView.swift */; };
+		FFA22EF92C112B9C00E045BB /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA22EF82C112B9C00E045BB /* UserStore.swift */; };
 		FFA43F532BEB9C600032F7CE /* PlayersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */; };
 		FFA63EAA2BFF4379000C31A9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EA92BFF4379000C31A9 /* SDWebImageSwiftUI */; };
 		FFA63EAD2BFF461F000C31A9 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FFA63EAC2BFF461F000C31A9 /* SDWebImageSVGCoder */; };
@@ -130,6 +131,7 @@
 		FF8F83082BBC40A000441C88 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		FF9D57E02BEB8E50005151A9 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		FF9D57E52BEB95BE005151A9 /* CollectionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCardView.swift; sourceTree = "<group>"; };
+		FFA22EF82C112B9C00E045BB /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		FFA43F522BEB9C600032F7CE /* PlayersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersAPI.swift; sourceTree = "<group>"; };
 		FFA63EB12BFFAA89000C31A9 /* EditTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamViewModel.swift; sourceTree = "<group>"; };
 		FFA63EB32BFFAA95000C31A9 /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				FF377B602BD5E60B00697FE1 /* RootTabBarView.swift */,
+				FFA22EF82C112B9C00E045BB /* UserStore.swift */,
 				FF377B6C2BD5F4ED00697FE1 /* Tournaments */,
 				FF0553C22C0E0F3000D7EB70 /* Statistics */,
 				FFB33C192C0DD2D300521621 /* Store */,
@@ -634,6 +637,7 @@
 				FFE4995A2BF4CBEB0052CB64 /* UserModel.swift in Sources */,
 				FF377B612BD5E60B00697FE1 /* RootTabBarView.swift in Sources */,
 				FFE8515B2BD5CD5400378C93 /* RegistrationViewModel.swift in Sources */,
+				FFA22EF92C112B9C00E045BB /* UserStore.swift in Sources */,
 				FFE851592BD5CCF700378C93 /* RegistrationView.swift in Sources */,
 				FFA6ED252C0402350044026C /* CustomImage.swift in Sources */,
 				FF4DAB802BD52F7A00CC0836 /* LoginView.swift in Sources */,

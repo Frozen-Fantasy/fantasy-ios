@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CollectionView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject private var viewModel = CollectionViewModel()
 
     var body: some View {
@@ -24,20 +25,22 @@ struct CollectionView: View {
                 }
                 .padding(16)
             }
-            .animation(.default, value: viewModel.cards)
             .navigationTitle("Коллекция")
+            .animation(.default, value: viewModel.cards)
             .task {
                 guard AppState.shared.currentScreen == .main
                 else { return }
 
-                await viewModel.fetchCards()
+                await viewModel.fetchCards(userID: userStore.user?.id)
+                await userStore.fetchUserInfo()
             }
             .refreshable {
-                await viewModel.fetchCards()
+                await viewModel.fetchCards(userID: userStore.user?.id)
+                await userStore.fetchUserInfo()
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    CoinLabel(viewModel.coins)
+                ToolbarItem(placement: .topBarLeading) {
+                    CoinLabel(userStore.user?.coins ?? 0)
                 }
             }
         }

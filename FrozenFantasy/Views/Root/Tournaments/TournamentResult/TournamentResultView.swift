@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TournamentResultView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject var viewModel = TournamentResultViewModel()
 
     let tournament: Tournament
@@ -46,6 +47,12 @@ struct TournamentResultView: View {
             await viewModel.fetchMatches()
             if tournament.players > 0 {
                 await viewModel.fetchResult()
+            }
+            await userStore.fetchUserInfo()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                CoinLabel(userStore.user?.coins ?? 0)
             }
         }
     }

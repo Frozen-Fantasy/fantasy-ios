@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct EditTeamView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject private var viewModel = EditTeamViewModel()
     @Environment(\.dismiss) private var dismiss
 
@@ -116,8 +117,14 @@ struct EditTeamView: View {
             viewModel.tournamentID = tournament.id
             viewModel.selectedPlayers = .init(selectedPlayers)
             await viewModel.fetchPlayers()
+            await userStore.fetchUserInfo()
         }
         .isTabBarVisible(false)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                CoinLabel(userStore.user?.coins ?? 0)
+            }
+        }
     }
 }
 

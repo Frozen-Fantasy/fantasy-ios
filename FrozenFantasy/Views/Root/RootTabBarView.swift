@@ -19,6 +19,7 @@ struct RootTabBarView: View {
     }
 
     @State private var currentTab: Tab = .tournaments
+    @StateObject private var userStore = UserStore()
 
     init() {
         UITabBarItem.appearance().setTitleTextAttributes(
@@ -89,6 +90,8 @@ struct RootTabBarView: View {
                     Text("Профиль")
                 }
         }
+        .environmentObject(userStore)
+        .animation(.default, value: userStore.user)
     }
 }
 

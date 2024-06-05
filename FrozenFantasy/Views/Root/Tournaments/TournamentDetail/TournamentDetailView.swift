@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TournamentDetailView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject var viewModel = TournamentDetailViewModel()
 
     let initialTournament: Tournament
@@ -47,11 +48,18 @@ struct TournamentDetailView: View {
         .task {
             viewModel.tournament = tournament
             await viewModel.fetchAll()
+            await userStore.fetchUserInfo()
         }
         .refreshable {
             await viewModel.fetchAll()
+            await userStore.fetchUserInfo()
         }
         .isTabBarVisible(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                CoinLabel(userStore.user?.coins ?? 0)
+            }
+        }
     }
 
     // MARK: My Team
