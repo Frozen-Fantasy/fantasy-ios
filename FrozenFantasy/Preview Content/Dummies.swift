@@ -146,3 +146,19 @@ extension CollectionCardPack: Dummy {
         league: .KHL,
         rarity: .silver)
 }
+
+extension MatchStats: Dummy {
+    static var dummy: MatchStats = .init(
+        date: .now.advanced(by: -60*60*10),
+        league: .NHL,
+        opponent: "COL",
+        scoreFP: 15.1,
+        goals: 1,
+        assists: 4,
+        shots: 3,
+        pims: 2,
+        hits: 4,
+        saves: 0,
+        missed: 3,
+        shutout: true)
+}

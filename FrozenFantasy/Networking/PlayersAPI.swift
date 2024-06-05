@@ -9,7 +9,8 @@ import Alamofire
 import Foundation
 
 enum PlayersAPI: API {
-    case playerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
+    case getPlayers(rarity: String?, league: League?)
+    case getPlayerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
     case unpackCard(id: Int)
 
     var baseURL: String {
@@ -18,7 +19,9 @@ enum PlayersAPI: API {
 
     var path: String {
         switch self {
-        case .playerCards:
+        case .getPlayers:
+            "/info"
+        case .getPlayerCards:
             "/cards"
         case .unpackCard:
             "/cards/unpack"
@@ -27,7 +30,7 @@ enum PlayersAPI: API {
 
     var method: HTTPMethod {
         switch self {
-        case .playerCards:
+        case .getPlayers, .getPlayerCards:
             .get
         case .unpackCard:
             .post
@@ -36,7 +39,17 @@ enum PlayersAPI: API {
 
     var parameters: Parameters? {
         switch self {
-        case let .playerCards(profileID, rarity, league, unpacked):
+        case let .getPlayers(rarity, league):
+            var params: [String: String] = [:]
+            if let rarity {
+                params["rarity"] = rarity
+            }
+            if let league {
+                params["league"] = league.title
+            }
+            return params
+
+        case let .getPlayerCards(profileID, rarity, league, unpacked):
             var params: [String: String] = [:]
             if let profileID {
                 params["profileID"] = profileID.uuidString
@@ -59,7 +72,7 @@ enum PlayersAPI: API {
 
     var encoding: any ParameterEncoding {
         switch self {
-        case .playerCards, .unpackCard:
+        case .getPlayers, .getPlayerCards, .unpackCard:
             URLEncoding.queryString
         }
     }
@@ -67,9 +80,9 @@ enum PlayersAPI: API {
     var headers: HTTPHeaders {
         get throws {
             switch self {
-            case .playerCards:
+            case .getPlayers, .getPlayerCards:
                 []
-            default:
+            case .unpackCard:
                 try [TokenManager.shared.authHeader]
             }
         }

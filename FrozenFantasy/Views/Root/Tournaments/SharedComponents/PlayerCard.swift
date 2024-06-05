@@ -16,14 +16,18 @@ struct PlayerCard: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 16) {
+            HStack(spacing: 20) {
                 ZStack(alignment: .topTrailing) {
                     CustomImage(url: player.photo) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
+                        GeometryReader { geometry in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geometry.size.width,
+                                       height: geometry.size.height,
+                                       alignment: .top)
+                        }
                     }
-                    .aspectRatio(1, contentMode: .fit)
 
                     VStack(spacing: 2) {
                         Text(player.position.abbreviation)
@@ -40,13 +44,14 @@ struct PlayerCard: View {
                                 .resizable()
                                 .scaledToFit()
                                 .foregroundStyle(player.rarity.color)
-                                .frame(width: 24)
                         }
 
                         Spacer()
                     }
-                    .offset(x: 8)
+                    .frame(width: 24)
+                    .offset(x: 12)
                 }
+                .aspectRatio(1, contentMode: .fit)
 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
@@ -54,19 +59,21 @@ struct PlayerCard: View {
                             .font(.customTitle4)
                             .foregroundStyle(.customBlack)
 
-                        // TODO: Not returned for PlayerStats
-                        //                        Text("#\(player.sweaterNumber)")
-                        //                            .font(.customBody1)
-                        //                            .bold()
-                        //                            .foregroundStyle(.customGray)
+                        if let player = player as? Player {
+                            Text("#\(player.sweaterNumber)")
+                                .font(.customBody1)
+                                .bold()
+                                .foregroundStyle(.customGray)
+                        }
                     }
 
                     HStack(spacing: 4) {
                         CustomImage(url: player.teamLogo) { image in
-                            image.resizable()
+                            image
+                                .resizable()
+                                .scaledToFit()
                         }
-                        .transition(.fade)
-                        .aspectRatio(1.5, contentMode: .fit)
+                        .frame(width: 32)
 
                         Text(player.teamName)
                             .font(.customBody1)
