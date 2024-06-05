@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject private var viewModel = ProfileViewModel()
 
     var body: some View {
@@ -21,17 +22,16 @@ struct ProfileView: View {
                 .padding()
             }
             .navigationTitle("Профиль")
-            .animation(.default, value: viewModel.user)
             .animation(.default, value: viewModel.transactions)
             .task {
                 guard AppState.shared.currentScreen == .main
                 else { return }
 
-                await viewModel.fetchUserInfo()
+                await userStore.fetchUserInfo()
                 await viewModel.fetchTransactions()
             }
             .refreshable {
-                await viewModel.fetchUserInfo()
+                await userStore.fetchUserInfo()
                 await viewModel.fetchTransactions()
             }
             .alert(isPresented: $viewModel.presentingLogoutAlert) {
@@ -59,7 +59,7 @@ struct ProfileView: View {
                 }
 
                 ToolbarItem(placement: .topBarLeading) {
-                    CoinLabel(viewModel.user?.coins ?? 0)
+                    CoinLabel(userStore.user?.coins ?? 0)
                 }
             }
         }
@@ -68,7 +68,7 @@ struct ProfileView: View {
     private var headerView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 32) {
-                CustomImage(url: viewModel.user?.photo) { image in
+                CustomImage(url: userStore.user?.photo) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -78,9 +78,9 @@ struct ProfileView: View {
                 .frame(width: 80, height: 80)
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("\(viewModel.user?.nickname ?? "")")
+                    Text("\(userStore.user?.nickname ?? "")")
                         .font(.customTitle2)
-                    Text("\(viewModel.user?.email ?? "")")
+                    Text("\(userStore.user?.email ?? "")")
                         .font(.customBody1)
                 }
                 .foregroundStyle(.customBlack)
@@ -89,7 +89,7 @@ struct ProfileView: View {
                 Spacer()
             }
 
-            Text("На сервисе с \(viewModel.user?.registrationDate.formatted(date: .long, time: .omitted) ?? "")")
+            Text("На сервисе с \(userStore.user?.registrationDate.formatted(date: .long, time: .omitted) ?? "")")
                 .font(.customBody1)
                 .foregroundStyle(.customGray)
         }

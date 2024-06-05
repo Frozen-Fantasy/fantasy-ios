@@ -8,24 +8,9 @@
 import Foundation
 
 final class ProfileViewModel: ObservableObject {
-    @MainActor @Published var user: User?
     @MainActor @Published var transactions: Transactions?
 
     @Published var presentingLogoutAlert = false
-
-    func fetchUserInfo() async {
-        do {
-            let data = try await NetworkManager.shared.request(
-                from: UserAPI.info,
-                expecting: User.self
-            )
-            await MainActor.run {
-                user = data
-            }
-        } catch {
-            await AppState.shared.presentAlert(message: error.localizedDescription)
-        }
-    }
 
     func fetchTransactions() async {
         do {

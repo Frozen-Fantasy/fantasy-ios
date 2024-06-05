@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject var viewModel = StatisticsViewModel()
 
     @State var presentedPlayer: Player?
@@ -30,9 +31,11 @@ struct StatisticsView: View {
             .animation(.default, value: viewModel.players)
             .task {
                 await viewModel.fetchPlayers()
+                await userStore.fetchUserInfo()
             }
             .refreshable {
                 await viewModel.fetchPlayers()
+                await userStore.fetchUserInfo()
             }
             .sheet(isPresented: Binding(
                     get: {
@@ -42,6 +45,11 @@ struct StatisticsView: View {
                     })
             ) {
                 StatisticsDetailView(presentedPlayer!)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    CoinLabel(userStore.user?.coins ?? 0)
+                }
             }
         }
     }

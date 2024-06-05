@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TournamentsView: View {
+    @EnvironmentObject private var userStore: UserStore
     @StateObject private var viewModel = TournamentsViewModel()
 
     var body: some View {
@@ -76,9 +77,11 @@ struct TournamentsView: View {
                 else { return }
 
                 await viewModel.getTournaments()
+                await userStore.fetchUserInfo()
             }
             .refreshable {
                 await viewModel.getTournaments()
+                await userStore.fetchUserInfo()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -90,6 +93,10 @@ struct TournamentsView: View {
                             .resizable()
                             .scaledToFit()
                     }
+                }
+
+                ToolbarItem(placement: .topBarLeading) {
+                    CoinLabel(userStore.user?.coins ?? 0)
                 }
             }
         }
