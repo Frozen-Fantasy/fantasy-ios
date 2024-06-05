@@ -105,9 +105,8 @@ struct CustomTextField: View {
                 ZStack {
                     if contentType.shouldBeSecure {
                         SecureField("", text: $text)
-                            .onTapGesture { wasInteractedWith = true }
                     } else {
-                        TextField("", text: $text) { _ in wasInteractedWith = true }
+                        TextField("", text: $text)
                     }
                 }
                 .frame(height: 20)
@@ -120,6 +119,9 @@ struct CustomTextField: View {
                 .autocorrectionDisabled(contentType.disableAutocorrection)
 
                 .focused($isFocused)
+                .onChange(of: isFocused) { _ in
+                    wasInteractedWith = true
+                }
             }
 
             // Divider
