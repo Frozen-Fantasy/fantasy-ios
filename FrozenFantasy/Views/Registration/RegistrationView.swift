@@ -13,6 +13,15 @@ struct RegistrationView: View {
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var secondsLeft: Int = 0
 
+    enum FocusedField {
+        case email,
+             code,
+             nickname,
+             password
+    }
+
+    @FocusState private var currentFocus: FocusedField?
+
     var body: some View {
         VStack(spacing: 24) {
             VStack {
@@ -28,6 +37,14 @@ struct RegistrationView: View {
             VStack(spacing: 4) {
                 CustomTextField(.email(isNew: true), text: $viewModel.email, placeholder: "Почта", required: true)
                     .bindValidation(to: $viewModel.isEmailValid)
+                    .focused($currentFocus, equals: .email)
+                    .onSubmit {
+                        if viewModel.isEmailValid && secondsLeft == 0 {
+                            Task { await viewModel.sendCode() }
+                            secondsLeft = 30
+                        }
+                    }
+
                 Button(secondsLeft == 0
                         ? "Отправить код"
                         : "Подождите \(secondsLeft) с.") {
@@ -45,6 +62,19 @@ struct RegistrationView: View {
 
                 CustomTextField(.verificationCode, text: $viewModel.code, placeholder: "Код", required: true)
                     .bindValidation(to: $viewModel.isCodeValid)
+                    .focused($currentFocus, equals: .code)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            if currentFocus == .code {
+                                HStack {
+                                    Spacer()
+                                    Button("Готово") {
+                                        currentFocus = nil
+                                    }
+                                }
+                            }
+                        }
+                    }
             }
 
             VStack(spacing: 4) {
@@ -54,11 +84,19 @@ struct RegistrationView: View {
                                 tip: "Только латинские символы, цифры, тире и нижнее подчеркивание",
                                 required: true)
                     .bindValidation(to: $viewModel.isNicknameValid)
+                    .focused($currentFocus, equals: .nickname)
+
                 CustomTextField(.password(isNew: true),
                                 text: $viewModel.password,
                                 placeholder: "Пароль",
                                 required: true)
                     .bindValidation(to: $viewModel.isPasswordValid)
+                    .focused($currentFocus, equals: .password)
+                    .onSubmit {
+                        if viewModel.isValid {
+                            Task { await viewModel.register() }
+                        }
+                    }
             }
 
             VStack(spacing: 8) {
@@ -67,6 +105,7 @@ struct RegistrationView: View {
                     .foregroundStyle(.customRed)
 
                 Button("Создать аккаунт") {
+                    currentFocus = nil
                     Task { await viewModel.register() }
                 }
                 .buttonStyle(.custom)
@@ -81,6 +120,7 @@ struct RegistrationView: View {
                     .foregroundColor(.customGray)
 
                 Button {
+                    currentFocus = nil
                     Task { await viewModel.routeToLogin() }
                 } label: {
                     Text("Войти")
@@ -90,9 +130,13 @@ struct RegistrationView: View {
                 }
             }
         }
-        .padding()
+        .padding(16)
+        .background(.white)
         .animation(.default, value: viewModel.errorMessage)
         .animation(.default, value: viewModel.isValid)
+        .onTapGesture {
+            currentFocus = nil
+        }
     }
 }
 
