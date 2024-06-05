@@ -92,10 +92,14 @@ struct CustomTextField: View {
 
             ZStack(alignment: .leading) {
                 // Animated placeholder label
-                Text(placeholder)
-                    .font(isLabelShifted ? .customBody2 : .customBody1)
-                    .foregroundStyle(foregroundColor)
-                    .offset(y: isLabelShifted ? -20 : 0)
+                HStack(spacing: 2) {
+                    Text(placeholder)
+                        .foregroundStyle(foregroundColor)
+                    Text(isRequired ? "*" : "")
+                        .foregroundStyle(.customRed)
+                }
+                .font(isLabelShifted ? .customBody2 : .customBody1)
+                .offset(y: isLabelShifted ? -20 : 0)
 
                 // Textfields
                 ZStack {
@@ -143,7 +147,7 @@ private struct CustomTextFieldPreviewContainer: View {
 
     var body: some View {
         HStack {
-            CustomTextField(.email(), text: $username, placeholder: "Почта", required: false)
+            CustomTextField(.email(), text: $username, placeholder: "Почта", required: true)
                 .bindValidation(to: $usernameIsValid)
             Text(usernameIsValid ? "✅" : "❌")
         }
