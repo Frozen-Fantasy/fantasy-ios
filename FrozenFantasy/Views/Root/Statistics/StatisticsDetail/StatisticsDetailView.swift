@@ -20,7 +20,7 @@ struct StatisticsDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(spacing: 12) {
                     HStack(spacing: 24) {
                         CustomImage(url: player.photo) { image in
                             GeometryReader { geometry in
@@ -38,10 +38,14 @@ struct StatisticsDetailView: View {
                         .frame(width: 80, height: 80)
 
                         VStack(alignment: .leading, spacing: 8) {
-                            HStack(alignment: .bottom) {
+                            HStack(alignment: .firstTextBaseline) {
                                 Text(player.name)
                                     .font(.customTitle2)
                                     .foregroundStyle(.customBlack)
+
+                                Text("#\(player.sweaterNumber)")
+                                    .font(.customTitle4)
+                                    .foregroundStyle(.customGray)
 
                                 Text(player.position.abbreviation)
                                     .font(.customBody1)
@@ -95,46 +99,52 @@ struct StatisticsDetailView: View {
                         Spacer()
                     }
 
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("В среднем за сезон")
-                            .font(.customTitle3)
+                    if viewModel.matches.isEmpty {
+                        Text("Нет статистики за этот сезон")
+                            .font(.customTitle4)
+                            .foregroundStyle(.customGray)
+                    } else {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("В среднем за сезон")
+                                .font(.customTitle3)
 
-                        HStack {
-                            switch player.position {
-                            case .goaltender:
-                                Spacer()
-                                StatLabel("SV", value: viewModel.average(of: \.saves))
-                                Spacer()
-                                StatLabel("GA", value: viewModel.average(of: \.missed))
-                                Spacer()
-                                StatLabel("PIM", value: viewModel.average(of: \.pims))
-                                Spacer()
-                                StatLabel("SO", value: viewModel.shutoutPercentage())
-                                Spacer()
-                            case .defender, .forward:
-                                Spacer()
-                                StatLabel("G", value: viewModel.average(of: \.goals))
-                                Spacer()
-                                StatLabel("A", value: viewModel.average(of: \.assists))
-                                Spacer()
-                                StatLabel("HIT", value: viewModel.average(of: \.hits))
-                                Spacer()
-                                StatLabel("S", value: viewModel.average(of: \.shots))
-                                Spacer()
-                                StatLabel("PIM", value: viewModel.average(of: \.pims))
-                                Spacer()
+                            HStack {
+                                switch player.position {
+                                case .goaltender:
+                                    Spacer()
+                                    StatLabel("SV", value: viewModel.average(of: \.saves))
+                                    Spacer()
+                                    StatLabel("GA", value: viewModel.average(of: \.missed))
+                                    Spacer()
+                                    StatLabel("PIM", value: viewModel.average(of: \.pims))
+                                    Spacer()
+                                    StatLabel("SO", value: viewModel.shutoutPercentage())
+                                    Spacer()
+                                case .defender, .forward:
+                                    Spacer()
+                                    StatLabel("G", value: viewModel.average(of: \.goals))
+                                    Spacer()
+                                    StatLabel("A", value: viewModel.average(of: \.assists))
+                                    Spacer()
+                                    StatLabel("HIT", value: viewModel.average(of: \.hits))
+                                    Spacer()
+                                    StatLabel("S", value: viewModel.average(of: \.shots))
+                                    Spacer()
+                                    StatLabel("PIM", value: viewModel.average(of: \.pims))
+                                    Spacer()
+                                }
                             }
+                            .font(.customBody1)
                         }
-                        .font(.customBody1)
-                    }
 
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("По играм")
-                            .font(.customTitle3)
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("По играм")
+                                .font(.customTitle3)
 
-                        VStack {
-                            ForEach(viewModel.matches) { matchStats in
-                                MatchStatsCard(matchStats, playerPosition: player.position)
+                            VStack {
+                                ForEach(viewModel.matches) { matchStats in
+                                    MatchStatsCard(matchStats, playerPosition: player.position)
+                                }
                             }
                         }
                     }

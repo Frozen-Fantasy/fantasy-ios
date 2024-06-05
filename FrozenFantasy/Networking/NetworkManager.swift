@@ -46,11 +46,11 @@ final class NetworkManager {
 
     @discardableResult
     func request<T: Decodable>(from endpoint: API, expecting type: T.Type = Empty.self) async throws -> T {
-        let request = session.request(endpoint.url,
-                                      method: endpoint.method,
-                                      parameters: endpoint.parameters,
-                                      encoding: endpoint.encoding,
-                                      headers: try endpoint.headers)
+        let request = try session.request(endpoint.url,
+                                          method: endpoint.method,
+                                          parameters: endpoint.parameters,
+                                          encoding: endpoint.encoding,
+                                          headers: endpoint.headers)
 
         do {
             return try await request
@@ -63,6 +63,8 @@ final class NetworkManager {
             } else {
                 fatalError("Unexpected networking error")
             }
+        } catch let AFError.responseValidationFailed(reason: .unacceptableStatusCode(code)) {
+            throw APIError.failedWithStatusCode(code: code)
         } catch let AFError.responseSerializationFailed(reason) {
             debugPrint(reason)
             fatalError("Unable to decode response into type '\(type)'")

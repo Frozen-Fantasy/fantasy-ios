@@ -19,13 +19,14 @@ struct MatchStatsCard: View {
     var body: some View {
         VStack {
             HStack {
-                Text("\(matchStats.date.formatted(date: .numeric, time: .omitted)) @ \(matchStats.opponent)")
+                Text("\(matchStats.date.formatted(date: .long, time: .omitted)) @ \(matchStats.opponent)")
                     .bold()
 
                 Spacer()
 
                 Text("Очки")
                 FantasyPointLabel(matchStats.scoreFP)
+                    .frame(width: 60, alignment: .leading)
             }
             .font(.customBody1)
             .foregroundStyle(.customBlack)

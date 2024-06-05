@@ -150,7 +150,6 @@ extension CollectionCardPack: Dummy {
 extension MatchStats: Dummy {
     static var dummy: MatchStats = .init(
         date: .now.advanced(by: -60*60*10),
-        league: .NHL,
         opponent: "COL",
         scoreFP: 15.1,
         goals: 1,

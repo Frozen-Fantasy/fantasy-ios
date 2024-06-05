@@ -27,6 +27,7 @@ struct StatisticsView: View {
                 .padding()
             }
             .navigationTitle("Статистика")
+            .animation(.default, value: viewModel.players)
             .task {
                 await viewModel.fetchPlayers()
             }

@@ -108,8 +108,6 @@ struct PlayerStats: PlayerCommon, Identifiable, Codable, Equatable {
 struct MatchStats: Codable, Identifiable, Equatable {
     var id: Int = UUID().hashValue
     var date: Date
-
-    var league: League
     var opponent: String
 
     var scoreFP: Double
@@ -126,8 +124,6 @@ struct MatchStats: Codable, Identifiable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id = "matchIdLocal"
         case date = "gameDate"
-
-        case league
         case opponent
 
         case scoreFP = "fantasyPoint"
@@ -138,7 +134,7 @@ struct MatchStats: Codable, Identifiable, Equatable {
         case pims
         case hits
         case saves
-        case missed
+        case missed = "missedGoals"
         case shutout
     }
 }

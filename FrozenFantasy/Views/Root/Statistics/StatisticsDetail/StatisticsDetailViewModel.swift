@@ -16,15 +16,19 @@ final class StatisticsDetailViewModel: ObservableObject {
     }
 
     @MainActor func shutoutPercentage() -> Double {
-        return Double(matches.filter {$0.shutout}.count) / Double(matches.count)
+        return Double(matches.filter { $0.shutout }.count) / Double(matches.count)
     }
 
     func fetchMatchStats(playerID: Int) async {
         do {
-            let data = [MatchStats.dummy]
+            let data = try await NetworkManager.shared.request(
+                from: PlayersAPI.getStats(playerID: playerID),
+                expecting: [MatchStats].self)
+                .sorted { $0.date > $1.date }
             await MainActor.run {
                 matches = data
             }
+        } catch APIError.failedWithStatusCode(code: 404) {
         } catch {
             await AppState.shared.presentAlert(message: error.localizedDescription)
         }

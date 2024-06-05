@@ -12,6 +12,7 @@ enum PlayersAPI: API {
     case getPlayers(rarity: String?, league: League?)
     case getPlayerCards(profileID: UUID?, rarity: String?, league: League?, unpacked: Bool?)
     case unpackCard(id: Int)
+    case getStats(playerID: Int)
 
     var baseURL: String {
         Constants.API.baseURL + "/players"
@@ -25,12 +26,14 @@ enum PlayersAPI: API {
             "/cards"
         case .unpackCard:
             "/cards/unpack"
+        case .getStats(let playerID):
+            "/statistic_player/\(playerID)"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getPlayers, .getPlayerCards:
+        case .getPlayers, .getPlayerCards, .getStats:
             .get
         case .unpackCard:
             .post
@@ -67,12 +70,14 @@ enum PlayersAPI: API {
 
         case let .unpackCard(id):
             return ["id": id]
+        case .getStats:
+            return nil
         }
     }
 
     var encoding: any ParameterEncoding {
         switch self {
-        case .getPlayers, .getPlayerCards, .unpackCard:
+        case .getPlayers, .getPlayerCards, .unpackCard, .getStats:
             URLEncoding.queryString
         }
     }
@@ -82,7 +87,7 @@ enum PlayersAPI: API {
             switch self {
             case .getPlayers, .getPlayerCards:
                 []
-            case .unpackCard:
+            case .unpackCard, .getStats:
                 try [TokenManager.shared.authHeader]
             }
         }

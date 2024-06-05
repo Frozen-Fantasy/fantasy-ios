@@ -17,6 +17,11 @@ final class StatisticsViewModel: ObservableObject {
                     rarity: nil,
                     league: nil),
                 expecting: [Player].self)
+                .map { player in
+                    var player = player
+                    player.rarity = .none
+                    return player
+                }
             await MainActor.run {
                 players = data
             }
