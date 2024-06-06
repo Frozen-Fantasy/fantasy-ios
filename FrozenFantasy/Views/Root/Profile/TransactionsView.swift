@@ -22,7 +22,7 @@ struct TransactionsView: View {
 
             ForEach(groupedTransactions, id: \.0) { date, sameDayTransactions in
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(date.formatted())
+                    Text(date.formatted(date: .long, time: .omitted))
                         .font(.customTitle3)
                         .foregroundStyle(.customBlack)
 
